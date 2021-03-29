@@ -1,24 +1,22 @@
 import 'react-native-gesture-handler';
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import MainNavigation from  './src/navigations/MainNavigation'
 import { NavigationContainer } from '@react-navigation/native';
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
 
-  render() {
+
+
+
+
+function App () {
+ 
     return (
-      <View>
         <NavigationContainer>
-        <Text> Application  </Text>
+             <MainNavigation />
         </NavigationContainer>
        
-      </View>
     );
-  }
+
 }
 
 export default App;
