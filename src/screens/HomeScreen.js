@@ -1,43 +1,58 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView} from 'react-native';
-
-function HomeScreen ({navigation}){
-  
-    return (
-      <SafeAreaView>
-        <ScrollView>
-          {/* header */}
-        <View style={styles.headingBox}>
-        <Text style={styles.headingText}>Home -- Menu</Text>
-        </View> 
-       <Text style={styles.subhHeadingText}> 
-       Use this Tools to start Writing your next Hit Song </Text>
-      {/* first row */}
-       <View style={styles.menuRow}>
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
+import Message from '../components/Message';
+function HomeScreen({navigation}) {
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        {/* header */}
+        <Message header={'Home > Menu'} />
+        {/* first row */}
+        <View style={styles.menuRow}>
           <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/lyrics.png')}
-            />
-             <Text style={styles.menuText}>Lyrics Manager</Text>
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => {
+                navigation.navigate('LyricsNav', {screen: 'Lyrics'});
+              }}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/lyrics.png')}
+              />
+              <Text style={styles.menuText}>Lyrics Manager</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/template.png')}
-            />
-             <Text style={styles.menuText}>Song Templates</Text>
-          </View>      
-      </View>
-      {/* second row */}
-      <View style={styles.menuRow}>
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => {
+                navigation.navigate('More');
+              }}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/template.png')}
+              />
+              <Text style={styles.menuText}>Song Templates</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        {/* second row */}
+        <View style={styles.menuRow}>
           <View style={styles.menuBg}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/loop.png')}
             />
-             <Text style={styles.menuText}>Loop Manager</Text>
+            <Text style={styles.menuText}>Loop Manager</Text>
           </View>
 
           <View style={styles.menuBg}>
@@ -45,17 +60,17 @@ function HomeScreen ({navigation}){
               style={styles.menuImg}
               source={require('../assets/imgs/menu/catch.png')}
             />
-             <Text style={styles.menuText}>Catch Phrases</Text>
-          </View>      
-      </View>
-       {/* third row */}
-       <View style={styles.menuRow}>
+            <Text style={styles.menuText}>Catch Phrases</Text>
+          </View>
+        </View>
+        {/* third row */}
+        <View style={styles.menuRow}>
           <View style={styles.menuBg}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/metro.png')}
             />
-             <Text style={styles.menuText}>Metronomes</Text>
+            <Text style={styles.menuText}>Metronomes</Text>
           </View>
 
           <View style={styles.menuBg}>
@@ -63,17 +78,17 @@ function HomeScreen ({navigation}){
               style={styles.menuImg}
               source={require('../assets/imgs/menu/melo.png')}
             />
-             <Text style={styles.menuText}>Melodies</Text>
-          </View>      
-      </View>
-       {/* fourth row */}
-       <View style={styles.menuRow}>
+            <Text style={styles.menuText}>Melodies</Text>
+          </View>
+        </View>
+        {/* fourth row */}
+        <View style={styles.menuRow}>
           <View style={styles.menuBg}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/rhym.png')}
             />
-             <Text style={styles.menuText}>Rhyming Tool</Text>
+            <Text style={styles.menuText}>Rhyming Tool</Text>
           </View>
 
           <View style={styles.menuBg}>
@@ -81,18 +96,18 @@ function HomeScreen ({navigation}){
               style={styles.menuImg}
               source={require('../assets/imgs/menu/harmo.png')}
             />
-             <Text style={styles.menuText}>Harmonize Tool</Text>
-          </View>      
-      </View>
+            <Text style={styles.menuText}>Harmonize Tool</Text>
+          </View>
+        </View>
 
-       {/* Fifth row */}
-       <View style={styles.menuRow}>
+        {/* Fifth row */}
+        <View style={styles.menuRow}>
           <View style={styles.menuBg}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/bible.png')}
             />
-             <Text style={styles.menuText}>Bible Search</Text>
+            <Text style={styles.menuText}>Bible Search</Text>
           </View>
 
           {/* <View style={styles.menuBg}>
@@ -102,12 +117,11 @@ function HomeScreen ({navigation}){
             />
              <Text style={styles.menuText}>Melodies</Text>
           </View>       */}
-      </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
 export default HomeScreen;
 
@@ -116,20 +130,32 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#F8AE33',
   },
-  headingText: {color: '#000', fontSize: 20, fontWeight: 'bold', textAlign:'center'},
-  subhHeadingText: {color: '#000', fontSize: 18, margin:10, textAlign:'center'},
-  menuBg:{
-    backgroundColor:'#F8AE33',
-    padding:10,
-    alignItems:'center',
-    borderRadius:10,
-    height:140,
-    width:'50%',
-    maxWidth:160
+  headingText: {
+    color: '#000',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
-  menuImg:{width: 70, height: 70, margin:10, borderRadius:5},
-  menuText:{color:'#AC1C1C', fontWeight:'bold', fontSize:18},
-  menuRow:{flexDirection:'row', justifyContent: 'space-evenly',marginTop:20}
-
-})
-
+  subhHeadingText: {
+    color: '#000',
+    fontSize: 18,
+    margin: 10,
+    textAlign: 'center',
+  },
+  menuBg: {
+    backgroundColor: '#F8AE33',
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 10,
+    height: 140,
+    width: '50%',
+    maxWidth: 160,
+  },
+  menuImg: {width: 70, height: 70, margin: 10, borderRadius: 5},
+  menuText: {color: '#AC1C1C', fontWeight: 'bold', fontSize: 18},
+  menuRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 20,
+  },
+});
