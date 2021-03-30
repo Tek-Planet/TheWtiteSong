@@ -1,21 +1,12 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {
-  useTheme,
-  Avatar,
-  Title,
-  Caption,
-  Paragraph,
-  Drawer,
-  Text,
-  TouchableRipple,
-  Switch,
-} from 'react-native-paper';
+import {Image, Avatar, Title, Drawer, Text} from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export function DrawerContent({props, navigation}) {
+  const con = require('../assets/imgs/lyrics/player.png');
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
@@ -34,9 +25,12 @@ export function DrawerContent({props, navigation}) {
 
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="home-outline" color={'#000'} size={size} />
-              )}
+              icon={() => 
+                <Avatar.Image
+                source={require('../assets/imgs/drawer/songw.png')}
+                size={25}
+              />
+              }
               label={() => <Text style={styles.menuTitle}>My Songs</Text>}
               onPress={() => {
                 navigation.navigate('Home');
@@ -193,7 +187,10 @@ export function DrawerContent({props, navigation}) {
         <Drawer.Section style={styles.bottomDrawerSection}>
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="more" color={color} size={size} />
+              <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/info.png')}
+                size={25} />
             )}
             label={() => <Text style={styles.menuTitle}>Information</Text>}
             onPress={() => {
@@ -203,7 +200,10 @@ export function DrawerContent({props, navigation}) {
 
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="more" color={color} size={size} />
+              <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/logout.png')}
+                size={25} />
             )}
             label={() => <Text style={styles.menuTitle}>Log Out</Text>}
             onPress={() => {
@@ -289,6 +289,7 @@ const styles = StyleSheet.create({
     marginTop: -10,
     marginStart: -10,
   },
+  meneIcon:{ backgroundColor:'transparent', marginTop:-7},
   horizontalLine: {
     height: 20,
     backgroundColor: '#ccc',
