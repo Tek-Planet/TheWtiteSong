@@ -27,9 +27,9 @@ export function DrawerContent({props, navigation}) {
             <DrawerItem
               icon={() => 
                 <Avatar.Image
-                source={require('../assets/imgs/drawer/songw.png')}
-                size={25}
-              />
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/mysong.png')}
+                size={25} />
               }
               label={() => <Text style={styles.menuTitle}>My Songs</Text>}
               onPress={() => {
@@ -38,7 +38,10 @@ export function DrawerContent({props, navigation}) {
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="email-newsletter" color={color} size={size} />
+                <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/musicsettings.png')}
+                size={25} />
               )}
               label={() => <Text style={styles.menuTitle}>Music Settings</Text>}
               onPress={() => {
@@ -47,7 +50,10 @@ export function DrawerContent({props, navigation}) {
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="clipboard-flow-outline" color={color} size={size} />
+                <Avatar.Image
+                style={styles.meneIcon}
+                  source={require('../assets/imgs/drawer/instrument.png')}
+                  size={25} />
               )}
               label={() => (
                 <Text style={styles.menuTitle}>Instrument Tuner</Text>
@@ -87,7 +93,10 @@ export function DrawerContent({props, navigation}) {
               <Drawer.Section style={styles.drawerSection}>
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="home-outline" color={'#000'} size={size} />
+                    <Avatar.Image
+                    style={styles.meneIcon}
+                      source={require('../assets/imgs/drawer/songtemp.png')}
+                      size={25} />
                   )}
                   label={() => (
                     <Text style={styles.menuTitle}>Song Templates</Text>
@@ -98,7 +107,10 @@ export function DrawerContent({props, navigation}) {
                 />
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="email-newsletter" color={color} size={size} />
+                    <Avatar.Image
+                    style={styles.meneIcon}
+                      source={require('../assets/imgs/drawer/bible.png')}
+                      size={25} />
                   )}
                   label={() => (
                     <Text style={styles.menuTitle}>Bible Tool Search</Text>
@@ -109,11 +121,10 @@ export function DrawerContent({props, navigation}) {
                 />
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon
-                      name="clipboard-flow-outline"
-                      color={color}
-                      size={size}
-                    />
+                    <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/harmonize.png')}
+                size={25} />
                   )}
                   label={() => (
                     <Text style={styles.menuTitle}>Harmonize Tool</Text>
@@ -124,7 +135,10 @@ export function DrawerContent({props, navigation}) {
                 />
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="more" color={color} size={size} />
+                    <Avatar.Image
+                    style={styles.meneIcon}
+                      source={require('../assets/imgs/drawer/lyricsman.png')}
+                      size={25} />
                   )}
                   label={() => (
                     <Text style={styles.menuTitle}>Lyrics Manager</Text>
@@ -137,7 +151,10 @@ export function DrawerContent({props, navigation}) {
 
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="more" color={color} size={size} />
+                    <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/loopman.png')}
+                size={25} />
                   )}
                   label={() => (
                     <Text style={styles.menuTitle}>Loop Manager</Text>
@@ -149,7 +166,10 @@ export function DrawerContent({props, navigation}) {
 
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="more" color={color} size={size} />
+                    <Avatar.Image
+              style={styles.meneIcon}
+                source={require('../assets/imgs/drawer/melodies.png')}
+                size={25} />
                   )}
                   label={() => <Text style={styles.menuTitle}>Melodies</Text>}
                   onPress={() => {
@@ -159,7 +179,10 @@ export function DrawerContent({props, navigation}) {
 
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="more" color={color} size={size} />
+                    <Avatar.Image
+                    style={styles.meneIcon}
+                      source={require('../assets/imgs/drawer/metromones.png')}
+                      size={25} />
                   )}
                   label={() => <Text style={styles.menuTitle}>Metromones</Text>}
                   onPress={() => {

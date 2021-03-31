@@ -4,17 +4,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export function MusicPlayer() {
   return (
-    <View style={{margin: 10}}>
+    <View style={{marginTop: 10, marginStart: 10, flex: 0.7}}>
       <Image
-        style={{height: 150, width: 250}}
+        resizeMode="contain"
+        style={{maxWidth: 180, marginTop: -40}}
         source={require('../assets/imgs/lyrics/player.png')}
       />
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
-          width: 250,
-          marginTop: 10,
+          marginTop: -30,
         }}>
         <TouchableOpacity style={styles.iconBg}>
           <Ionicons name="play" size={25} color="#AC1C1C" />
@@ -57,7 +57,7 @@ export function MusicPlayer() {
               margin: 5,
               fontSize: 18,
             }}>
-            05:00 {'\n'} MM | SS
+            05:00 MM | SS
           </Text>
         </View>
       </View>

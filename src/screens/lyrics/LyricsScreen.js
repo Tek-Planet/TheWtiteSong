@@ -16,6 +16,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function componentName() {
   const [keyWord, setKeyWord] = useState('');
+  const [side, setSide] = useState(true);
   // sample test data
   const [template, setTemplate] = useState([
     {
@@ -40,6 +41,14 @@ export default function componentName() {
       setKeyWord(val);
     } else {
       setKeyWord(val);
+    }
+  };
+  // show side bar
+  const showSideMenu = () => {
+    if (side) {
+      setSide(false);
+    } else {
+      setSide(true);
     }
   };
 
@@ -111,18 +120,50 @@ export default function componentName() {
         {<TemplateList template={template} keyWord={keyWord} />}
 
         {/* media player section */}
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flex: 1}}>
-            <MusicPlayer />
+        <View style={{flexDirection: 'row', flex: 1}}>
+          <MusicPlayer />
+
+          {/* editing menu */}
+
+          <View style={{margin: 10, marginEnd: 20, flex: 0.4}}>
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Create / Insert Lyrics</Text>
+            </View>
+
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Bible Search</Text>
+            </View>
           </View>
+
+          {/* side rod */}
           <View style={styles.sideRod}>
-            <TouchableOpacity onPress={() => alert('searech')}>
-              <Ionicons
-                name="chevron-forward-outline"
-                size={25}
-                color={'#fff'}
-              />
-            </TouchableOpacity>
+            {side ? (
+              <TouchableOpacity onPress={() => showSideMenu()}>
+                <Ionicons name="chevron-back" size={25} color={'#fff'} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={() => showSideMenu()}>
+                <Ionicons
+                  name="chevron-forward-outline"
+                  size={25}
+                  color={'#fff'}
+                />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         {/* save botton */}
@@ -173,5 +214,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#AC1C1C',
     justifyContent: 'center',
+  },
+  editMenuItem: {
+    flexDirection: 'row',
+    backgroundColor: '#F8AE33',
+    alignItems: 'center',
+    borderRadius: 10,
+    marginEnd: 10,
+    marginTop: 5,
+    height: 30,
+    maxWidth: 220,
+  },
+  editMenuText: {
+    width: 100,
+    color: '#000',
+    fontWeight: 'bold',
+    margin: 5,
+    fontSize: 15,
   },
 });
