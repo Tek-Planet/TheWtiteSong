@@ -147,6 +147,47 @@ export default function componentName() {
               </View>
               <Text style={styles.editMenuText}>Bible Search</Text>
             </View>
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Harmonizwe Tools</Text>
+            </View>
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Loop Manager</Text>
+            </View>
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Rhyming Tools</Text>
+            </View>
+
+            <View style={styles.editMenuItem}>
+              <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                <Ionicons
+                  name="musical-notes-outline"
+                  size={18}
+                  color={'#fff'}
+                />
+              </View>
+              <Text style={styles.editMenuText}>Print</Text>
+            </View>
           </View>
 
           {/* side rod */}
@@ -211,6 +252,7 @@ const styles = StyleSheet.create({
     height: 250,
     width: 25,
     margin: 10,
+    marginStart:14,
     borderRadius: 10,
     backgroundColor: '#AC1C1C',
     justifyContent: 'center',
@@ -220,16 +262,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8AE33',
     alignItems: 'center',
     borderRadius: 10,
-    marginEnd: 10,
     marginTop: 5,
     height: 30,
-    maxWidth: 220,
+    width: 130,
   },
   editMenuText: {
     width: 100,
     color: '#000',
     fontWeight: 'bold',
-    margin: 5,
+    margin: 4,
     fontSize: 15,
   },
 });
