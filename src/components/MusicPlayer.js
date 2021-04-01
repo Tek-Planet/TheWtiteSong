@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export function MusicPlayer() {
   return (
-    <View style={{marginTop: 10, marginStart: 10, flex: 0.7}}>
+    <View style={{marginTop: 10, margin: 5, flex: 0.7}}>
       <Image
         resizeMode="contain"
         style={{maxWidth: 180, marginTop: -40}}
@@ -29,6 +29,7 @@ export function MusicPlayer() {
 
       <View
         style={{
+          margin: 5,
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
@@ -38,7 +39,7 @@ export function MusicPlayer() {
             color: '#AC1C1C',
             margin: 5,
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 18,
           }}>
           Run Time :
         </Text>
@@ -46,16 +47,17 @@ export function MusicPlayer() {
           style={{
             backgroundColor: '#F8AE33',
             padding: 5,
-            margin: 10,
+            margin: 5,
             borderRadius: 10,
-            width: 100,
+            width: 80,
           }}>
           <Text
             style={{
               textAlign: 'center',
               color: '#000',
               margin: 5,
-              fontSize: 18,
+              fontSize: 15,
+              fontWeight: 'bold',
             }}>
             05:00 MM | SS
           </Text>

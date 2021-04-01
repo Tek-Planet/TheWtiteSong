@@ -1,22 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export default function Message({header}) {
+export default function Message({header, showMsg}) {
   return (
     <View>
       <View style={styles.headingBox}>
         <Text style={styles.headingText}>{header}</Text>
       </View>
-      <View style={styles.subhHeadingText}>
-        <Text
-          style={{
-            color: '#000',
-            fontSize: 18,
-            textAlign: 'center',
-          }}>
-          Use this Tools to start Writing your next Hit Song{' '}
-        </Text>
-      </View>
+      {showMsg ? (
+        <View style={styles.subhHeadingText}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 18,
+              textAlign: 'center',
+            }}>
+            Use this Tools to start Writing your next Hit Song{' '}
+          </Text>
+        </View>
+      ) : null}
     </View>
   );
 }

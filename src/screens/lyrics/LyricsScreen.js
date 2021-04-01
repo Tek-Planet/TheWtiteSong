@@ -56,13 +56,13 @@ export default function componentName() {
     <SafeAreaView>
       <ScrollView>
         {/* subheader */}
-        <Message header={'Lyrics Manager'} />
+        <Message header={'Lyrics Manager'} showMsg={true} />
         {/* freestyle and template row */}
         <View style={styles.menuRow}>
           <TouchableOpacity
             style={{alignItems: 'center', margin: 5}}
             onPress={() => {
-              navigation.navigate('LyricsNav', {screen: 'Lyrics'});
+              navigation.navigate('LyricsNav', {screen: 'MySong'});
             }}>
             <Image
               style={styles.menuImg}
@@ -126,68 +126,74 @@ export default function componentName() {
           {/* editing menu */}
 
           <View style={{margin: 10, marginEnd: 20, flex: 0.4}}>
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
-              </View>
-              <Text style={styles.editMenuText}>Create / Insert Lyrics</Text>
-            </View>
+            {side ? (
+              <View>
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>
+                    Create / Insert Lyrics
+                  </Text>
+                </View>
 
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
-              </View>
-              <Text style={styles.editMenuText}>Bible Search</Text>
-            </View>
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
-              </View>
-              <Text style={styles.editMenuText}>Harmonizwe Tools</Text>
-            </View>
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
-              </View>
-              <Text style={styles.editMenuText}>Loop Manager</Text>
-            </View>
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
-              </View>
-              <Text style={styles.editMenuText}>Rhyming Tools</Text>
-            </View>
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>Bible Search</Text>
+                </View>
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>Harmonizwe Tools</Text>
+                </View>
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>Loop Manager</Text>
+                </View>
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>Rhyming Tools</Text>
+                </View>
 
-            <View style={styles.editMenuItem}>
-              <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                <Ionicons
-                  name="musical-notes-outline"
-                  size={18}
-                  color={'#fff'}
-                />
+                <View style={styles.editMenuItem}>
+                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                    <Ionicons
+                      name="musical-notes-outline"
+                      size={18}
+                      color={'#fff'}
+                    />
+                  </View>
+                  <Text style={styles.editMenuText}>Print</Text>
+                </View>
               </View>
-              <Text style={styles.editMenuText}>Print</Text>
-            </View>
+            ) : null}
           </View>
 
           {/* side rod */}
@@ -249,10 +255,13 @@ const styles = StyleSheet.create({
     borderColor: '#AC1C1C',
   },
   sideRod: {
-    height: 250,
+    height: 210,
     width: 25,
-    margin: 10,
-    marginStart:14,
+    marginStart: 15,
+    marginTop: 10,
+    marginEnd: 5,
+    marginStart: 10,
+    marginStart: 14,
     borderRadius: 10,
     backgroundColor: '#AC1C1C',
     justifyContent: 'center',
