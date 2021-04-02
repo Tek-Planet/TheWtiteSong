@@ -21,7 +21,7 @@ const DrawerScreen = ({navigation}) => {
     <Drawer.Navigator
       drawerType={dimensions.width >= 608 ? 'permanent' : 'front'}
       drawerContent={props => <DrawerContent {...props} />}>
-      <Drawer.Screen name="Tab" component={BottomTab} />
+      <Drawer.Screen navs = {navigation} name="Tab" component={BottomTab} />
     </Drawer.Navigator>
   );
 };

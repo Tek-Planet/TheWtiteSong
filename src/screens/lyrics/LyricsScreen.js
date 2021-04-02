@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Message from '../../components/Message';
 import MusicPlayer from '../../components/MusicPlayer';
-import TemplateList from '../../components/TemplateList';
+import TemplateList from '../../components/lyrics/TemplateList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function componentName() {

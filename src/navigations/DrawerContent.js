@@ -6,7 +6,7 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export function DrawerContent({props, navigation}) {
-  const con = require('../assets/imgs/lyrics/player.png');
+
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>

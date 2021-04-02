@@ -12,7 +12,7 @@ function OtherStackScreen() {
   return (
     <RootStack.Navigator headerMode={'none'} initialRouteName="Drawer">
       <RootStack.Screen name="Drawer" component={DrawerNavigation} />
-      <RootStack.Screen name="LyricsNav" component={LyricsNavigation} />
+      {/* <RootStack.Screen name="LyricsNav" component={LyricsNavigation} /> */}
     </RootStack.Navigator>
   );
 }

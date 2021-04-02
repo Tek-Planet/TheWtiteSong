@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import Message from '../../components/Message';
-import SongVerses from '../../components/SongVerses';
+import SongVerses from '../../components/lyrics/SongVerses';
 import MySongsHeader from '../../components/MySongsHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
