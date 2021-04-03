@@ -61,6 +61,7 @@ const HomeStack = ({navigation}) => (
 
       headerStyle: {
         backgroundColor: '#AE1F1F',
+        height: 70,
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
