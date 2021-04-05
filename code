@@ -1,0 +1,24 @@
+const initialState = [
+    { name: "foo", counter: 0 },
+    { name: "far", counter: 0 },
+    { name: "faz", counter: 0 }
+  ];
+
+const [state, setState] = useState(initialState);
+
+const clickButton = () => {
+	// 1. Make a shallow copy of the array
+	let temp_state = [...state];
+	
+	// 2. Make a shallow copy of the element you want to mutate
+	let temp_element = { ...temp_state[0] };
+	
+	// 3. Update the property you're interested in
+	temp_element.counter = temp_element.counter+1;
+	
+	// 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+	temp_state[0] = temp_element;
+	
+	// 5. Set the state to our new copy
+	setState( temp_state );
+}

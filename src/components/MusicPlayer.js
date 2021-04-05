@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export function MusicPlayer() {
+export function MusicPlayer({navigation}) {
   return (
     <View style={{marginTop: 10, margin: 5, flex: 0.7}}>
       <Image

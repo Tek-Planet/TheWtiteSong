@@ -1,14 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function Message({header, showMsg}) {
+export default function Message({navigation, header, showMsg}) {
   return (
     <View>
       <View style={styles.headingBox}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons name="chevron-back" size={25} color={'#000'} />
+        </TouchableOpacity>
         <Text style={styles.headingText}>{header}</Text>
       </View>
       {showMsg ? (
-        <View style={styles.subhHeadingText}>
+        <View style={styles.subhHeadingBg}>
           <Text
             style={{
               color: '#000',
@@ -27,14 +31,16 @@ const styles = StyleSheet.create({
   headingBox: {
     padding: 10,
     backgroundColor: '#F8AE33',
+    flexDirection: 'row',
   },
   headingText: {
     color: '#000',
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+    flex: 1,
   },
-  subhHeadingText: {
+  subhHeadingBg: {
     elevation: 5,
     padding: 5,
     margin: 10,

@@ -21,7 +21,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => {
-                navigation.navigate('LyricsNav', {screen: 'AddSong'});
+                navigation.navigate('LyricsNav', {screen: 'Lyrics'});
               }}>
               <Image
                 style={styles.menuImg}

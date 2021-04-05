@@ -5,161 +5,32 @@ import LyricsScreen from '../screens/lyrics/LyricsScreen';
 import MySongsEditor from '../screens/lyrics/MySongsEditor';
 import SongTemplateEditor from '../screens/lyrics/SongTemplateEditor';
 import AddSong from '../screens/lyrics/AddSong';
-
+import FreeStyleLyrics from '../screens/lyrics/FreeStyleLyrics';
+import ManageTemplate from '../screens/lyrics/ManageTemplate';
+import PrintPage from '../screens/lyrics/PrintPage';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
 
 function LyricsNavigation() {
   return (
-    <RootStack.Navigator headerMode={'none'} initialRouteName="AddSong">
+    <RootStack.Navigator headerMode={'none'} initialRouteName="Lyrics">
+      {/* done */}
       <RootStack.Screen name="Lyrics" component={LyricsScreen} />
-      <RootStack.Screen name="MySong" component={MySongsEditor} />    
+
+      <RootStack.Screen name="MySong" component={MySongsEditor} />
+      {/* done */}
       <RootStack.Screen name="SongTemplate" component={SongTemplateEditor} />
+      {/* done */}
       <RootStack.Screen name="AddSong" component={AddSong} />
+      {/* done */}
+      <RootStack.Screen name="FreeStyleLyrics" component={FreeStyleLyrics} />
+      {/* done */}
+      <RootStack.Screen name="Manage Template" component={ManageTemplate} />
+      {/* done */}
+      <RootStack.Screen name="Print Preview" component={PrintPage} />
     </RootStack.Navigator>
   );
 }
 
 export default LyricsNavigation;
-
-const LyricsStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerTitle: 'SONG WRITING PALETTE',
-
-      headerStyle: {
-        backgroundColor: '#AE1F1F',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 18,
-      },
-    }}>
-    <Stack.Screen
-      name="Lyrics"
-      component={LyricsScreen}
-      options={{
-        headerLeft: () => (
-          <Ionicons
-            name="ios-menu"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-        headerRight: () => (
-          <Ionicons
-            name="ellipsis-vertical-outline"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-      }}
-    />
-  </Stack.Navigator>
-);
-
-const SongTemplateStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerTitle: 'SONG WRITING PALETTE',
-
-      headerStyle: {
-        backgroundColor: '#AE1F1F',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 18,
-      },
-    }}>
-    <Stack.Screen
-      name="Lyrics"
-      component={SongTemplateEditor}
-      options={{
-        headerLeft: () => (
-          <Ionicons
-            name="ios-menu"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-        headerRight: () => (
-          <Ionicons
-            name="ellipsis-vertical-outline"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-      }}
-    />
-  </Stack.Navigator>
-);
-
-const MySongStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerTitle: 'SONG WRITING PALETTE',
-
-      headerStyle: {
-        backgroundColor: '#AE1F1F',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 18,
-      },
-    }}>
-    <Stack.Screen
-      name="Lyrics"
-      component={MySongsEditor}
-      options={{
-        headerLeft: () => (
-          <Ionicons
-            name="ios-menu"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-        headerRight: () => (
-          <Ionicons
-            name="ellipsis-vertical-outline"
-            color={'#fff'}
-            style={{margin: 10}}
-            size={25}
-            color={'#FFF'}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-      }}
-    />
-  </Stack.Navigator>
-);

@@ -14,9 +14,9 @@ import MusicPlayer from '../../components/MusicPlayer';
 import TemplateList from '../../components/lyrics/TemplateList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function componentName() {
+export default function LyricsScreen({navigation}) {
   const [keyWord, setKeyWord] = useState('');
-  const [side, setSide] = useState(true);
+  const [side, setSide] = useState(false);
   // sample test data
   const [template, setTemplate] = useState([
     {
@@ -62,7 +62,7 @@ export default function componentName() {
           <TouchableOpacity
             style={{alignItems: 'center', margin: 5}}
             onPress={() => {
-              navigation.navigate('LyricsNav', {screen: 'MySong'});
+              navigation.navigate('FreeStyleLyrics');
             }}>
             <Image
               style={styles.menuImg}
@@ -73,7 +73,7 @@ export default function componentName() {
           <TouchableOpacity
             style={{alignItems: 'center', margin: 5}}
             onPress={() => {
-              navigation.navigate('More');
+              navigation.navigate('SongTemplate');
             }}>
             <Image
               style={styles.menuImg}
@@ -117,29 +117,40 @@ export default function componentName() {
           </TouchableOpacity>
         </View>
         {/* template list */}
-        {<TemplateList template={template} keyWord={keyWord} />}
+        {
+          <TemplateList
+            navigation={navigation}
+            template={template}
+            keyWord={keyWord}
+          />
+        }
 
         {/* media player section */}
         <View style={{flexDirection: 'row', flex: 1}}>
-          <MusicPlayer />
+          <MusicPlayer navigation={navigation} />
 
           {/* editing menu */}
 
           <View style={{margin: 10, marginEnd: 20, flex: 0.4}}>
             {side ? (
               <View>
-                <View style={styles.editMenuItem}>
-                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                    <Ionicons
-                      name="musical-notes-outline"
-                      size={18}
-                      color={'#fff'}
-                    />
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('AddSong');
+                  }}>
+                  <View style={styles.editMenuItem}>
+                    <View style={{backgroundColor: '#301CAC', margin: 5}}>
+                      <Ionicons
+                        name="musical-notes-outline"
+                        size={18}
+                        color={'#fff'}
+                      />
+                    </View>
+                    <Text style={styles.editMenuText}>
+                      Create / Insert Lyrics
+                    </Text>
                   </View>
-                  <Text style={styles.editMenuText}>
-                    Create / Insert Lyrics
-                  </Text>
-                </View>
+                </TouchableOpacity>
 
                 <View style={styles.editMenuItem}>
                   <View style={{backgroundColor: '#301CAC', margin: 5}}>
@@ -181,17 +192,25 @@ export default function componentName() {
                   </View>
                   <Text style={styles.editMenuText}>Rhyming Tools</Text>
                 </View>
-
-                <View style={styles.editMenuItem}>
-                  <View style={{backgroundColor: '#301CAC', margin: 5}}>
-                    <Ionicons
-                      name="musical-notes-outline"
-                      size={18}
-                      color={'#fff'}
-                    />
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('Print Preview');
+                  }}>
+                  <View style={styles.editMenuItem}>
+                    <View
+                      onPress={() => {
+                        navigation.navigate('FreeStyleLyrics');
+                      }}
+                      style={{backgroundColor: '#301CAC', margin: 5}}>
+                      <Ionicons
+                        name="musical-notes-outline"
+                        size={18}
+                        color={'#fff'}
+                      />
+                    </View>
+                    <Text style={styles.editMenuText}>Print</Text>
                   </View>
-                  <Text style={styles.editMenuText}>Print</Text>
-                </View>
+                </TouchableOpacity>
               </View>
             ) : null}
           </View>
@@ -217,7 +236,6 @@ export default function componentName() {
         <View
           style={{
             backgroundColor: '#AC1C1C',
-            padding: 5,
             margin: 10,
             borderRadius: 50,
           }}>
@@ -225,7 +243,6 @@ export default function componentName() {
             style={{
               textAlign: 'center',
               color: '#fff',
-              margin: 5,
               padding: 5,
               fontSize: 20,
             }}>

@@ -26,7 +26,11 @@ export default function Message({navigation, template, keyWord}) {
           <TouchableOpacity style={styles.iconBg}>
             <Ionicons name="play" size={15} color="#AC1C1C" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('LyricsNav', {screen: 'MySong'});
+            }}
+            style={styles.iconBg}>
             <Ionicons name="pencil" size={15} color="#301CAC" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBg}>

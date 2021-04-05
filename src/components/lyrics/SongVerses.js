@@ -88,8 +88,8 @@ export default function Message({navigation}) {
         </View>
       </View>
 
-      <View style={styles.saveBtnText}>
-        <Text style={styles.saveBtnBg}>Save</Text>
+      <View style={styles.saveBtnBg}>
+        <Text style={styles.saveBtnText}>Save</Text>
       </View>
     </View>
   );
@@ -120,18 +120,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#AC1C1C',
   },
-  saveBtnText: {
+  saveBtnBg: {
     backgroundColor: '#AC1C1C',
     padding: 5,
     margin: 10,
     borderRadius: 50,
   },
 
-  saveBtnBg: {
+  saveBtnText: {
     textAlign: 'center',
     color: '#fff',
-    margin: 5,
-    padding: 5,
     fontSize: 20,
   },
 });
