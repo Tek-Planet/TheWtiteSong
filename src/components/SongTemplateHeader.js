@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
 export function SongTemplateHeader() {
@@ -24,21 +24,16 @@ export function SongTemplateHeader() {
         </View>
       </View>
 
-     
       {/* third row */}
       <View style={styles.row}>
         {/* row one */}
-        <View style={[styles.subRow,{justifyContent: 'space-between',}]}>
-         
-        </View>
+        <View style={[styles.subRow, {justifyContent: 'space-between'}]}></View>
 
         {/* rew twwo */}
-        <View style={[styles.subRow,{justifyContent: 'space-between',}]}>
-          <Text style={[styles.titleText,{textAlign:'right'}]}>Time: </Text>
+        <View style={[styles.subRow, {justifyContent: 'space-between'}]}>
+          <Text style={[styles.titleText, {textAlign: 'right'}]}>Time: </Text>
           <Text style={styles.text}>08:00 Am</Text>
         </View>
-        
-        
       </View>
     </View>
   );
