@@ -9,12 +9,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Message from '../components/Message';
+import SongTempScreen from '../screens/songTemplate/SongTempScreen';
 function HomeScreen({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView>
         {/* header */}
-        <Message header={'Home > Menu'} />
+        <Message
+          header={'Home > Menu'}
+          showMsg="Use this Tools to start Writing your next Hit Song"
+        />
         {/* first row */}
         <View style={styles.menuRow}>
           <View style={styles.menuBg}>
@@ -35,7 +39,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => {
-                navigation.openDrawer();
+                navigation.navigate('SongTempScreen');
               }}>
               <Image
                 style={styles.menuImg}

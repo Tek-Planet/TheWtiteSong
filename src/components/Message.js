@@ -12,8 +12,10 @@ export default function Message({header, showMsg}) {
           <Text
             style={{
               color: '#000',
-              fontSize: 18,
+              fontSize: 14,
               textAlign: 'center',
+              paddingTop: 10,
+              paddingBottom: 10,
             }}>
             Use this Tools to start Writing your next Hit Song{' '}
           </Text>
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     color: '#000',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
