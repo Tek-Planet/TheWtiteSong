@@ -4,95 +4,99 @@ import {
   Text,
   StyleSheet,
   Image,
+  ScrollView,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import Message from '../../components/Message';
 import Beat from './Beat';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const SongTempScreen = () => {
   return (
     <SafeAreaView>
-      {/* The Message Display */}
-      <Message
-        header="Song Templates"
-        showMsg="Use This Section to View and Edit Song Templates"
-      />
-      <View style={styles.outerContainer}>
-        <View style={styles.innerContainer}>
-          <Text style={styles.text}>Verse</Text>
-          <Text style={styles.text}>Chorus</Text>
-          <Text style={styles.text}>Bridge</Text>
+      <ScrollView>
+        {/* The Message Display */}
+        <Message
+          header="Song Templates"
+          showMsg="Use This Section to View and Edit Song Templates"
+        />
+        <View style={styles.outerContainer}>
+          <View style={styles.innerContainer}>
+            <Text style={styles.text}>Verse</Text>
+            <Text style={styles.text}>Chorus</Text>
+            <Text style={styles.text}>Bridge</Text>
+          </View>
         </View>
-      </View>
-      {/* The Individual Beat uploaded */}
-      <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
-      <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
-      <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
-      <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
+        {/* The Individual Beat uploaded */}
+        <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
+        <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
+        <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
+        <Beat title="Beat Name 1" info="Last Updated: 01/15/2020 | 10MB" />
 
-      {/* The Player Screen */}
-      <View style={styles.player}>
-        <Image source={require('../../assets/imgs/lyrics/player.png')} />
-      </View>
-      {/* The Run Time Display */}
-      <View style={styles.runTime}>
-        <Text style={{color: '#AE1F1F', fontWeight: 'bold'}}>Run Time:</Text>
-        <View style={styles.runTimeMeter}>
-          <Text>03:00</Text>
-          <Text>MM|SS</Text>
+        {/* The Player Screen */}
+        <View style={styles.player}>
+          <Image source={require('../../assets/imgs/lyrics/player.png')} />
         </View>
-      </View>
-      {/* The player Control Buttons */}
-      <View style={styles.playerBtnOuterContainer}>
-        <View style={styles.playerBtnInnerContainer}>
-          <TouchableOpacity style={styles.iconBg}>
-            <Ionicons name="play-back" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
-            <Ionicons name="play-forward" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
-            <Ionicons name="play" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
-            <Ionicons name="pause" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
-            <Ionicons name="stop" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-        </View>
-      </View>
-      {/* The Upload and Import Section */}
-      <View style={styles.upimOuterContainer}>
-        <View style={styles.upimInnerContainer}>
-          <View style={styles.uploadContainer}>
-            <Image
-              style={{width: 30, height: 30}}
-              source={require('../../assets/imgs/song_template/upload.png')}
-            />
-            <Text style={{marginRight: 10, marginLeft: 5}}>
-              Upload More Beats
-            </Text>
-          </View>
-          <View style={styles.importContainer}>
-            <Text style={{marginRight: 10, marginLeft: 10}}>Import:</Text>
-            <Image
-              style={{width: 30, height: 30, marginLeft: 5}}
-              source={require('../../assets/imgs/song_template/itune.png')}
-            />
-            <Image
-              style={{width: 30, height: 30, marginLeft: 5}}
-              source={require('../../assets/imgs/song_template/dropbox.png')}
-            />
-            <Image
-              style={{width: 30, height: 30, marginLeft: 5}}
-              source={require('../../assets/imgs/song_template/drive.png')}
-            />
+        {/* The Run Time Display */}
+        <View style={styles.runTime}>
+          <Text style={{color: '#AE1F1F', fontWeight: 'bold'}}>Run Time:</Text>
+          <View style={styles.runTimeMeter}>
+            <Text>03:00</Text>
+            <Text>MM|SS</Text>
           </View>
         </View>
-      </View>
+        {/* The player Control Buttons */}
+        <View style={styles.playerBtnOuterContainer}>
+          <View style={styles.playerBtnInnerContainer}>
+            <TouchableOpacity style={styles.iconBg}>
+              <Ionicons name="play-back" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBg}>
+              <Ionicons name="play-forward" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBg}>
+              <Ionicons name="play" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBg}>
+              <Ionicons name="pause" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBg}>
+              <Ionicons name="stop" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+          </View>
+        </View>
+        {/* The Upload and Import Section */}
+        <View style={styles.upimOuterContainer}>
+          <View style={styles.upimInnerContainer}>
+            <View style={styles.uploadContainer}>
+              <Image
+                style={{width: 30, height: 30}}
+                source={require('../../assets/imgs/song_template/upload.png')}
+              />
+              <Text style={{marginRight: 10, marginLeft: 5}}>
+                Upload More Beats
+              </Text>
+            </View>
+            <View style={styles.importContainer}>
+              <Text style={{marginRight: 10, marginLeft: 10}}>Import:</Text>
+              <Image
+                style={{width: 30, height: 30, marginLeft: 5}}
+                source={require('../../assets/imgs/song_template/itune.png')}
+              />
+              <Image
+                style={{width: 30, height: 30, marginLeft: 5}}
+                source={require('../../assets/imgs/song_template/dropbox.png')}
+              />
+              <Image
+                style={{width: 30, height: 30, marginLeft: 5}}
+                source={require('../../assets/imgs/song_template/drive.png')}
+              />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
