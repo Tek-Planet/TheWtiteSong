@@ -11,7 +11,6 @@ import {
 import Message from '../../components/Message';
 import Beat from './Beat';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const SongTempScreen = () => {
   return (

@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   },
   iconBg: {
     margin: 5,
+    marginEnd: 20,
     borderRadius: 100,
     width: 20,
     height: 20,
