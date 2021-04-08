@@ -52,11 +52,17 @@ function HomeScreen({navigation}) {
         {/* second row */}
         <View style={styles.menuRow}>
           <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/loop.png')}
-            />
-            <Text style={styles.menuText}>Loop Manager</Text>
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => {
+                navigation.navigate('LoopNav', {screen: 'Lyrics'});
+              }}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/loop.png')}
+              />
+              <Text style={styles.menuText}>Loop Manager</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.menuBg}>

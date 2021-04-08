@@ -6,9 +6,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from '../screens/HomeScreen';
-import AddSong from '../screens/lyrics/AddSong';
+
 import LyricsNavigation from '../navigations/LyricsNavigation';
-import SongTempNavigation from '../screens/songTemplate/SongTempScreen';
+import LoopNavigation from '../navigations/LoopNavigation';
 
 import SettingsScreen from '../screens/SetttingsScreen';
 import SongTempScreen from '../screens/songTemplate/SongTempScreen';
@@ -100,5 +100,6 @@ const HomeStack = ({navigation}) => (
     <Stack.Screen name="HomePage" component={HomeScreen} />
     <Stack.Screen name="LyricsNav" component={LyricsNavigation} />
     <Stack.Screen name="SongTempScreen" component={SongTempScreen} />
+    <Stack.Screen name="LoopNav" component={LoopNavigation} />
   </Stack.Navigator>
 );

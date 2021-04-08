@@ -9,7 +9,10 @@ export default function Message({navigation, header, showMsg}) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="chevron-back" size={25} color={'#000'} />
         </TouchableOpacity>
-        <Text style={styles.headingText}>{header}</Text>
+        <View
+          style={{flex: 0.9, justifyContent: 'center', alignContent: 'center'}}>
+          <Text style={styles.headingText}>{header}</Text>
+        </View>
       </View>
       {showMsg ? (
         <View style={styles.subhHeadingBg}>
@@ -40,7 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-    flex: 1,
   },
   subhHeadingBg: {
     elevation: 5,
