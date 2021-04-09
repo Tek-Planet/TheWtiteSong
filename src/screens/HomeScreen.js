@@ -55,7 +55,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => {
-                navigation.navigate('LoopNav', {screen: 'Lyrics'});
+                navigation.navigate('LoopNav', {screen: 'LoopLib'});
               }}>
               <Image
                 style={styles.menuImg}
