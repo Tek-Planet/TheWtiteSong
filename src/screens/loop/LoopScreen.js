@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Switch,
 } from 'react-native';
 import Message from '../../components/Message';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -117,6 +118,72 @@ function LoopScreen({navigation}) {
           <Ionicons name="chevron-forward" size={35} color={'#AC1C1C'} />
         </TouchableOpacity>
       </View>
+      <View>
+        <Text style={{textAlign: 'center', color: '#F8AE33', fontSize: 18}}>
+          Insert Loop into insert song
+        </Text>
+      </View>
+      {/* mutitple switch section */}
+      <View
+        style={{
+          elevation: 5,
+          margin: 5,
+          backgroundColor: '#fff',
+          padding: 5,
+          borderRadius: 5,
+        }}>
+        {/* top row */}
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Guitar</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Loops</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Keys</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+        </View>
+        {/* bottom row */}
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Bass</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Custom</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+          <View style={styles.swichItem}>
+            <Text style={styles.swichItemText}>Vox</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+        </View>
+      </View>
+      {/* player section */}
+      <View
+        style={{
+          backgroundColor: '#F8AE33',
+          margin: 5,
+          borderRadius: 10,
+          height: 50,
+          width: 60,
+          alignSelf: 'center',
+        }}>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: '#000',
+            margin: 5,
+            fontSize: 13,
+            fontWeight: 'bold',
+          }}>
+          05:00 MM | SS
+        </Text>
+      </View>
     </View>
   );
 }
@@ -125,13 +192,12 @@ export default LoopScreen;
 
 const styles = StyleSheet.create({
   searchBox: {
-    height: 40,
     flexDirection: 'row',
     backgroundColor: '#fff',
     flex: 1,
     borderRadius: 20,
-    padding: 5,
-    elevation: 10,
+    padding: 1,
+    elevation: 5,
     borderWidth: 1,
     borderColor: '#AC1C1C',
   },
@@ -161,4 +227,9 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
   joyButtonText: {color: '#fff', fontSize: 18},
+  swichItem: {flexDirection: 'row', justifyContent: 'space-evenly', width: 105},
+  swichItemText: {
+    color: '#000000',
+    fontSize: 18,
+  },
 });
