@@ -1,27 +1,30 @@
 import React, {useState} from 'react';
-import {Text, View, ScrollView, StyleSheet, Switch} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import RadioButton from '../components/RadioButton';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  TouchableOpacity,
+} from 'react-native';
+
+import {RadioButton} from 'react-native-paper';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import Message from '../components/Message';
 
 const SetttingsScreen = () => {
+  // Toggle Switch State
   const [is2FAEnabled, setIs2FAEnabled] = useState(true);
+  // ToggleSwitch handler
   const toggleSwitch = () => setIs2FAEnabled(previousState => !previousState);
-  // RadioButton State
-  const [isLiked, setIsLiked] = useState([
-    {id: 1, value: 'text', name: 'By Text', selected: true},
-    {id: 2, value: 'email', name: 'By Email', selected: false},
-  ]);
 
-  const onRadioBtnClick = item => {
-    let updatedState = isLiked.map(isLikedItem =>
-      isLikedItem.id === item.id
-        ? {...isLikedItem, selected: true}
-        : {...isLikedItem, selected: false},
-    );
-    setIsLiked(updatedState);
-  };
+  // RadioButton State for Notify Container
+  const [notify, setNotify] = useState('text');
+
+  // Picker State for the Platform
+  const [selectedPlatform, setSelectedPlatform] = useState('');
+  const [selectedFrequency, setSelectedFrequency] = useState('');
 
   return (
     <ScrollView>
@@ -325,17 +328,182 @@ const SetttingsScreen = () => {
             paddingTop: 10,
             paddingBottom: 20,
           }}>
-          {isLiked.map(item => (
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+            onPress={() => setNotify('text')}>
             <RadioButton
-              onPress={() => onRadioBtnClick(item)}
-              selected={item.selected}
-              key={item.id}>
-              {item.name}
-            </RadioButton>
-          ))}
+              value="text"
+              status={notify === 'text' ? 'checked' : 'unchecked'}
+              onPress={() => setNotify('text')}
+            />
+            <Text style={{fontSize: 16}}>By Text</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+            onPress={() => setNotify('email')}>
+            <RadioButton
+              value="email"
+              status={notify === 'email' ? 'checked' : 'unchecked'}
+              onPress={() => setNotify('email')}
+            />
+            <Text style={{fontSize: 16}}>By Email</Text>
+          </TouchableOpacity>
         </View>
       </View>
       {/* End of Notify Settings Container */}
+
+      {/* General Settings Container */}
+      <View style={styles.container}>
+        <Text style={styles.heading}>General Setting</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            borderColor: '#F8AE33',
+            borderWidth: 1,
+            paddingLeft: 10,
+            paddingRight: 10,
+            paddingTop: 20,
+            paddingBottom: 20,
+            borderRadius: 10,
+            marginTop: 10,
+            marginBottom: 20,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Text style={{color: 'black'}}>Enable Music Sharing</Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+          <View>
+            <Text>Restrict these Platforms</Text>
+            <DropDownPicker
+              items={[
+                {
+                  label: 'France',
+                  value: 'france',
+                },
+                {
+                  label: 'USA',
+                  value: 'usa',
+                },
+              ]}
+              defaultValue={selectedPlatform}
+              placeholder="-Select-"
+              containerStyle={{height: 40, marginTop: 20}}
+              style={styles.dropdown}
+              itemStyle={{
+                justifyContent: 'flex-start',
+              }}
+              dropDownStyle={{backgroundColor: '#fafafa'}}
+              onChangeItem={item => setSelectedPlatform(item.value)}
+            />
+          </View>
+        </View>
+      </View>
+      {/* End of General Settings Container */}
+
+      {/* Sync Settings Container */}
+      <View style={styles.container}>
+        <Text style={styles.heading}>Sync Setting</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            borderColor: '#F8AE33',
+            borderWidth: 1,
+            paddingLeft: 10,
+            paddingRight: 10,
+            paddingTop: 20,
+            paddingBottom: 20,
+            borderRadius: 10,
+            marginTop: 10,
+            marginBottom: 20,
+          }}>
+          <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Text style={{color: 'black', flexBasis: 100}}>
+                Sync Music Files to Cloud Accounts
+              </Text>
+              <Switch
+                value={true}
+                trackColor={{false: 'grey', true: 'green'}}
+              />
+            </View>
+            <View>
+              <Text style={{marginTop: 20}}>Frequency</Text>
+              <DropDownPicker
+                items={[
+                  {
+                    label: 'France',
+                    value: 'france',
+                  },
+                  {
+                    label: 'USA',
+                    value: 'usa',
+                  },
+                ]}
+                defaultValue={selectedFrequency}
+                placeholder="-Select-"
+                containerStyle={{height: 40, marginTop: 20}}
+                style={styles.dropdown}
+                itemStyle={{
+                  justifyContent: 'flex-start',
+                }}
+                dropDownStyle={{backgroundColor: '#fafafa'}}
+                onChangeItem={item => setSelectedFrequency(item.value)}
+              />
+            </View>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Text style={{color: 'black', flexBasis: 100}}>
+              Sync Music Files to Cloud Accounts
+            </Text>
+            <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
+          </View>
+        </View>
+      </View>
+      {/* End of Sync Settings Container */}
+
+      {/* save botton */}
+      <View
+        style={{
+          backgroundColor: '#AC1C1C',
+          margin: 20,
+          borderRadius: 50,
+        }}>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: '#fff',
+            padding: 10,
+            fontSize: 20,
+            fontWeight: 'bold',
+          }}>
+          Save
+        </Text>
+      </View>
+      {/* End of save botton */}
     </ScrollView>
   );
 };
@@ -343,7 +511,7 @@ const SetttingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     elevation: 5,
-    padding: 5,
+    padding: 10,
     margin: 10,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -353,6 +521,16 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     color: '#AE1F1F',
     fontWeight: 'bold',
+    fontSize: 16,
+  },
+  dropdown: {
+    backgroundColor: '#fff',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    borderBottomWidth: 2,
+    borderBottomColor: '#000',
   },
 });
 
