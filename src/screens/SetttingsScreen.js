@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Switch,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import {RadioButton} from 'react-native-paper';
@@ -122,7 +123,18 @@ const SetttingsScreen = () => {
             />
           </View>
         </View>
-        <View style={{marginTop: 15, marginBottom: 10, marginLeft: 20}}>
+        <View
+          style={{
+            marginTop: 15,
+            marginBottom: 10,
+            marginLeft: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          <Image
+            style={{marginRight: 5, width: 20, height: 20}}
+            source={require('../assets/imgs/icons/red-pen-icon.png')}
+          />
           <Text style={{color: 'black'}}>Edit Word List</Text>
         </View>
 
@@ -150,11 +162,41 @@ const SetttingsScreen = () => {
         </View>
         <View style={{paddingLeft: 30, paddingRight: 30}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text>Local Contact</Text>
-            <Text>Facebook Friends</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={{marginRight: 5, width: 20, height: 20}}
+                source={require('../assets/imgs/icons/local-contact-icon.png')}
+              />
+              <Text style={{color: 'black'}}>Local contact</Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={{marginRight: 5, width: 20, height: 20}}
+                source={require('../assets/imgs/icons/fb-icon.png')}
+              />
+              <Text style={{color: 'black'}}>Facebook Friends</Text>
+            </View>
           </View>
-          <View>
-            <Text>Youtube</Text>
+          <View style={{marginTop: 10}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={{marginRight: 5, width: 20, height: 20}}
+                source={require('../assets/imgs/icons/youtube-icon.png')}
+              />
+              <Text style={{color: 'black'}}>Youtube</Text>
+            </View>
           </View>
         </View>
         <View
