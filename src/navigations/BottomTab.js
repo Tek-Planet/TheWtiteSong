@@ -6,6 +6,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
 import SettingsStack from './SettingsStack';
+import ProfileStack from './ProfileStack';
 
 // const Tab = createMaterialBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -40,7 +41,7 @@ const MainTabScreen = ({navigation}) => (
     })}>
     <Tab.Screen name="Home" component={HomeStack} />
     <Tab.Screen name="Settings" component={SettingsStack} />
-    <Tab.Screen name="Profile" component={SettingsStack} />
+    <Tab.Screen name="Profile" component={ProfileStack} />
     <Tab.Screen name="Community" component={SettingsStack} />
     <Tab.Screen name="Support" component={SettingsStack} />
     <Tab.Screen name="Tutorial" component={SettingsStack} />
