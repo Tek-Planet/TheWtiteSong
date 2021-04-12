@@ -16,6 +16,7 @@ function HomeScreen({navigation}) {
       <ScrollView>
         {/* header */}
         <Message
+          navigation={navigation}
           header={'Home > Menu'}
           showMsg="Use this Tools to start Writing your next Hit Song"
         />
@@ -55,7 +56,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => {
-                navigation.navigate('LoopNav', {screen: 'LoopLib'});
+                navigation.navigate('LoopNav', {screen: 'Loop'});
               }}>
               <Image
                 style={styles.menuImg}
