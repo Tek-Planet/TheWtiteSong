@@ -4,18 +4,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import HomeScreen from '../screens/HomeScreen';
-
-import LyricsNavigation from '../navigations/LyricsNavigation';
-import LoopNavigation from '../navigations/LoopNavigation';
-
-import SettingsScreen from '../screens/SetttingsScreen';
-import SongTempScreen from '../screens/songTemplate/SongTempScreen';
+import HomeStack from './HomeStack';
+import SettingsStack from './SettingsStack';
+import ProfileStack from './ProfileStack';
+import CommunityScreen from '../screens/CommunityScreen.js';
 
 // const Tab = createMaterialBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 const MainTabScreen = ({navigation}) => (
   <Tab.Navigator
@@ -45,61 +41,12 @@ const MainTabScreen = ({navigation}) => (
       },
     })}>
     <Tab.Screen name="Home" component={HomeStack} />
-    <Tab.Screen name="Settings" component={SettingsScreen} />
-    <Tab.Screen name="Profile" component={SettingsScreen} />
-    <Tab.Screen name="Community" component={SettingsScreen} />
-    <Tab.Screen name="Support" component={SettingsScreen} />
-    <Tab.Screen name="Tutorial" component={SettingsScreen} />
+    <Tab.Screen name="Settings" component={SettingsStack} />
+    <Tab.Screen name="Profile" component={ProfileStack} />
+    <Tab.Screen name="Community" component={CommunityScreen} />
+    <Tab.Screen name="Support" component={CommunityScreen} />
+    <Tab.Screen name="Tutorial" component={CommunityScreen} />
   </Tab.Navigator>
 );
 
 export default MainTabScreen;
-
-const HomeStack = ({navigation}) => (
-  <Stack.Navigator
-    initialRouteName="HomePage"
-    screenOptions={{
-      headerTitle: 'SONG WRITING PALETTE',
-
-      headerStyle: {
-        backgroundColor: '#AE1F1F',
-        height: 70,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 18,
-      },
-
-      headerLeft: () => (
-        <Ionicons
-          name="ios-menu"
-          color={'#fff'}
-          style={{margin: 10}}
-          size={25}
-          color={'#FFF'}
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        />
-      ),
-
-      headerRight: () => (
-        <Ionicons
-          name="ellipsis-vertical-outline"
-          color={'#fff'}
-          style={{margin: 10}}
-          size={25}
-          color={'#FFF'}
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        />
-      ),
-    }}>
-    <Stack.Screen name="HomePage" component={HomeScreen} />
-    <Stack.Screen name="LyricsNav" component={LyricsNavigation} />
-    <Stack.Screen name="SongTempScreen" component={SongTempScreen} />
-    <Stack.Screen name="LoopNav" component={LoopNavigation} />
-  </Stack.Navigator>
-);
