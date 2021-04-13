@@ -20,6 +20,7 @@ const SongTempScreen = () => {
         <Message
           header="Song Templates"
           showMsg="Use This Section to View and Edit Song Templates"
+          showBackBtn={true}
         />
         <View style={styles.outerContainer}>
           <View style={styles.innerContainer}>
