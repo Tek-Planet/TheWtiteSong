@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import Message from '../components/Message';
-import Feed from '../components/Feed';
+import Message from '../../components/Message';
+import Feed from '../../components/Feed';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const CommunityScreen = () => {
+const CommunityScreen = ({navigation}) => {
   const [selectedStatus, setSelectedStatus] = useState();
   return (
     <ScrollView>
@@ -29,7 +29,7 @@ const CommunityScreen = () => {
           <Text style={{fontWeight: 'bold', fontSize: 16}}>User Online</Text>
           <Image
             style={{width: 30, height: 30, marginLeft: 10}}
-            source={require('../assets/imgs/icons/online-icon.png')}
+            source={require('../../assets/imgs/icons/online-icon.png')}
           />
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -102,7 +102,9 @@ const CommunityScreen = () => {
             justifyContent: 'space-between',
             marginTop: 30,
           }}>
-          <TouchableOpacity style={{alignItems: 'center', flex: 0.25}}>
+          <TouchableOpacity
+            style={{alignItems: 'center', flex: 0.25}}
+            onPress={() => navigation.navigate('NewTopic')}>
             <View
               style={{
                 backgroundColor: '#F8AE33',
@@ -112,7 +114,7 @@ const CommunityScreen = () => {
               }}>
               <Image
                 style={{width: 50, height: 50}}
-                source={require('../assets/imgs/icons/new-topic-icon.png')}
+                source={require('../../assets/imgs/icons/new-topic-icon.png')}
               />
             </View>
             <Text>New Topic</Text>
@@ -127,7 +129,7 @@ const CommunityScreen = () => {
               }}>
               <Image
                 style={{width: 50, height: 50}}
-                source={require('../assets/imgs/icons/my-topic-icon.png')}
+                source={require('../../assets/imgs/icons/my-topic-icon.png')}
               />
             </View>
             <Text>My Topic</Text>
@@ -142,7 +144,7 @@ const CommunityScreen = () => {
               }}>
               <Image
                 style={{width: 50, height: 50}}
-                source={require('../assets/imgs/icons/my-groups-icon.png')}
+                source={require('../../assets/imgs/icons/my-groups-icon.png')}
               />
             </View>
             <Text>My Groups</Text>
@@ -157,7 +159,7 @@ const CommunityScreen = () => {
               }}>
               <Image
                 style={{width: 50, height: 50}}
-                source={require('../assets/imgs/icons/popular-topic-icon.png')}
+                source={require('../../assets/imgs/icons/popular-topic-icon.png')}
               />
             </View>
             <Text>Popular Topic(s)</Text>

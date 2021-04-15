@@ -139,11 +139,11 @@ const ProfileScreen = () => {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedAge(itemValue)
                 }>
-                <Picker.Item label="16" value="16" />
-                <Picker.Item label="17" value="17" />
-                <Picker.Item label="18" value="18" />
-                <Picker.Item label="19" value="19" />
-                <Picker.Item label="20" value="20" />
+                <Picker.Item style={styles.pickerItem} label="16" value="16" />
+                <Picker.Item style={styles.pickerItem} label="17" value="17" />
+                <Picker.Item style={styles.pickerItem} label="18" value="18" />
+                <Picker.Item style={styles.pickerItem} label="19" value="19" />
+                <Picker.Item style={styles.pickerItem} label="20" value="20" />
               </Picker>
             </View>
           </View>
@@ -162,7 +162,11 @@ const ProfileScreen = () => {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedCountry(itemValue)
                 }>
-                <Picker.Item label="Country" value="country" />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Country"
+                  value="country"
+                />
               </Picker>
             </View>
           </View>
@@ -197,7 +201,11 @@ const ProfileScreen = () => {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedState(itemValue)
                 }>
-                <Picker.Item label="State" value="state" />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="State"
+                  value="state"
+                />
               </Picker>
             </View>
           </View>
@@ -216,7 +224,11 @@ const ProfileScreen = () => {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedCity(itemValue)
                 }>
-                <Picker.Item label="City" value="city" />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="City"
+                  value="city"
+                />
               </Picker>
             </View>
           </View>
@@ -273,7 +285,11 @@ const ProfileScreen = () => {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedLanguage(itemValue)
                 }>
-                <Picker.Item label="Select Language" value="select language" />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Select Language"
+                  value="select language"
+                />
               </Picker>
             </View>
           </View>
@@ -308,6 +324,7 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: '#fff',
   },
   avatarContainer: {
     backgroundColor: '#AC1C1C',
@@ -337,6 +354,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#AC1C1C',
     color: '#000',
   },
+  pickerItem: {backgroundColor: '#fff', color: '#000'},
 });
 
 export default ProfileScreen;

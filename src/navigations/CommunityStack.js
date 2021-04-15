@@ -2,7 +2,8 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import CommunityScreen from '../screens/CommunityScreen';
+import CommunityScreen from '../screens/Community/CommunityScreen';
+import NewTopicScreen from '../screens/Community/NewTopicScreen';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,7 @@ const CommunityStack = ({navigation}) => (
       ),
     }}>
     <Stack.Screen name="CommunityPage" component={CommunityScreen} />
+    <Stack.Screen name="NewTopic" component={NewTopicScreen} />
   </Stack.Navigator>
 );
 
