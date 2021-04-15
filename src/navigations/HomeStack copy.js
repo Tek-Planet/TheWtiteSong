@@ -3,10 +3,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
+import AddSong from '../screens/lyrics/AddSong';
 import LyricsNavigation from '../navigations/LyricsNavigation';
-import LoopNavigation from '../navigations/LoopNavigation';
-import MetromoneNavigation from '../navigations/MetromoneNavigation';
-
 import SongTempScreen from '../screens/songTemplate/SongTempScreen';
 
 const Stack = createStackNavigator();
@@ -57,8 +55,6 @@ const HomeStack = ({navigation}) => (
     <Stack.Screen name="HomePage" component={HomeScreen} />
     <Stack.Screen name="LyricsNav" component={LyricsNavigation} />
     <Stack.Screen name="SongTempScreen" component={SongTempScreen} />
-    <Stack.Screen name="LoopNav" component={LoopNavigation} />
-    <Stack.Screen name="MetroNav" component={MetromoneNavigation} />
   </Stack.Navigator>
 );
 
