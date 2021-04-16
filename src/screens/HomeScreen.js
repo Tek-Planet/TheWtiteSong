@@ -106,13 +106,17 @@ function HomeScreen({navigation}) {
             <Text style={styles.menuText}>Rhyming Tool</Text>
           </View>
 
-          <View style={styles.menuBg}>
+          <TouchableOpacity
+            style={styles.menuBg}
+            onPress={() => {
+              navigation.navigate('HarmoNav', {screen: 'Harmonize'});
+            }}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/harmo.png')}
             />
             <Text style={styles.menuText}>Harmonize Tool</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Fifth row */}
