@@ -59,7 +59,7 @@ export function MusicPlayer({navigation}) {
               fontSize: 15,
               fontWeight: 'bold',
             }}>
-            05:00 MM | SS
+            05:00{'\n'}MM | SS
           </Text>
         </View>
       </View>

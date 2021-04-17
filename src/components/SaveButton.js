@@ -3,7 +3,6 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const SaveButton = ({buttonTitle, testColor, bGcolor, ...rest}) => {
   let color = testColor ? testColor : '#fff';
-  let bgcolor = bGcolor ? bGcolor : '#AE1F1F';
   return (
     <TouchableOpacity style={[styles.buttonContainer]} {...rest}>
       <Text style={[styles.buttonText, {color: color}]}>{buttonTitle}</Text>
