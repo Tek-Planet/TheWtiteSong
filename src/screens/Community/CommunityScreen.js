@@ -136,7 +136,9 @@ const CommunityScreen = ({navigation}) => {
             </View>
             <Text>My Topic</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{alignItems: 'center', flex: 0.25}}>
+          <TouchableOpacity
+            onPress={navigation.navigate('MyGroups')}
+            style={{alignItems: 'center', flex: 0.25}}>
             <View
               style={{
                 backgroundColor: '#F8AE33',

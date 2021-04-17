@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import CommunityScreen from '../screens/Community/CommunityScreen';
 import NewTopicScreen from '../screens/Community/NewTopicScreen';
 import MyTopicScreen from '../screens/Community/MyTopicScreen';
+import MyGroupsScreen from '../screens/Community/MyGroupsScreen';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,7 @@ const CommunityStack = ({navigation}) => (
     <Stack.Screen name="CommunityPage" component={CommunityScreen} />
     <Stack.Screen name="NewTopic" component={NewTopicScreen} />
     <Stack.Screen name="MyTopic" component={MyTopicScreen} />
+    <Stack.Screen name="MyGroups" component={MyGroupsScreen} />
   </Stack.Navigator>
 );
 
