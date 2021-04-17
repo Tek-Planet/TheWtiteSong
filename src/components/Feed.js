@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {TextInput} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Feed = () => {
+  const [showDesc, setShowDesc] = useState(false);
+  const handleShowDesc = value => {
+    setShowDesc(!value);
+  };
   return (
     <View>
-      <TouchableOpacity style={{marginBottom: 20}}>
+      <TouchableOpacity
+        onPress={() => handleShowDesc(showDesc)}
+        style={{marginBottom: 20}}>
         <View style={{flexDirection: 'row'}}>
           <View style={{flex: 0.1, marginRight: 10}}>
             <Image
@@ -48,7 +55,11 @@ const Feed = () => {
                 </Text>
                 <Text>Dummy text dummy text</Text>
               </View>
-              <Ionicons name="chevron-forward" size={30} color={'#AC1C1C'} />
+              {showDesc ? (
+                <Ionicons name="chevron-down" size={30} color={'#AC1C1C'} />
+              ) : (
+                <Ionicons name="chevron-forward" size={30} color={'#AC1C1C'} />
+              )}
             </View>
             <View style={{flexDirection: 'row', marginTop: 5}}>
               <View
@@ -79,6 +90,22 @@ const Feed = () => {
           </View>
         </View>
       </TouchableOpacity>
+      {showDesc && (
+        <View>
+          <TextInput
+            placeholder="Enter Description"
+            multiline
+            label="Description"
+            numberOfLines={5}
+            mode="outlined"
+            theme={{colors: {primary: '#AC1C1C', background: '#fff'}}}
+            style={{
+              margin: 20,
+              marginTop: 0,
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 };

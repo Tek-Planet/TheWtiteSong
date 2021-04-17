@@ -11,6 +11,7 @@ import {
 
 import {RadioButton} from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {Picker} from '@react-native-picker/picker';
 
 import Message from '../components/Message';
 
@@ -429,27 +430,36 @@ const SetttingsScreen = () => {
           </View>
           <View>
             <Text>Restrict these Platforms</Text>
-            <DropDownPicker
-              items={[
-                {
-                  label: 'France',
-                  value: 'france',
-                },
-                {
-                  label: 'USA',
-                  value: 'usa',
-                },
-              ]}
-              defaultValue={selectedPlatform}
-              placeholder="-Select-"
-              containerStyle={{height: 40, marginTop: 20}}
-              style={styles.dropdown}
-              itemStyle={{
-                justifyContent: 'flex-start',
-              }}
-              dropDownStyle={{backgroundColor: '#fafafa'}}
-              onChangeItem={item => setSelectedPlatform(item.value)}
-            />
+            <View
+              style={{
+                borderBottomWidth: 3,
+                borderBottomColor: '#AC1C1C',
+              }}>
+              <Picker
+                selectedCity={selectedPlatform}
+                style={{width: '100%'}}
+                mode="dropdown"
+                dropdownIconColor="#AC1C1C"
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedPlatform(itemValue)
+                }>
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="-Select-"
+                  value=""
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Android"
+                  value="android"
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="IOS"
+                  value="ios"
+                />
+              </Picker>
+            </View>
           </View>
         </View>
       </View>
@@ -489,27 +499,31 @@ const SetttingsScreen = () => {
             </View>
             <View>
               <Text style={{marginTop: 20}}>Frequency</Text>
-              <DropDownPicker
-                items={[
-                  {
-                    label: 'France',
-                    value: 'france',
-                  },
-                  {
-                    label: 'USA',
-                    value: 'usa',
-                  },
-                ]}
-                defaultValue={selectedFrequency}
-                placeholder="-Select-"
-                containerStyle={{height: 40, marginTop: 20}}
-                style={styles.dropdown}
-                itemStyle={{
-                  justifyContent: 'flex-start',
-                }}
-                dropDownStyle={{backgroundColor: '#fafafa'}}
-                onChangeItem={item => setSelectedFrequency(item.value)}
-              />
+              <View
+                style={{
+                  borderBottomWidth: 3,
+                  borderBottomColor: '#AC1C1C',
+                }}>
+                <Picker
+                  selectedCity={selectedFrequency}
+                  style={{width: '100%'}}
+                  mode="dropdown"
+                  dropdownIconColor="#AC1C1C"
+                  onValueChange={(itemValue, itemIndex) =>
+                    setSelectedFrequency(itemValue)
+                  }>
+                  <Picker.Item
+                    style={styles.pickerItem}
+                    label="-Select-"
+                    value=""
+                  />
+                  <Picker.Item
+                    style={styles.pickerItem}
+                    label="IOS"
+                    value="ios"
+                  />
+                </Picker>
+              </View>
             </View>
           </View>
 
@@ -552,7 +566,7 @@ const SetttingsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 5,
+    // elevation: 5,
     padding: 10,
     margin: 10,
     borderRadius: 10,
@@ -574,6 +588,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#000',
   },
+  pickerItem: {backgroundColor: '#fff', color: '#000'},
 });
 
 export default SetttingsScreen;

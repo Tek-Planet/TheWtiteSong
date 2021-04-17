@@ -20,122 +20,124 @@ function HomeScreen({navigation}) {
           header={'Home > Menu'}
           showMsg="Use this Tools to start Writing your next Hit Song"
         />
-        {/* first row */}
-        <View style={styles.menuRow}>
-          <View style={styles.menuBg}>
+        <View style={{paddingBottom: 20}}>
+          {/* first row */}
+          <View style={styles.menuRow}>
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => {
+                  navigation.navigate('LyricsNav', {screen: 'Lyrics'});
+                }}>
+                <Image
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/menu/lyrics.png')}
+                />
+                <Text style={styles.menuText}>Lyrics Manager</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => {
+                  navigation.navigate('SongTempScreen');
+                }}>
+                <Image
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/menu/template.png')}
+                />
+                <Text style={styles.menuText}>Song Templates</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          {/* second row */}
+          <View style={styles.menuRow}>
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => {
+                  navigation.navigate('LoopNav', {screen: 'Loop'});
+                }}>
+                <Image
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/menu/loop.png')}
+                />
+                <Text style={styles.menuText}>Loop Manager</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.menuBg}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/catch.png')}
+              />
+              <Text style={styles.menuText}>Catch Phrases</Text>
+            </View>
+          </View>
+          {/* third row */}
+          <View style={styles.menuRow}>
             <TouchableOpacity
-              style={{alignItems: 'center'}}
+              style={styles.menuBg}
               onPress={() => {
-                navigation.navigate('LyricsNav', {screen: 'Lyrics'});
+                navigation.navigate('MetroNav', {screen: 'Metromones'});
               }}>
               <Image
                 style={styles.menuImg}
-                source={require('../assets/imgs/menu/lyrics.png')}
+                source={require('../assets/imgs/menu/metro.png')}
               />
-              <Text style={styles.menuText}>Lyrics Manager</Text>
+              <Text style={styles.menuText}>Metronomes</Text>
             </TouchableOpacity>
-          </View>
 
-          <View style={styles.menuBg}>
+            <View style={styles.menuBg}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/melo.png')}
+              />
+              <Text style={styles.menuText}>Melodies</Text>
+            </View>
+          </View>
+          {/* fourth row */}
+          <View style={styles.menuRow}>
+            <View style={styles.menuBg}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/rhym.png')}
+              />
+              <Text style={styles.menuText}>Rhyming Tool</Text>
+            </View>
+
             <TouchableOpacity
-              style={{alignItems: 'center'}}
+              style={styles.menuBg}
               onPress={() => {
-                navigation.navigate('SongTempScreen');
+                navigation.navigate('HarmoNav', {screen: 'Harmonize'});
               }}>
               <Image
                 style={styles.menuImg}
-                source={require('../assets/imgs/menu/template.png')}
+                source={require('../assets/imgs/menu/harmo.png')}
               />
-              <Text style={styles.menuText}>Song Templates</Text>
+              <Text style={styles.menuText}>Harmonize Tool</Text>
             </TouchableOpacity>
           </View>
-        </View>
-        {/* second row */}
-        <View style={styles.menuRow}>
-          <View style={styles.menuBg}>
-            <TouchableOpacity
-              style={{alignItems: 'center'}}
-              onPress={() => {
-                navigation.navigate('LoopNav', {screen: 'Loop'});
-              }}>
+
+          {/* Fifth row */}
+          <View style={styles.menuRow}>
+            <View style={styles.menuBg}>
               <Image
                 style={styles.menuImg}
-                source={require('../assets/imgs/menu/loop.png')}
+                source={require('../assets/imgs/menu/bible.png')}
               />
-              <Text style={styles.menuText}>Loop Manager</Text>
-            </TouchableOpacity>
-          </View>
+              <Text style={styles.menuText}>Bible Search</Text>
+            </View>
 
-          <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/catch.png')}
-            />
-            <Text style={styles.menuText}>Catch Phrases</Text>
-          </View>
-        </View>
-        {/* third row */}
-        <View style={styles.menuRow}>
-          <TouchableOpacity
-            style={styles.menuBg}
-            onPress={() => {
-              navigation.navigate('MetroNav', {screen: 'Metromones'});
-            }}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/metro.png')}
-            />
-            <Text style={styles.menuText}>Metronomes</Text>
-          </TouchableOpacity>
-
-          <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/melo.png')}
-            />
-            <Text style={styles.menuText}>Melodies</Text>
-          </View>
-        </View>
-        {/* fourth row */}
-        <View style={styles.menuRow}>
-          <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/rhym.png')}
-            />
-            <Text style={styles.menuText}>Rhyming Tool</Text>
-          </View>
-
-          <TouchableOpacity
-            style={styles.menuBg}
-            onPress={() => {
-              navigation.navigate('HarmoNav', {screen: 'Harmonize'});
-            }}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/harmo.png')}
-            />
-            <Text style={styles.menuText}>Harmonize Tool</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Fifth row */}
-        <View style={styles.menuRow}>
-          <View style={styles.menuBg}>
-            <Image
-              style={styles.menuImg}
-              source={require('../assets/imgs/menu/bible.png')}
-            />
-            <Text style={styles.menuText}>Bible Search</Text>
-          </View>
-
-          {/* <View style={styles.menuBg}>
+            {/* <View style={styles.menuBg}>
             <Image
               style={styles.menuImg}
               source={require('../assets/imgs/menu/lyrics.png')}
             />
              <Text style={styles.menuText}>Melodies</Text>
           </View>       */}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

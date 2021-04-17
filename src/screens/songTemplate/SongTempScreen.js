@@ -12,12 +12,13 @@ import Message from '../../components/Message';
 import Beat from './Beat';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const SongTempScreen = () => {
+const SongTempScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
         {/* The Message Display */}
         <Message
+          navigation={navigation}
           header="Song Templates"
           showMsg="Use This Section to View and Edit Song Templates"
           showBackBtn={true}
