@@ -29,7 +29,9 @@ const MyTopicScreen = () => {
               paddingTop: 5,
               paddingBottom: 5,
             }}>
-            <Text>Most Recent</Text>
+            <Text style={{color: '#AC1C1C', fontWeight: 'bold'}}>
+              Most Recent
+            </Text>
           </TouchableOpacity>
           <View
             style={{
