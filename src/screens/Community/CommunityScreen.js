@@ -137,7 +137,7 @@ const CommunityScreen = ({navigation}) => {
             <Text>My Topic</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={navigation.navigate('MyGroups')}
+            onPress={() => navigation.navigate('MyGroups')}
             style={{alignItems: 'center', flex: 0.25}}>
             <View
               style={{

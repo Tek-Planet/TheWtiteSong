@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Message from '../../components/Message';
 import Group from '../../components/Group';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const MyGroupsScreen = () => {
   return (
@@ -21,53 +22,26 @@ const MyGroupsScreen = () => {
             padding: 10,
             elevation: 5,
             borderRadius: 5,
-            justifyContent: 'space-around',
             marginBottom: 20,
+            flex: 1,
           }}>
           <TouchableOpacity
             style={{
               paddingTop: 5,
               paddingBottom: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
             }}>
-            <Text style={{color: '#AC1C1C', fontWeight: 'bold'}}>
-              Most Recent
+            <Ionicons name="add-circle-outline" size={30} color={'#000'} />
+            <Text
+              style={{
+                marginLeft: 10,
+                color: '#AC1C1C',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
+              Add New
             </Text>
-          </TouchableOpacity>
-          <View
-            style={{
-              borderRightWidth: 2,
-            }}
-          />
-          <TouchableOpacity
-            style={{
-              paddingTop: 5,
-              paddingBottom: 5,
-            }}>
-            <Text>Last Week</Text>
-          </TouchableOpacity>
-          <View
-            style={{
-              borderRightWidth: 2,
-            }}
-          />
-          <TouchableOpacity
-            style={{
-              paddingTop: 5,
-              paddingBottom: 5,
-            }}>
-            <Text>Last Month</Text>
-          </TouchableOpacity>
-          <View
-            style={{
-              borderRightWidth: 2,
-            }}
-          />
-          <TouchableOpacity
-            style={{
-              paddingTop: 5,
-              paddingBottom: 5,
-            }}>
-            <Text>Last Year</Text>
           </TouchableOpacity>
         </View>
         <View
@@ -77,6 +51,9 @@ const MyGroupsScreen = () => {
             elevation: 5,
             borderRadius: 5,
           }}>
+          <Group />
+          <Group />
+          <Group />
           <Group />
         </View>
       </View>
