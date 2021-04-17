@@ -6,17 +6,19 @@ import {
   Image,
   Text,
   TextInput,
+  Switch,
   TouchableOpacity,
 } from 'react-native';
-import {RadioButton} from 'react-native-paper';
 import {Picker} from '@react-native-picker/picker';
+import Message from '../../components/Message';
 
 const CreateGroupScreen = () => {
   const [selectedGenre, setSelectedGenre] = useState();
   const [selectedModerators, setSelectedModerators] = useState();
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#fff'}}>
+      <Message header="Home > Create Group" showBackBtn />
       {/* Main Container */}
       <View style={styles.container}>
         {/* Group Name Container */}
@@ -111,11 +113,68 @@ const CreateGroupScreen = () => {
                   label="-Select-"
                   value=""
                 />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Abiola"
+                  value=""
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Shefiu"
+                  value=""
+                />
+                <Picker.Item style={styles.pickerItem} label="Test" value="" />
               </Picker>
             </View>
           </View>
         </View>
         {/* End of Moderators Container */}
+
+        {/* Enable Sharing Container */}
+        <View style={styles.sharingContainer}>
+          <Text style={styles.heading}>Enable Sharing:</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingBottom: 20,
+              paddingTop: 20,
+              paddingLeft: 10,
+              paddingRight: 10,
+            }}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Switch
+                value={true}
+                trackColor={{false: 'grey', true: 'green'}}
+              />
+              <Image
+                style={{width: 30, height: 30, marginLeft: 10}}
+                source={require('../../assets/imgs/icons/facebook-icon.png')}
+              />
+            </View>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Switch
+                value={true}
+                trackColor={{false: 'grey', true: 'green'}}
+              />
+              <Image
+                style={{width: 30, height: 30, marginLeft: 10}}
+                source={require('../../assets/imgs/icons/instagram-icon.png')}
+              />
+            </View>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Switch
+                value={true}
+                trackColor={{false: 'grey', true: 'green'}}
+              />
+              <Image
+                style={{width: 30, height: 30, marginLeft: 10}}
+                source={require('../../assets/imgs/icons/twitter-icon.png')}
+              />
+            </View>
+          </View>
+        </View>
+        {/* End of Enable Sharing Container */}
 
         {/* save botton */}
         <View
@@ -123,6 +182,7 @@ const CreateGroupScreen = () => {
             backgroundColor: '#AC1C1C',
             marginTop: 40,
             borderRadius: 50,
+            padding: 10,
           }}>
           <Text
             style={{
@@ -145,7 +205,6 @@ const CreateGroupScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#fff',
   },
   heading: {
     fontSize: 16,
@@ -162,6 +221,13 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   pickerItem: {backgroundColor: '#fff', color: '#000'},
+  sharingContainer: {
+    padding: 10,
+    borderColor: 'grey',
+    borderRadius: 5,
+    marginTop: 20,
+    elevation: 2,
+  },
 });
 
 export default CreateGroupScreen;

@@ -10,7 +10,7 @@ import Message from '../../components/Message';
 import Group from '../../components/Group';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const MyGroupsScreen = () => {
+const MyGroupsScreen = ({navigation}) => {
   return (
     <ScrollView>
       <Message header="Home > Community > My Groups" showBackBtn />
@@ -31,7 +31,8 @@ const MyGroupsScreen = () => {
               paddingBottom: 5,
               flexDirection: 'row',
               alignItems: 'center',
-            }}>
+            }}
+            onPress={() => navigation.navigate('CreateGroup')}>
             <Ionicons name="add-circle-outline" size={30} color={'#000'} />
             <Text
               style={{
