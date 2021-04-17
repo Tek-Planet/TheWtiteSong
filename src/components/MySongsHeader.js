@@ -7,6 +7,7 @@ export function MySongsHeader() {
       style={{
         backgroundColor: '#F4F4F4',
         margin: 5,
+        marginTop: 10,
         borderRadius: 10,
         elevation: 5,
       }}>
