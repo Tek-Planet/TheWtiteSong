@@ -9,10 +9,14 @@ import {
 import Message from '../../components/Message';
 import Feed from '../../components/Feed';
 
-const MyTopicScreen = () => {
+const MyTopicScreen = ({navigation}) => {
   return (
     <ScrollView>
-      <Message header="Home > MyTopics > Message(s)" showBackBtn />
+      <Message
+        navigation={navigation}
+        header="Home > MyTopics > Message(s)"
+        showBackBtn
+      />
       <View style={{padding: 20}}>
         <View
           style={{

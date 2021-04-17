@@ -13,7 +13,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const MyGroupsScreen = ({navigation}) => {
   return (
     <ScrollView>
-      <Message header="Home > Community > My Groups" showBackBtn />
+      <Message
+        navigation={navigation}
+        header="Home > Community > My Groups"
+        showBackBtn
+      />
       <View style={{padding: 20}}>
         <View
           style={{

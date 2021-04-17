@@ -12,13 +12,17 @@ import {
 import {Picker} from '@react-native-picker/picker';
 import Message from '../../components/Message';
 
-const CreateGroupScreen = () => {
+const CreateGroupScreen = ({navigation}) => {
   const [selectedGenre, setSelectedGenre] = useState();
   const [selectedModerators, setSelectedModerators] = useState();
 
   return (
     <ScrollView style={{backgroundColor: '#fff'}}>
-      <Message header="Home > Create Group" showBackBtn />
+      <Message
+        navigation={navigation}
+        header="Home > Create Group"
+        showBackBtn
+      />
       {/* Main Container */}
       <View style={styles.container}>
         {/* Group Name Container */}

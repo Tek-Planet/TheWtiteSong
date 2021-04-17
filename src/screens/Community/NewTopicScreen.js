@@ -4,11 +4,15 @@ import {TextInput} from 'react-native-paper';
 import Message from '../../components/Message';
 import {Picker} from '@react-native-picker/picker';
 
-const NewTopicScreen = () => {
+const NewTopicScreen = ({navigation}) => {
   const [selectedGroup, setSelectedGroup] = useState();
   return (
     <ScrollView>
-      <Message header="Home > Create New Topic" showBackBtn={true} />
+      <Message
+        navigation={navigation}
+        header="Home > Create New Topic"
+        showBackBtn={true}
+      />
       <View style={{padding: 20, backgroundColor: '#fff'}}>
         <View>
           <Text style={styles.heading}>Topic Name:</Text>
