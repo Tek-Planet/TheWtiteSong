@@ -15,7 +15,11 @@ function MetromonesScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        <Message header={'Program Metronome'} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={'Program Metronome'}
+        />
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{fontWeight: 'bold', marginTop: 10}}>
             Existing Metronome Programes:

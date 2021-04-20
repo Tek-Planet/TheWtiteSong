@@ -18,7 +18,11 @@ function LoopScreen({navigation}) {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <Message navigation={navigation} header={'Mobile Studio | Loops'} />
+          <Message
+            navigation={navigation}
+            showBackBtn={true}
+            header={'Mobile Studio | Loops'}
+          />
 
           <View
             style={{

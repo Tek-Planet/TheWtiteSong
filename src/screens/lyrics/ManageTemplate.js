@@ -103,6 +103,7 @@ function ManageTemplate({navigation}) {
           navigation={navigation}
           header={'Lyrics Manager > Manage Template'}
           showMsg={false}
+          showBackBtn={true}
         />
 
         <View style={{margin: 20, marginStart: 10, marginTop: 5}}>

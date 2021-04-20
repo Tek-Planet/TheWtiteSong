@@ -9,7 +9,11 @@ export function MySongsEditor() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Message header={'Lyrics Manager > My Songs Editor'} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={'Lyrics Manager > My Songs Editor'}
+        />
         <MySongsHeader />
         <View style={{flexDirection: 'row'}}>
           <Ionicons

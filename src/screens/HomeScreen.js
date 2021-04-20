@@ -122,13 +122,17 @@ function HomeScreen({navigation}) {
 
           {/* Fifth row */}
           <View style={styles.menuRow}>
-            <View style={styles.menuBg}>
+            <TouchableOpacity
+              style={styles.menuBg}
+              onPress={() => {
+                navigation.navigate('BibleSearch');
+              }}>
               <Image
                 style={styles.menuImg}
                 source={require('../assets/imgs/menu/bible.png')}
               />
               <Text style={styles.menuText}>Bible Search</Text>
-            </View>
+            </TouchableOpacity>
 
             {/* <View style={styles.menuBg}>
             <Image

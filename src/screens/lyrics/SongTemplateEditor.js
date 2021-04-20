@@ -9,10 +9,15 @@ export function MySongsEditor() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Message header={'Lyrics Manager > Song Template Editor'} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={'Lyrics Manager > Song Template Editor'}
+        />
         <SongTemplateHeader />
-        <View style={{ marginTop:10, borderBottomWidth: 3,
-          borderColor: '#AC1C1C',}}/>
+        <View
+          style={{marginTop: 10, borderBottomWidth: 3, borderColor: '#AC1C1C'}}
+        />
         <View style={{}}>
           <SongVersesPosition />
         </View>

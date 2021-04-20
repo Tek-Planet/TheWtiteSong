@@ -14,6 +14,7 @@ function PrintPage({navigation}) {
     <SafeAreaView>
       <ScrollView>
         <Message
+          showBackBtn={true}
           navigation={navigation}
           header={'Print Preview'}
           showMsg={false}
