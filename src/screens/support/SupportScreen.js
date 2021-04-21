@@ -6,8 +6,8 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import Message from '../components/Message';
-import Ticket from '../components/Ticket';
+import Message from '../../components/Message';
+import Ticket from '../../components/Ticket';
 
 const SupportScreen = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import SupportScreen from '../screens/SupportScreen';
+import SupportScreen from '../screens/support/SupportScreen';
 
 const Stack = createStackNavigator();
 
