@@ -61,7 +61,7 @@ export function DrawerContent({props, navigation}) {
                 <Text style={styles.menuTitle}>Instrument Tuner</Text>
               )}
               onPress={() => {
-                navigation.navigate('Series');
+                navigation.navigate('Instrument');
               }}
             />
             <DrawerItem

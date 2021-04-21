@@ -1,13 +1,14 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {Text} from 'react-native';
+
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // screens
 import {DrawerContent} from '../navigations/DrawerContent';
 import BottomTab from '../navigations/BottomTab';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import InstrumentTunerScreen from '../screens/InstrumentTunerScreen';
+
 import {useWindowDimensions} from 'react-native';
 
 //init stack
@@ -21,7 +22,12 @@ const DrawerScreen = ({navigation}) => {
     <Drawer.Navigator
       drawerType={dimensions.width >= 608 ? 'permanent' : 'front'}
       drawerContent={props => <DrawerContent {...props} />}>
-      <Drawer.Screen navs = {navigation} name="Tab" component={BottomTab} />
+      <Drawer.Screen navs={navigation} name="Tab" component={BottomTab} />
+      <Drawer.Screen
+        navs={navigation}
+        name="Instrument"
+        component={InstrumentTunerScreen}
+      />
     </Drawer.Navigator>
   );
 };

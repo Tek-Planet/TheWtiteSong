@@ -80,7 +80,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               style={styles.menuBg}
               onPress={() => {
-                navigation.navigate('MetroNav', {screen: 'Metromones'});
+                navigation.navigate('MetroNav', {screen: '{Instrument'});
               }}>
               <Image
                 style={styles.menuImg}

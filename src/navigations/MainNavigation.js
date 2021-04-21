@@ -1,9 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import HomeScreen from '../screens/HomeScreen';
+
 import DrawerNavigation from '../navigations/DrawerNavigation';
-import LyricsNavigation from '../navigations/LyricsNavigation';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
