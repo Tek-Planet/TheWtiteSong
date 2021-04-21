@@ -3,6 +3,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import SupportScreen from '../screens/support/SupportScreen';
+import AddTroubleTicketScreen from '../screens/support/AddTroubleTicketScreen';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,7 @@ const SupportStack = ({navigation}) => (
       ),
     }}>
     <Stack.Screen name="SupportPage" component={SupportScreen} />
+    <Stack.Screen name="AddTroubleTicket" component={AddTroubleTicketScreen} />
   </Stack.Navigator>
 );
 

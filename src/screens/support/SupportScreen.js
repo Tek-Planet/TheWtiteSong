@@ -9,7 +9,7 @@ import {
 import Message from '../../components/Message';
 import Ticket from '../../components/Ticket';
 
-const SupportScreen = () => {
+const SupportScreen = ({navigation}) => {
   return (
     <ScrollView style={{backgroundColor: '#fff'}}>
       <Message header="Home > Support > Trouble Ticket View" />
@@ -23,9 +23,9 @@ const SupportScreen = () => {
           }}>
           All Tickets
         </Text>
-        <Ticket isOpen="Open" />
-        <Ticket isOpen="Open" />
-        <Ticket isOpen="Closed" />
+        <Ticket navigation={navigation} isOpen="Open" />
+        <Ticket navigation={navigation} isOpen="Open" />
+        <Ticket navigation={navigation} isOpen="Closed" />
         <View
           style={{
             flexDirection: 'row',

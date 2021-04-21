@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Ticket = ({isOpen}) => {
+const Ticket = ({navigation, isOpen}) => {
   return (
     <View style={{padding: 15}}>
       <TouchableOpacity
-        // onPress={onPressLearnMore}
+        onPress={() => navigation.navigate('AddTroubleTicket')}
         style={isOpen === 'Open' ? styles.open : styles.closed}>
         <Text
           style={{
