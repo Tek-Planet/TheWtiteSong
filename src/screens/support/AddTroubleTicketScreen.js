@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import Message from '../../components/Message';
 import {Picker} from '@react-native-picker/picker';
@@ -79,7 +79,14 @@ const AddTroubleTicketScreen = ({navigation}) => {
               height: 40,
               backgroundColor: '#fff',
               borderRadius: 20,
-            }}></View>
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../../assets/imgs/icons/add-trouble-ticket-icon.png')}
+            />
+          </View>
           <Text style={{color: '#fff', fontSize: 16}}>Add Trouble Tickets</Text>
           <Ionicons name="chevron-down" size={30} color={'#fff'} />
         </View>
