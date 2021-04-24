@@ -23,7 +23,7 @@ function PressansSingScreen({navigation}) {
         <Message
           navigation={navigation}
           header={'Harmonize Tool'}
-          showBackBtn={'true'}
+          showBackBtn={true}
         />
 
         <SingButton

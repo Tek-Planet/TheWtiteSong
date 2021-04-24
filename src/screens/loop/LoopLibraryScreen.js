@@ -19,7 +19,11 @@ export default function LoopLibraryScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        <Message navigation={navigation} header={'Loop Library'} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={'Loop Library'}
+        />
         <View
           style={{
             flexDirection: 'row',

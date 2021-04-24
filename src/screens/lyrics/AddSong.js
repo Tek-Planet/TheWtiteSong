@@ -20,7 +20,12 @@ function AddSong({navigation, route}) {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Message header={route.name} showMsg={true} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={route.name}
+          showMsg={true}
+        />
 
         <View style={styles.row}>
           {/* row one  */}

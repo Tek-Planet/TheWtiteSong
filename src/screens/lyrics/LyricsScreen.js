@@ -56,7 +56,12 @@ export default function LyricsScreen({navigation}) {
     <SafeAreaView>
       <ScrollView>
         {/* subheader */}
-        <Message header={'Lyrics Manager'} showMsg={true} showBackBtn={true} />
+        <Message
+          header={'Lyrics Manager'}
+          showMsg={true}
+          navigation={navigation}
+          showBackBtn={true}
+        />
         {/* freestyle and template row */}
         <View style={styles.menuRow}>
           <TouchableOpacity

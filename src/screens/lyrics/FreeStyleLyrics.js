@@ -15,7 +15,12 @@ function FreeStyleLyrics({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Message header={'Free Style Lyrics WhiteBoard'} showMsg={false} />
+        <Message
+          navigation={navigation}
+          showBackBtn={true}
+          header={'Free Style Lyrics WhiteBoard'}
+          showMsg={false}
+        />
 
         <TouchableOpacity
           style={{alignItems: 'center'}}
