@@ -82,7 +82,7 @@ function DashBoardScreen({navigation}) {
               <TouchableOpacity
                 style={[styles.iconBg, {height: 40, width: 40}]}
                 onPress={() => {
-                  navigation.navigate('SongDetails');
+                  navigation.navigate('CompletedSong');
                 }}>
                 <Text style={styles.numberBg}>10</Text>
               </TouchableOpacity>
@@ -91,6 +91,7 @@ function DashBoardScreen({navigation}) {
 
             <View style={{alignItems: 'center'}}>
               <TouchableOpacity
+                onPress={() => navigation.navigate('HomePage')}
                 style={[styles.iconBg, {height: 40, width: 40}]}>
                 <Text style={styles.numberBg}>5</Text>
               </TouchableOpacity>
@@ -148,9 +149,13 @@ function DashBoardScreen({navigation}) {
               flexDirection: 'row',
             }}>
             <Title style={styles.notificationText}>1</Title>
-            <Title style={[styles.notificationText, {width: 140}]}>
-              The new Dawn
-            </Title>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('SongDetails')}>
+              <Title style={[styles.notificationText, {width: 140}]}>
+                The new Dawn
+              </Title>
+            </TouchableOpacity>
+
             <Text style={styles.listItemDate}>Last Viewed: 02/11/2020</Text>
           </View>
           <View

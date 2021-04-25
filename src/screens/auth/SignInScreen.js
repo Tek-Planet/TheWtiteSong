@@ -124,7 +124,7 @@ export function SignInScreen({navigation}) {
               btnType="google"
               iconBg="#AA210F"
               backgroundColor="#AC2615"
-              onPress={() => googleLogin(navigation)}
+              onPress={() => navigation.navigate('Drawer')}
             />
           </View>
         </View>
