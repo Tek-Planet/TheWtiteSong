@@ -8,6 +8,7 @@ import HomeStack from './HomeStack';
 import SettingsStack from './SettingsStack';
 import ProfileStack from './ProfileStack';
 import CommunityStack from '../navigations/CommunityStack';
+import SupportStack from '../navigations/SupportStack';
 import TestScreen from '../screens/TestScreen';
 
 // const Tab = createMaterialBottomTabNavigator();
@@ -45,7 +46,7 @@ const MainTabScreen = ({navigation}) => (
     <Tab.Screen name="Settings" component={SettingsStack} />
     <Tab.Screen name="Profile" component={ProfileStack} />
     <Tab.Screen name="Community" component={CommunityStack} />
-    <Tab.Screen name="Support" component={TestScreen} />
+    <Tab.Screen name="Support" component={SupportStack} />
     <Tab.Screen name="Tutorial" component={TestScreen} />
   </Tab.Navigator>
 );
