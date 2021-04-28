@@ -21,6 +21,8 @@ const HomeStack = ({navigation}) => (
       headerTitle: 'SONG WRITING PALETTE',
 
       headerStyle: {
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
         backgroundColor: '#AE1F1F',
         height: 70,
       },

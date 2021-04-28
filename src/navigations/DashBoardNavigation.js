@@ -5,6 +5,8 @@ import SongPlayer from '../screens/dashboard/SongPlayer';
 import CompletedSong from '../screens/dashboard/CompletedSong';
 import SongStatistics from '../screens/dashboard/SongStatistics';
 import SongStatsDetails from '../screens/dashboard/SongStatsDetails';
+import Alerts from '../screens/dashboard/Alerts';
+import MessageDetails from '../screens/dashboard/MessageDetails';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -18,6 +20,8 @@ function LyricsNavigation() {
       <RootStack.Screen name="CompletedSong" component={CompletedSong} />
       <RootStack.Screen name="SongStats" component={SongStatistics} />
       <RootStack.Screen name="SongDetails" component={SongStatsDetails} />
+      <RootStack.Screen name="Alerts" component={Alerts} />
+      <RootStack.Screen name="MsgDetails" component={MessageDetails} />
     </RootStack.Navigator>
   );
 }
