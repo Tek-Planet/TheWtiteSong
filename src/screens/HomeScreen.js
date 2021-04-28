@@ -99,13 +99,19 @@ function HomeScreen({navigation}) {
           </View>
           {/* fourth row */}
           <View style={styles.menuRow}>
-            <View style={styles.menuBg}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('RhymeLibraryNav', {
+                  screen: 'RhymeLibrary',
+                });
+              }}
+              style={styles.menuBg}>
               <Image
                 style={styles.menuImg}
                 source={require('../assets/imgs/menu/rhym.png')}
               />
               <Text style={styles.menuText}>Rhyming Tool</Text>
-            </View>
+            </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.menuBg}

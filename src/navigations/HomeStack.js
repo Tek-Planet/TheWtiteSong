@@ -9,6 +9,7 @@ import MetromoneNavigation from '../navigations/MetromoneNavigation';
 import HarmonizingNavigation from '../navigations/HarmonizingNavigation';
 import DashBoardNavigation from '../navigations/DashBoardNavigation';
 import BibleSearchScreen from '../screens/BibleSearchScreen';
+import RhymeLibraryNavigation from '../navigations/RhymeLibraryNavigation';
 
 import SongTempScreen from '../screens/songTemplate/SongTempScreen';
 
@@ -65,6 +66,7 @@ const HomeStack = ({navigation}) => (
     <Stack.Screen name="MetroNav" component={MetromoneNavigation} />
     <Stack.Screen name="HarmoNav" component={HarmonizingNavigation} />
     <Stack.Screen name="BibleSearch" component={BibleSearchScreen} />
+    <Stack.Screen name="RhymeLibraryNav" component={RhymeLibraryNavigation} />
   </Stack.Navigator>
 );
 
