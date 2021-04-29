@@ -14,7 +14,10 @@ import Message from '../../components/Message';
 const SongRhymingToolScreen = ({navigation}) => {
   return (
     <ScrollView>
-      <Message header="Song Writing Palette > Song Rhyming Tool" />
+      <Message
+        header="Song Writing Palette > Song Rhyming Tool"
+        showMsg="Use This Tool to Generate Song Lyrics"
+      />
     </ScrollView>
   );
 };

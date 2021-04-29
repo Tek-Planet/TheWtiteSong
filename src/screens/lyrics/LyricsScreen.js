@@ -58,7 +58,7 @@ export default function LyricsScreen({navigation}) {
         {/* subheader */}
         <Message
           header={'Lyrics Manager'}
-          showMsg={true}
+          showMsg="Use this Tools to start Writing your next Hit Song"
           navigation={navigation}
           showBackBtn={true}
         />

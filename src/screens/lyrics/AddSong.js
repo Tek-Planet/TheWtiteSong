@@ -24,7 +24,7 @@ function AddSong({navigation, route}) {
           navigation={navigation}
           showBackBtn={true}
           header={route.name}
-          showMsg={true}
+          showMsg="Use this Tools to start Writing your next Hit Song"
         />
 
         <View style={styles.row}>
