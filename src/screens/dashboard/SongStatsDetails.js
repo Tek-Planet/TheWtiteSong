@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Message from '../../components/Message';
+import RecordButton from '../../components/RecordButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function SongStatsDetails({navigation}) {
@@ -133,10 +134,17 @@ function SongStatsDetails({navigation}) {
             justifyContent: 'center',
             marginBottom: 20,
           }}>
+          <RecordButton onPress={() => alert('Record')} />
           <TouchableOpacity
             style={[
               styles.iconBg,
-              {backgroundColor: '#AC1C1C', borderRadius: 100},
+              {
+                backgroundColor: '#AC1C1C',
+                borderRadius: 100,
+                position: 'absolute',
+                right: 5,
+                marginTop: 5,
+              },
             ]}>
             <Ionicons name="american-football" size={15} color="#fff" />
           </TouchableOpacity>
@@ -152,8 +160,8 @@ const styles = StyleSheet.create({
   iconBg: {
     margin: 3,
     borderRadius: 5,
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#AC1C1C',

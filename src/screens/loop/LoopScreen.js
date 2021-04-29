@@ -197,52 +197,78 @@ function LoopScreen({navigation}) {
             </View>
           </View>
           {/* player section */}
-          <View
-            style={{
-              backgroundColor: '#F8AE33',
-              borderRadius: 10,
-              marginStart: 10,
-              marginEnd: 10,
-              marginTop: 10,
-              width: 80,
-              paddingStart: 15,
-              paddingEnd: 15,
-              alignSelf: 'center',
-            }}>
-            <Text
+          <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+            <View
               style={{
-                textAlign: 'center',
-                color: '#000',
-
-                fontSize: 13,
-                fontWeight: 'bold',
+                position: 'absolute',
+                left: 1,
+                marginTop: 10,
+                alignItems: 'center',
               }}>
-              05:00 MM | SS
-            </Text>
-          </View>
-          {/* the player section */}
-          <View style={{flexDirection: 'row'}}>
-            {/*  the red and button  */}
-            <View style={{alignItems: 'center', margin: 10}}>
-              <Text style={{fontWeight: 'bold', color: '#000'}}>
-                Mone Record
-              </Text>
-              <Ionicons
-                name="ellipse"
-                size={35}
-                color={'#00A651'}
-                style={{padding: 5}}
-              />
-              <Text style={{fontWeight: 'bold', color: '#000'}}>
-                Stereo Record
-              </Text>
-              <Ionicons
-                name="ellipse"
-                size={35}
-                color={'#FF0024'}
-                style={{padding: 5}}
-              />
+              <Text style={{fontSize: 12, color: '#000'}}>Mono Record</Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#00A651',
+                  borderRadius: 100,
+                  width: 30,
+                  height: 30,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text style={{color: '#fff', fontSize: 10}}>Rec</Text>
+              </TouchableOpacity>
             </View>
+            <View
+              style={{
+                backgroundColor: '#F8AE33',
+                borderRadius: 10,
+                marginStart: 10,
+                marginEnd: 10,
+
+                width: 80,
+                paddingStart: 15,
+                paddingEnd: 15,
+                alignSelf: 'center',
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  color: '#000',
+
+                  fontSize: 13,
+                  fontWeight: 'bold',
+                }}>
+                05:00 MM | SS
+              </Text>
+            </View>
+
+            <View
+              style={{
+                position: 'absolute',
+                right: 1,
+                alignItems: 'flex-end',
+                marginTop: 10,
+                alignItems: 'center',
+              }}>
+              <Text style={{fontSize: 12, color: '#000'}}>Stereo Record</Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#FF0024',
+                  borderRadius: 100,
+                  width: 30,
+                  height: 30,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text style={{color: '#fff', fontSize: 10}}>Rec</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* the player section */}
+          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            {/*  the red and button  */}
+
             {/* the player side */}
             <View>
               <Image
@@ -321,7 +347,7 @@ function LoopScreen({navigation}) {
               </View>
             </View>
             {/* left hand side  */}
-            <RecordButton />
+            <RecordButton onPress={() => alert('Press to record')} />
             <View>
               <View style={styles.editMenuItem}>
                 <Ionicons

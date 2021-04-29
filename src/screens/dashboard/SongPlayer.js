@@ -10,7 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Message from '../../components/Message';
-
+import RecordButton from '../../components/RecordButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function SongPlayer({navigation}) {
@@ -144,6 +144,7 @@ function SongPlayer({navigation}) {
             <Ionicons name="stop" size={25} color="#AC1C1C" />
           </TouchableOpacity>
         </View>
+        <RecordButton style={{alignItems: 'center'}} />
       </ScrollView>
     </SafeAreaView>
   );

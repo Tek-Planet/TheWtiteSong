@@ -84,7 +84,7 @@ function HarmonizeTools({navigation}) {
           testColor="#A30000"
           bGcolor="#F8AE33"
           buttonTitle="Press to Sing into the App"
-          onPress={() => alert('hello')}
+          onPress={() => navigation.navigate('PressSing')}
           style={{
             margin: 5,
             backgroundColor: '#F8AE33',
