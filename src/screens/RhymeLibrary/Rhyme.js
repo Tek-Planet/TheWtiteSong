@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Rhyme = ({title}) => {
+const Rhyme = ({title, showModal}) => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
@@ -10,7 +10,9 @@ const Rhyme = ({title}) => {
           <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.iconBg}>
+          <TouchableOpacity
+            style={styles.iconBg}
+            onPress={() => showModal(true)}>
             <Image
               style={{width: 20, height: 20}}
               source={require('../../assets/imgs/icons/double-arrow-right.png')}
