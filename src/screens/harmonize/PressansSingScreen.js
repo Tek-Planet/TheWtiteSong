@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Message from '../../components/Message';
+import RecordButton from '../../components/RecordButton';
 import SingButton from '../../components/SaveButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -43,7 +44,10 @@ function PressansSingScreen({navigation}) {
           <TouchableOpacity style={styles.iconBg}>
             <Ionicons name="play" size={25} color="#AC1C1C" />
           </TouchableOpacity>
-
+          <RecordButton
+            onPress={() => alert('Record')}
+            style={{marginStart: 20, marginEnd: 20}}
+          />
           <TouchableOpacity style={styles.iconBg}>
             <Ionicons name="stop" size={25} color="#AC1C1C" />
           </TouchableOpacity>
@@ -181,7 +185,7 @@ export default PressansSingScreen;
 const styles = StyleSheet.create({
   row: {
     alignItems: 'center',
-    width: 150,
+
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',

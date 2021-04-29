@@ -150,8 +150,7 @@ function DashBoardScreen({navigation}) {
               flexDirection: 'row',
             }}>
             <Title style={styles.notificationText}>1</Title>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('SongDetails')}>
+            <TouchableOpacity onPress={() => navigation.navigate('SongPlayer')}>
               <Title style={[styles.notificationText, {width: 140}]}>
                 The new Dawn
               </Title>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import RecordButton from './RecordButton';
 
 export function MusicPlayer({navigation}) {
   return (
@@ -34,34 +35,37 @@ export function MusicPlayer({navigation}) {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text
-          style={{
-            color: '#AC1C1C',
-            margin: 5,
-            fontWeight: 'bold',
-            fontSize: 18,
-          }}>
-          Run Time :
-        </Text>
-        <View
-          style={{
-            backgroundColor: '#F8AE33',
-            padding: 5,
-            margin: 5,
-            borderRadius: 10,
-            width: 80,
-          }}>
+        <View>
           <Text
             style={{
-              textAlign: 'center',
-              color: '#000',
+              color: '#AC1C1C',
               margin: 5,
-              fontSize: 15,
               fontWeight: 'bold',
+              fontSize: 18,
             }}>
-            05:00{'\n'}MM | SS
+            Run Time :
           </Text>
+          <View
+            style={{
+              backgroundColor: '#F8AE33',
+
+              margin: 5,
+              borderRadius: 10,
+              width: 80,
+            }}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#000',
+
+                fontSize: 15,
+                fontWeight: 'bold',
+              }}>
+              05:00{'\n'}MM | SS
+            </Text>
+          </View>
         </View>
+        <RecordButton />
       </View>
     </View>
   );
