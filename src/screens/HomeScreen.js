@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Message from '../components/Message';
-import SongTempScreen from '../screens/songTemplate/SongTempScreen';
+
 function HomeScreen({navigation}) {
   return (
     <SafeAreaView>
@@ -102,7 +102,7 @@ function HomeScreen({navigation}) {
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('RhymeLibraryNav', {
-                  screen: 'RhymeLibrary',
+                  screen: 'SongRhymingTool',
                 });
               }}
               style={styles.menuBg}>
