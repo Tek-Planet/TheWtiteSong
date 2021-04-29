@@ -12,14 +12,14 @@ import Message from '../components/Message';
 
 function HomeScreen({navigation}) {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
       <ScrollView>
         {/* header */}
-        <Message
+        {/* <Message
           navigation={navigation}
           header={'Home > Menu'}
           showMsg="Use this Tools to start Writing your next Hit Song"
-        />
+        /> */}
         <View style={{paddingBottom: 20}}>
           {/* first row */}
           <View style={styles.menuRow}>
@@ -41,22 +41,6 @@ function HomeScreen({navigation}) {
               <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => {
-                  navigation.navigate('SongTempScreen');
-                }}>
-                <Image
-                  style={styles.menuImg}
-                  source={require('../assets/imgs/menu/template.png')}
-                />
-                <Text style={styles.menuText}>Song Templates</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* second row */}
-          <View style={styles.menuRow}>
-            <View style={styles.menuBg}>
-              <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => {
                   navigation.navigate('LoopNav', {screen: 'Loop'});
                 }}>
                 <Image
@@ -66,17 +50,17 @@ function HomeScreen({navigation}) {
                 <Text style={styles.menuText}>Loop Manager</Text>
               </TouchableOpacity>
             </View>
-
+          </View>
+          {/* second row */}
+          <View style={styles.menuRow}>
             <View style={styles.menuBg}>
               <Image
                 style={styles.menuImg}
-                source={require('../assets/imgs/menu/catch.png')}
+                source={require('../assets/imgs/menu/melo.png')}
               />
-              <Text style={styles.menuText}>Catch Phrases</Text>
+              <Text style={styles.menuText}>Melodies</Text>
             </View>
-          </View>
-          {/* third row */}
-          <View style={styles.menuRow}>
+
             <TouchableOpacity
               style={styles.menuBg}
               onPress={() => {
@@ -88,16 +72,8 @@ function HomeScreen({navigation}) {
               />
               <Text style={styles.menuText}>Metronomes</Text>
             </TouchableOpacity>
-
-            <View style={styles.menuBg}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/melo.png')}
-              />
-              <Text style={styles.menuText}>Melodies</Text>
-            </View>
           </View>
-          {/* fourth row */}
+          {/* third row */}
           <View style={styles.menuRow}>
             <TouchableOpacity
               onPress={() => {
@@ -125,6 +101,33 @@ function HomeScreen({navigation}) {
               <Text style={styles.menuText}>Harmonize Tool</Text>
             </TouchableOpacity>
           </View>
+          {/* fourth row */}
+          <View style={styles.menuRow}>
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => {
+                  navigation.navigate('SongTempScreen');
+                }}>
+                <Image
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/menu/template.png')}
+                />
+                <Text style={styles.menuText}>Song Templates</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.menuBg}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/catch.png')}
+              />
+              <Text style={styles.menuText}>Catch Phrases</Text>
+            </View>
+          </View>
+          {/* third row */}
+
+          {/* fourth row */}
 
           {/* Fifth row */}
           <View style={styles.menuRow}>
@@ -174,7 +177,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   menuBg: {
-    backgroundColor: '#F8AE33',
+    elevation: 3,
+    backgroundColor: '#FFFFFF',
     padding: 10,
     alignItems: 'center',
     borderRadius: 10,
@@ -183,7 +187,7 @@ const styles = StyleSheet.create({
     maxWidth: 160,
   },
   menuImg: {width: 70, height: 70, margin: 10, borderRadius: 5},
-  menuText: {color: '#AC1C1C', fontWeight: 'bold', fontSize: 18},
+  menuText: {color: '#000', fontWeight: 'bold', fontSize: 18},
   menuRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',

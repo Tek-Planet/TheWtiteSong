@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import Message from '../../components/Message';
+import RecordButton from '../../components/RecordButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function LoopScreen({navigation}) {
@@ -288,12 +289,14 @@ function LoopScreen({navigation}) {
               </View>
             </View>
           </View>
+
           {/* the four bottons aboe the save button */}
           <View
             style={{
               flex: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              alignItems: 'center',
               margin: 10,
             }}>
             {/* right hand side */}
@@ -318,6 +321,7 @@ function LoopScreen({navigation}) {
               </View>
             </View>
             {/* left hand side  */}
+            <RecordButton />
             <View>
               <View style={styles.editMenuItem}>
                 <Ionicons

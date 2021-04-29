@@ -106,7 +106,8 @@ function DashBoardScreen({navigation}) {
               margin: 5,
               flexDirection: 'row',
             }}>
-            <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('MsgDetails')}
               style={{
                 alignItems: 'center',
                 flexDirection: 'row',
@@ -114,7 +115,7 @@ function DashBoardScreen({navigation}) {
               }}>
               <Ionicons name="alert" size={20} color={'#AC1C1C'} />
               <Title style={styles.notificationText}>Alerts</Title>
-            </View>
+            </TouchableOpacity>
 
             <View
               style={{

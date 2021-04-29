@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 function OtherStackScreen() {
   return (
-    <RootStack.Navigator headerMode={'none'} initialRouteName="Auth">
+    <RootStack.Navigator headerMode={'none'} initialRouteName="Drawer">
       <RootStack.Screen name="Drawer" component={DrawerNavigation} />
       <RootStack.Screen name="Auth" component={AuthNavigation} />
     </RootStack.Navigator>
