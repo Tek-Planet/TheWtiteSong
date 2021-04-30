@@ -30,7 +30,7 @@ export default function Message({navigation, header, showMsg, showBackBtn}) {
               paddingTop: 10,
               paddingBottom: 10,
             }}>
-            Use this Tools to start Writing your next Hit Song{' '}
+            {showMsg}
           </Text>
         </View>
       ) : null}

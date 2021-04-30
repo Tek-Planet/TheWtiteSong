@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Message from '../components/Message';
-import SongTempScreen from '../screens/songTemplate/SongTempScreen';
+
 function HomeScreen({navigation}) {
   return (
     <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
@@ -91,7 +91,7 @@ function HomeScreen({navigation}) {
               <TouchableOpacity
                 style={styles.imgBg}
                 onPress={() => {
-                  navigation.navigate('MetroNav', {screen: 'Metromones'});
+                  navigation.navigate('RhymeLibraryNav');
                 }}>
                 <Image
                   resizeMode={'contain'}
