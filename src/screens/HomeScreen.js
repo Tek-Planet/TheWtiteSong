@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Message from '../components/Message';
-import SongTempScreen from '../screens/songTemplate/SongTempScreen';
+
 function HomeScreen({navigation}) {
   return (
     <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
@@ -87,6 +87,7 @@ function HomeScreen({navigation}) {
           </View>
           {/* third row */}
           <View style={styles.menuRow}>
+<<<<<<< HEAD
             <View style={styles.menuBg}>
               <TouchableOpacity
                 style={styles.imgBg}
@@ -99,8 +100,21 @@ function HomeScreen({navigation}) {
                   source={require('../assets/imgs/home/rhym.png')}
                 />
               </TouchableOpacity>
+=======
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('RhymeLibraryNav', {
+                  screen: 'SongRhymingTool',
+                });
+              }}
+              style={styles.menuBg}>
+              <Image
+                style={styles.menuImg}
+                source={require('../assets/imgs/menu/rhym.png')}
+              />
+>>>>>>> 79d5c1a6a0d45cdabe684ff240d21b2d49887da4
               <Text style={styles.menuText}>Rhyming Tool</Text>
-            </View>
+            </TouchableOpacity>
 
             <View style={styles.menuBg}>
               <TouchableOpacity
