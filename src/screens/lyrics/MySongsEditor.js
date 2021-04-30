@@ -5,7 +5,7 @@ import SongVerses from '../../components/lyrics/SongVerses';
 import MySongsHeader from '../../components/MySongsHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export function MySongsEditor() {
+export function MySongsEditor({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView>

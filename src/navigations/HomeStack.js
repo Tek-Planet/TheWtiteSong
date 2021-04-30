@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 
 const HomeStack = ({navigation}) => (
   <Stack.Navigator
-    initialRouteName="DashNav"
+    initialRouteName="HomePage"
     screenOptions={{
       headerTitle: 'SONG WRITING PALETTE',
 

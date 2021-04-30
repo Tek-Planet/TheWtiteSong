@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export function SongTemplateHeader() {
+export function SongTemplateHeader({navigation}) {
   return (
     <View
       style={{

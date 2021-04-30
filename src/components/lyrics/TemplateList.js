@@ -15,7 +15,7 @@ export default function Message({navigation, template, keyWord}) {
 
   const templateListitem = item => {
     return (
-      <View style={[styles.row, {marginTop: 10}]}>
+      <View style={[styles.row, {marginTop: 10}]} key={item.key.toString()}>
         <View style={styles.row}>
           <Text style={[styles.text]}>{item.template}</Text>
           <Text style={[styles.text]}>{item.name}</Text>
@@ -52,7 +52,14 @@ export default function Message({navigation, template, keyWord}) {
           <View style={{flex: 0.5}}></View>
         </View>
         {/* lsit all template */}
-        <FlatList
+
+        {template.map(item => {
+          if (keyWord.trim().length > 0 && item.name.includes(keyWord)) {
+            return templateListitem(item);
+          }
+        })}
+
+        {/* <FlatList
           data={template}
           renderItem={({item}) => {
             if (keyWord.trim().length > 0 && item.name.includes(keyWord)) {
@@ -60,7 +67,7 @@ export default function Message({navigation, template, keyWord}) {
             }
           }}
           keyExtractor={item => item.key}
-        />
+        /> */}
       </ScrollView>
     </SafeAreaView>
   );

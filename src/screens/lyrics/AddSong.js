@@ -141,7 +141,7 @@ function AddSong({navigation, route}) {
               }}>
               <Image
                 style={styles.menuImg}
-                source={require('../../assets/imgs/menu/lyrics.png')}
+                source={require('../../assets/imgs/home/lyrics.png')}
               />
               <Text style={styles.menuText}>Load Song Template</Text>
             </TouchableOpacity>

@@ -25,97 +25,142 @@ function HomeScreen({navigation}) {
           <View style={styles.menuRow}>
             <View style={styles.menuBg}>
               <TouchableOpacity
-                style={{alignItems: 'center'}}
+                style={styles.imgBg}
                 onPress={() => {
                   navigation.navigate('LyricsNav', {screen: 'Lyrics'});
                 }}>
                 <Image
+                  resizeMode={'contain'}
                   style={styles.menuImg}
-                  source={require('../assets/imgs/menu/lyrics.png')}
+                  source={require('../assets/imgs/home/lyrics.png')}
                 />
-                <Text style={styles.menuText}>Lyrics Manager</Text>
               </TouchableOpacity>
+              <Text style={styles.menuText}>Lyrics Manager</Text>
             </View>
 
             <View style={styles.menuBg}>
               <TouchableOpacity
-                style={{alignItems: 'center'}}
+                style={styles.imgBg}
                 onPress={() => {
                   navigation.navigate('LoopNav', {screen: 'Loop'});
                 }}>
                 <Image
+                  resizeMode={'contain'}
                   style={styles.menuImg}
-                  source={require('../assets/imgs/menu/loop.png')}
+                  source={require('../assets/imgs/home/loop.png')}
                 />
-                <Text style={styles.menuText}>Loop Manager</Text>
               </TouchableOpacity>
+              <Text style={styles.menuText}>Loop Manager</Text>
             </View>
           </View>
           {/* second row */}
           <View style={styles.menuRow}>
             <View style={styles.menuBg}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/melo.png')}
-              />
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('LoopNav', {screen: 'Loop'});
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/melo.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Melodies</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.menuBg}
-              onPress={() => {
-                navigation.navigate('MetroNav', {screen: 'Metromones'});
-              }}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/metro.png')}
-              />
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('MetroNav', {screen: 'Metromones'});
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/metro.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Metronomes</Text>
-            </TouchableOpacity>
+            </View>
           </View>
           {/* third row */}
           <View style={styles.menuRow}>
             <View style={styles.menuBg}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/rhym.png')}
-              />
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('MetroNav', {screen: 'Metromones'});
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/rhym.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Rhyming Tool</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.menuBg}
-              onPress={() => {
-                navigation.navigate('HarmoNav', {screen: 'Harmonize'});
-              }}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/harmo.png')}
-              />
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('HarmoNav', {screen: 'Harmonize'});
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/harmo.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Harmonize Tool</Text>
-            </TouchableOpacity>
+            </View>
           </View>
           {/* fourth row */}
           <View style={styles.menuRow}>
-            <View style={styles.menuBg}>
+            {/* <View style={styles.menuBg}>
               <TouchableOpacity
-                style={{alignItems: 'center'}}
+                style={styles.imgBg}
                 onPress={() => {
                   navigation.navigate('SongTempScreen');
                 }}>
                 <Image
+                  resizeMode={'contain'}
                   style={styles.menuImg}
-                  source={require('../assets/imgs/menu/template.png')}
+                  source={require('../assets/imgs/home/harmo.png')}
                 />
-                <Text style={styles.menuText}>Song Templates</Text>
               </TouchableOpacity>
+              <Text style={styles.menuText}>Song Templates</Text>
+            </View> */}
+
+            <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('BibleSearch');
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/bible.png')}
+                />
+              </TouchableOpacity>
+              <Text style={styles.menuText}>Bible Search</Text>
             </View>
 
             <View style={styles.menuBg}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/catch.png')}
-              />
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('SongTempScreen');
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/catch.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Catch Phrases</Text>
             </View>
           </View>
@@ -125,17 +170,20 @@ function HomeScreen({navigation}) {
 
           {/* Fifth row */}
           <View style={styles.menuRow}>
-            <TouchableOpacity
-              style={styles.menuBg}
-              onPress={() => {
-                navigation.navigate('BibleSearch');
-              }}>
-              <Image
-                style={styles.menuImg}
-                source={require('../assets/imgs/menu/bible.png')}
-              />
+            {/* <View style={styles.menuBg}>
+              <TouchableOpacity
+                style={styles.imgBg}
+                onPress={() => {
+                  navigation.navigate('BibleSearch');
+                }}>
+                <Image
+                  resizeMode={'contain'}
+                  style={styles.menuImg}
+                  source={require('../assets/imgs/home/bible.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.menuText}>Bible Search</Text>
-            </TouchableOpacity>
+            </View> */}
 
             {/* <View style={styles.menuBg}>
             <Image
@@ -171,7 +219,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   menuBg: {
-    elevation: 3,
     backgroundColor: '#FFFFFF',
     padding: 10,
     alignItems: 'center',
@@ -180,8 +227,14 @@ const styles = StyleSheet.create({
     width: '50%',
     maxWidth: 160,
   },
-  menuImg: {width: 70, height: 70, margin: 10, borderRadius: 5},
-  menuText: {color: '#000', fontWeight: 'bold', fontSize: 18},
+  imgBg: {
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    elevation: 2,
+  },
+  menuImg: {width: 70, height: 70, margin: 10},
+  menuText: {color: '#000', fontWeight: 'bold', fontSize: 18, marginTop: 10},
   menuRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
