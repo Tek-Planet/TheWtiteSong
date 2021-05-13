@@ -1,4 +1,3 @@
-import {HeaderStyleInterpolators} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {
   View,
@@ -121,6 +120,7 @@ const RhymeLibraryScreen = ({navigation}) => {
       <Rhyme
         title="Lorem ipsum dolor sit amet,elit,tempor."
         showModal={setModalVisible}
+        navigation={navigation}
       />
       <Rhyme
         title="Lorem ipsum dolor sit amet,elit,tempor."

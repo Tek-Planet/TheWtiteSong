@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Rhyme = ({title, showModal}) => {
+const Rhyme = ({title, showModal, navigation}) => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
@@ -18,7 +18,9 @@ const Rhyme = ({title, showModal}) => {
               source={require('../../assets/imgs/icons/double-arrow-right.png')}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBg}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SongRhymingTool')}
+            style={styles.iconBg}>
             <Image
               style={{width: 20, height: 20}}
               source={require('../../assets/imgs/icons/blue-edit.png')}
