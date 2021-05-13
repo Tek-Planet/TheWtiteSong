@@ -2,28 +2,53 @@ import React, {Component} from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import RecordButton from './RecordButton';
+import TrackPlayer from 'react-native-track-player';
+import MyPlayerBar from './MyPlayerBar';
 
 export function MusicPlayer({navigation}) {
+  const start = async () => {
+    // Set up the player
+    await TrackPlayer.setupPlayer();
+    TrackPlayer.registerPlaybackService(() => require('../components/service'));
+    // Add a track to the queue
+    await TrackPlayer.add({
+      id: 'trackId',
+      url: require('../assets/music/brownskin.mp3'),
+      title: 'Track Title',
+      artist: 'Track Artist',
+      artwork: require('../assets/music/track.png'),
+      duration: 302,
+    });
+
+    // Start playing it
+
+    const position = await TrackPlayer.getPosition();
+    const duration = await TrackPlayer.getDuration();
+    console.log(`${duration - position} seconds left.`);
+
+    await TrackPlayer.play();
+  };
+
   return (
     <View style={{marginTop: 10, margin: 5, flex: 0.7}}>
-      <Image
-        resizeMode="contain"
-        style={{maxWidth: 180, marginTop: -40}}
-        source={require('../assets/imgs/lyrics/player.png')}
-      />
+      <MyPlayerBar />
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
-          marginTop: -30,
+          marginTop: 10,
         }}>
-        <TouchableOpacity style={styles.iconBg}>
+        <TouchableOpacity onPress={() => start()} style={styles.iconBg}>
           <Ionicons name="play" size={25} color="#AC1C1C" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconBg}>
+        <TouchableOpacity
+          onPress={() => TrackPlayer.pause()}
+          style={styles.iconBg}>
           <Ionicons name="pause" size={25} color="#AC1C1C" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconBg}>
+        <TouchableOpacity
+          onPress={() => TrackPlayer.stop()}
+          style={styles.iconBg}>
           <Ionicons name="stop" size={25} color="#AC1C1C" />
         </TouchableOpacity>
       </View>

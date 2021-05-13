@@ -22,3 +22,6 @@ function App() {
 }
 
 export default App;
+
+// react-native-sound-player
+// this is a better version to the music player
