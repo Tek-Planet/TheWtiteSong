@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,18 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  TextInput,
 } from 'react-native';
 import Message from '../../components/Message';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import TTL from '../../components/TextToSpeech';
+import {AuthContext} from '../../context/AuthProvider';
+import {useState} from 'react';
 
 function FreeStyleLyrics({navigation}) {
+  const {partialResults, edit, setEdit} = useContext(AuthContext);
+  const [content, setContent] = useState(partialResults[0]);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -47,13 +54,17 @@ function FreeStyleLyrics({navigation}) {
         {/* mict and type option row */}
         <View style={styles.lyricsOption}>
           <View style={styles.lyricsMenu}>
-            <Ionicons
+            {/* <Ionicons
               name="mic-outline"
               size={50}
               color={'#A30000'}
               style={{margin: 5}}
+            /> */}
+            <TTL
+              onPress={() => {
+                setEdit(false);
+              }}
             />
-
             <Text
               style={{
                 color: '#000',
@@ -66,6 +77,9 @@ function FreeStyleLyrics({navigation}) {
 
           <View style={styles.lyricsMenu}>
             <Ionicons
+              onPress={() => {
+                setEdit(true);
+              }}
               name="newspaper-outline"
               size={50}
               color={'#A30000'}
@@ -103,18 +117,47 @@ function FreeStyleLyrics({navigation}) {
               Live
             </Text>
           </View>
-          <Text
-            style={{
-              flex: 1,
-              marginStart: 10,
-              textAlign: 'justify',
-              fontSize: 18,
-              color: '#000',
-            }}>
-            Premium designed icons for use in web, iOS, Android, and desktop
-            apps. Support for SVG and web font. Completely open source, MIT
-            licensed and built by Ionic.
-          </Text>
+          <View style={{flex: 1}}>
+            {!edit ? (
+              <View>
+                <Text
+                  style={{
+                    borderRadius: 10,
+                    height: 100,
+                    backgroundColor: '#ccc',
+                    marginStart: 10,
+                    textAlign: 'justify',
+                    fontSize: 18,
+                    color: '#000',
+                  }}>
+                  {partialResults[0]}
+                </Text>
+                <Ionicons
+                  onPress={() => {
+                    setContent(partialResults[0]);
+                    setEdit(true);
+                  }}
+                  name="pencil"
+                  size={20}
+                  color={'#A30000'}
+                  style={{position: 'absolute', right: 5, bottom: -20}}
+                />
+              </View>
+            ) : (
+              <View style={styles.inputContainer}>
+                <TextInput
+                  value={content}
+                  multiline={true}
+                  numberOfLines={5}
+                  placeholder="Type Here"
+                  placeholderTextColor="#666666"
+                  autoCapitalize="none"
+                  onChangeText={val => setContent(val)}
+                  style={styles.input}
+                />
+              </View>
+            )}
+          </View>
         </View>
         {/* save button sections */}
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
@@ -166,5 +209,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     padding: 5,
+  },
+
+  input: {
+    margin: 5,
+    borderRadius: 10,
+    textAlignVertical: 'top',
+    backgroundColor: '#ccc',
+    paddingLeft: 15,
+    color: '#000',
+    paddingRight: 15,
   },
 });

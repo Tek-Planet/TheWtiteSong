@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+
 import HomeStack from './HomeStack';
 import SettingsStack from './SettingsStack';
 import ProfileStack from './ProfileStack';
