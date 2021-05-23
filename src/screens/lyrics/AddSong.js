@@ -10,148 +10,202 @@ import {
   ScrollView,
 } from 'react-native';
 import Message from '../../components/Message';
+import SaveButton from '../../components/SaveButton';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function AddSong({navigation, route}) {
-  const [country, setCountry] = useState('gospel');
+  const [genre, setGenre] = useState('gospel');
   const [name, setName] = useState('shef');
+  const [title, setTitle] = useState('');
 
-  return (
-    <SafeAreaView>
-      <ScrollView>
-        <Message
-          navigation={navigation}
-          showBackBtn={true}
-          header={route.name}
-          showMsg="Use this Tools to start Writing your next Hit Song"
+
+
+  const addSong = async (songName, songGenre, songContributor) => {
+    if (songName.trim().length < 1) {
+      alert('song name cannot be empty');
+    } else {
+      const newSong = {
+        title: songName,
+        genre: songGenre,
+        author: 'Me',
+        contributor: songContributor,
+        createdAt: new Date().toISOString(),
+      };
+
+      try {
+        // check for songs
+        const jsonValue = await AsyncStorage.getItem('songs');
+        if (jsonValue !== null) {
+          // parse to json if its exist
+          const songs = JSON.parse(jsonValue);
+          // add new song
+          songs.push(newSong);
+          //  store on async stora
+          AsyncStorage.setItem('songs', JSON.stringify(songs));
+
+          console.log('song list updated', songs);
+        } else {
+          const songs = [];
+          songs.push(newSong);
+          AsyncStorage.setItem('songs', JSON.stringify(songs));
+
+          console.log('new song added', songs);
+        }
+      } catch (e) {
+        // error reading value
+      }
+    }
+  };
+
+  return ( 
+    <SafeAreaView style={{flex:1}}>
+     
+      <Message
+        navigation={navigation}
+        showBackBtn={true}
+        header={route.name}
+        showMsg="Use this Tools to start Writing your next Hit Song"
+      />
+
+      <View style={styles.row}>
+        {/* row one  */}
+        <View style={{marginStart: 20}}>
+          <Text
+            style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            {' '}
+            Song Title{' '}
+          </Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              placeholder="Enter Song Title"
+              placeholderTextColor="#666666"
+              autoCapitalize="none"
+              onChangeText={val => setTitle(val)}
+              style={styles.input}
+            />
+          </View>
+        </View>
+
+        {/* section row  */}
+
+        <View style={{marginStart: 20}}>
+          <Text
+            style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            Choose Genre
+          </Text>
+
+          <View style={styles.inputContainer}>
+            <Picker
+              selectedValue={genre}
+              style={{width: 150, height: 40}}
+              mode="dropdown"
+              dropdownIconColor="#AC1C1C"
+              onValueChange={(itemValue, itemIndex) => setGenre(itemValue)}>
+              <Picker.Item
+                style={styles.pickerItem}
+                label="Gospel"
+                value="gospel"
+              />
+              <Picker.Item style={styles.pickerItem} label="Pop" value="pop" />
+              <Picker.Item
+                style={styles.pickerItem}
+                label="Jazz"
+                value="jazz"
+              />
+            </Picker>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.row}>
+        {/* row one  */}
+        <View style={{marginStart: 20}}>
+          <Text
+            style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            Add Contributor(s)
+          </Text>
+          <View></View>
+          <DropDownPicker
+            items={[
+              {label: 'Shaffi', value: 'Shaffi', hidden: true},
+              {label: 'Biola', value: 'BigBee'},
+              {label: 'Abby', value: 'Abby'},
+            ]}
+            defaultValue={name}
+            containerStyle={{height: 40, width: 150}}
+            style={{
+              borderWidth: 0,
+              borderBottomWidth: 1,
+              borderBottomColor: '#A30000',
+            }}
+            itemStyle={{
+              justifyContent: 'flex-start',
+            }}
+            onChangeItem={item => setName(item.value)}
+          />
+        </View>
+
+        {/* section row  */}
+
+        <View style={{marginStart: 20}}>
+          <Text
+            style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            {' '}
+            Invite{' '}
+          </Text>
+          <View style={{flexDirection: 'row'}}>
+            <Ionicons
+              name="logo-facebook"
+              size={23}
+              color={'#301CAC'}
+              style={{margin: 5}}
+            />
+            <Ionicons
+              name="logo-google"
+              size={23}
+              color={'#A30000'}
+              style={{margin: 5}}
+            />
+
+            <Ionicons
+              name="mail"
+              size={23}
+              color={'#A30000'}
+              style={{margin: 5}}
+            />
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.menuRow}>
+        <View style={styles.menuBg}>
+          <TouchableOpacity
+            style={{alignItems: 'center'}}
+            onPress={() => {
+              alert('LyricsNav');
+            }}>
+            <Image
+              style={styles.menuImg}
+              source={require('../../assets/imgs/home/lyrics.png')}
+            />
+            <Text style={styles.menuText}>Load Song Template</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.saveBtnBg}>
+        <SaveButton
+          buttonTitle={'Save'}
+          onPress={() => {
+            //  fetchSongs();
+              addSong(title, genre, name);
+          }}
         />
+      </View>
 
-        <View style={styles.row}>
-          {/* row one  */}
-          <View style={{marginStart: 20}}>
-            <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
-              {' '}
-              Song Title{' '}
-            </Text>
-            <View style={styles.inputContainer}>
-              <TextInput
-                // value =  {state.body}
-                placeholder="Enter Song Title"
-                placeholderTextColor="#666666"
-                autoCapitalize="none"
-                onChangeText={val => textInputChange(val)}
-                style={styles.input}
-              />
-            </View>
-          </View>
-
-          {/* section row  */}
-
-          <View style={{marginStart: 20}}>
-            <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
-              {' '}
-              Add Contributions{' '}
-            </Text>
-
-            <DropDownPicker
-              items={[
-                {label: 'Gospel', value: 'gospel', hidden: true},
-                {label: 'Jazz', value: 'jazz'},
-                {label: 'Pop', value: 'pop'},
-              ]}
-              defaultValue={country}
-              containerStyle={{height: 40, width: 150}}
-              style={{backgroundColor: '#fafafa'}}
-              itemStyle={{
-                justifyContent: 'flex-start',
-              }}
-              dropDownStyle={{backgroundColor: '#fafafa'}}
-              onChangeItem={item => setCountry(item.value)}
-            />
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          {/* row one  */}
-          <View style={{marginStart: 20}}>
-            <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
-              {' '}
-              Song Title{' '}
-            </Text>
-
-            <DropDownPicker
-              items={[
-                {label: 'Shaffi', value: 'shef', hidden: true},
-                {label: 'Biola', value: 'jazz'},
-                {label: 'Abby', value: 'pop'},
-              ]}
-              defaultValue={name}
-              containerStyle={{height: 40, width: 150}}
-              style={{backgroundColor: '#fafafa'}}
-              itemStyle={{
-                justifyContent: 'flex-start',
-              }}
-              dropDownStyle={{backgroundColor: '#fafafa'}}
-              onChangeItem={item => setCountry(item.value)}
-            />
-          </View>
-
-          {/* section row  */}
-
-          <View style={{marginStart: 20}}>
-            <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
-              {' '}
-              Invite{' '}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Ionicons
-                name="logo-facebook"
-                size={23}
-                color={'#301CAC'}
-                style={{margin: 5}}
-              />
-              <Ionicons
-                name="logo-google"
-                size={23}
-                color={'#A30000'}
-                style={{margin: 5}}
-              />
-
-              <Ionicons
-                name="mail"
-                size={23}
-                color={'#A30000'}
-                style={{margin: 5}}
-              />
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.menuRow}>
-          <View style={styles.menuBg}>
-            <TouchableOpacity
-              style={{alignItems: 'center'}}
-              onPress={() => {
-                navigation.navigate('LyricsNav', {screen: 'AddSong'});
-              }}>
-              <Image
-                style={styles.menuImg}
-                source={require('../../assets/imgs/home/lyrics.png')}
-              />
-              <Text style={styles.menuText}>Load Song Template</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.saveBtnBg}>
-          <Text style={styles.saveBtnText}>Save</Text>
-        </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -161,39 +215,31 @@ const styles = StyleSheet.create({
   inputContainer: {
     height: 40,
     borderRadius: 5,
-    backgroundColor: '#fff',
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderBottomColor: '#A30000',
   },
 
   input: {
     width: 150,
     textAlignVertical: 'top',
-    backgroundColor: '#fff',
   },
 
   saveBtnBg: {
-    backgroundColor: '#AC1C1C',
-    padding: 5,
-    margin: 10,
-    borderRadius: 50,
+  marginTop:30
   },
 
-  saveBtnText: {
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: 20,
-  },
   row: {flexDirection: 'row', marginTop: 10},
+
   menuBg: {
+    marginTop: 40,
     backgroundColor: '#F8AE33',
     padding: 10,
     alignItems: 'center',
     borderRadius: 10,
-    height: 110,
     alignSelf: 'center',
-    marginTop: 10,
   },
-  menuImg: {width: 50, height: 50, margin: 10, borderRadius: 5},
-  menuText: {color: '#AC1C1C', fontSize: 18},
+
+  menuImg: {width: 30, height: 30, margin: 10},
+
+  menuText: {color: '#AC1C1C', fontSize: 14},
 });

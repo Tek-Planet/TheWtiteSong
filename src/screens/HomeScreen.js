@@ -12,9 +12,9 @@ import Message from '../components/Message';
 
 function HomeScreen({navigation}) {
   return (
-    <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
+    <SafeAreaView style={{backgroundColor: '#FFFFFF', flex:1}}>
       <ScrollView>
-        {/* header */}
+        {/* header */}   
         {/* <Message
           navigation={navigation}
           header={'Home > Menu'}

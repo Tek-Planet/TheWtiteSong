@@ -7,19 +7,48 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import Message from '../components/Message';
 import SaveButton from '../components/SaveButton';
 import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {versions} from '../assets/constants';
+import axios from 'axios';
 
 function BibleSearchScreen({navigation}) {
+  const [version, setVersion] = useState('0c2ff0a5c8b9069c-01');
+  const [verses, setVerses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [search, setSearch] = useState();
   const [selectedAge, setSelectedAge] = useState();
   const [selectedCountry, setSelectedCountry] = useState();
+
+  const searchBibleVerse = query => {
+    setLoading(true);
+    setError(null);
+    axios
+      .get(
+        `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-01/search?query=${query}`,
+      )
+      .then(res => {
+        setVerses(res.data.data.verses);
+        console.log(verses);
+        setLoading(false);
+        setError(null);
+      })
+      .catch(err => {
+        console.log('Internet Problem', err);
+        setError('Internet Problem ' + err);
+        setLoading(false);
+      });
+  };
   return (
     <SafeAreaView>
       <ScrollView>
         <Message
+          navigation ={navigation}
           header={'My songs > Bible Reference Tool'}
           showBackBtn={true}
         />
@@ -58,15 +87,18 @@ function BibleSearchScreen({navigation}) {
                 borderBottomColor: '#AC1C1C',
               }}>
               <Picker
+                items={[
+                  {label: 'Gospel', value: 'gospel', hidden: true},
+                  {label: 'Jazz', value: 'jazz'},
+                  {label: 'Pop', value: 'pop'},
+                ]}
                 selectedCountry={selectedCountry}
                 style={{width: '100%'}}
                 mode="dropdown"
                 dropdownIconColor="#AC1C1C"
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedCountry(itemValue)
-                }>
-                <Picker.Item label="Select" value="select" />
-              </Picker>
+                }></Picker>
             </View>
           </View>
         </View>
@@ -120,16 +152,23 @@ function BibleSearchScreen({navigation}) {
               borderBottomColor: '#AC1C1C',
             }}>
             <Picker
-              selectedCountry={selectedCountry}
+              selectedValue={'select'}
               style={{width: '100%'}}
               mode="dropdown"
               dropdownIconColor="#AC1C1C"
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedCountry(itemValue)
-              }>
-              <Picker.Item label="Select" value="select" />
-              <Picker.Item label="NIV" value="niv" />
-              <Picker.Item label="KJV" value="kjv" />
+              onValueChange={(itemValue, itemIndex) => {
+                setVersion(itemValue);
+                console.log(itemValue);
+              }}>
+              {versions.map(item => {
+                return (
+                  <Picker.Item
+                    key={item.id}
+                    label={item.abbreviation}
+                    value={item.id}
+                  />
+                );
+              })}
             </Picker>
           </View>
         </View>
@@ -146,12 +185,13 @@ function BibleSearchScreen({navigation}) {
                   flexDirection: 'row',
                   alignItems: 'center',
                   padding: 10,
+                  marginBottom: 10,
                   paddingBottom: 0,
                   borderBottomWidth: 1,
                   borderColor: '#AC1C1C',
                 }}>
                 <TextInput
-                  onChangeText={val => textInputChange(val)}
+                  onChangeText={val => setSearch(val)}
                   placeholder="Enter World Reference for bible search"
                   placeholderTextColor="#000"
                   color="#000"
@@ -160,89 +200,104 @@ function BibleSearchScreen({navigation}) {
                   fontWeight="normal"
                   style={{width: '90%', padding: 1}}
                 />
-
-                <Ionicons
-                  onPress={() => alert('searech')}
-                  name="ios-search"
-                  size={20}
-                  color={'#AC1C1C'}
-                  style={{padding: 5}}
-                />
+                <TouchableOpacity onPress={() => searchBibleVerse(search)}>
+                  <Ionicons
+                    name="ios-search"
+                    size={20}
+                    color={'#AC1C1C'}
+                    style={{padding: 5}}
+                  />
+                </TouchableOpacity>
               </View>
+              {loading && <ActivityIndicator color="#AC1C1C" size="large" />}
+              {error !== null && (
+                <Text
+                  style={[
+                    styles.heading,
+                    {fontSize: 14, textAlign: 'center', marginBottom: 15},
+                  ]}>
+                  {error}
+                </Text>
+              )}
             </View>
           </View>
-          <Text
-            style={[
-              styles.headerText,
-              {
-                fontWeight: 'bold',
-                marginTop: 15,
-                borderBottomWidth: 2,
-                width: 105,
-                textAlign: 'center',
-                borderBottomColor: '#000',
-              },
-            ]}>
-            Bible Reference
-          </Text>
 
-          <Text
-            style={[
-              styles.headerText,
-              {
-                fontWeight: 'bold',
-                marginTop: 15,
-              },
-            ]}>
-            GEN: 3:10
-          </Text>
+          {verses.map((item, index) => {
+            return (
+              <View key={item.id}>
+                <Text
+                  style={[
+                    styles.headerText,
+                    {
+                      fontWeight: 'bold',
+                      marginBottom: 0,
+                      borderBottomWidth: 2,
+                      width: 105,
+                      textAlign: 'center',
+                      borderBottomColor: '#000',
+                    },
+                  ]}>
+                  Bible Reference
+                </Text>
 
-          <Text style={[styles.headerText, {textAlign: 'justify'}]}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            imperdiet ipsum eget massa sagittis volutpat. Donec facilisis dui
-            massa, in sagittis enim faucibus nec. Aenean ultrices justo turpis,
-            in varius neque maximus vitae. Aenean urna enim, lobortis eu rutrum
-          </Text>
-          {/*  the like button section */}
-          <View
-            style={{
-              alignSelf: 'flex-end',
-              padding: 10,
-              paddingTop: 0,
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignSelf: 'center',
-              }}>
-              <Ionicons
-                onPress={() => alert('Like')}
-                name="heart"
-                size={25}
-                color={'red'}
-                style={{padding: 5}}
-              />
-              <Ionicons
-                onPress={() => alert('Add')}
-                name="add-circle-outline"
-                size={25}
-                color={'#000'}
-                style={{padding: 5}}
-              />
-            </View>
-            <View style={{backgroundColor: '#301CAC'}}>
-              <Text
-                style={[
-                  styles.headerText,
-                  {
-                    padding: 3,
-                    color: '#fff',
-                  },
-                ]}>
-                Add to Favourite List
-              </Text>
-            </View>
-          </View>
+                <Text
+                  style={[
+                    styles.headerText,
+                    {
+                      fontWeight: 'bold',
+                      marginTop: 15,
+                      color: '#000',
+                    },
+                  ]}>
+                  {verses[index].reference}
+                </Text>
+
+                <Text style={[styles.headerText, {textAlign: 'justify'}]}>
+                  {JSON.stringify(verses[index].text)}
+                </Text>
+                {/*  the like button section */}
+                <View
+                  style={{
+                    alignSelf: 'flex-end',
+                    padding: 10,
+                    paddingTop: 0,
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignSelf: 'center',
+                    }}>
+                    <Ionicons
+                      onPress={() => alert('Like')}
+                      name="heart"
+                      size={25}
+                      color={'red'}
+                      style={{padding: 5}}
+                    />
+                    <Ionicons
+                      onPress={() => alert('Add')}
+                      name="add-circle-outline"
+                      size={25}
+                      color={'#000'}
+                      style={{padding: 5}}
+                    />
+                  </View>
+                  <View style={{backgroundColor: '#301CAC'}}>
+                    <Text
+                      style={[
+                        styles.headerText,
+                        {
+                          padding: 3,
+                          color: '#fff',
+                        },
+                      ]}>
+                      Add to Favourite List
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            );
+          })}
         </View>
         <SaveButton buttonTitle={'Save'} />
       </ScrollView>
