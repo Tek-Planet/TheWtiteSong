@@ -15,11 +15,21 @@ export default function Message({navigation, template, keyWord}) {
 
   const templateListitem = item => {
     return (
-      <View style={[styles.row, {marginTop: 10}]} key={item.key.toString()}>
+      <View
+        style={[styles.row, {marginTop: 10}]}
+        key={item.createdAt.toString()}>
         <View style={styles.row}>
-          <Text style={[styles.text]}>{item.template}</Text>
-          <Text style={[styles.text]}>{item.name}</Text>
-          <Text style={[styles.text]}>{item.update}</Text>
+          <Text style={[styles.text]}>{item.genre}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('LyricsNav', {
+                screen: 'MySong',
+                params: {songInfo: item},
+              });
+            }}>
+            <Text style={[styles.text]}>{item.title}</Text>
+          </TouchableOpacity>
+          <Text style={[styles.text]}>{item.createdAt}</Text>
           <Text style={[styles.text]}>{item.author}</Text>
         </View>
         <View style={[styles.row, {flex: 0.5}]}>
@@ -28,7 +38,10 @@ export default function Message({navigation, template, keyWord}) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('LyricsNav', {screen: 'MySong'});
+              navigation.navigate('LyricsNav', {
+                screen: 'SongTemplate',
+                params: {songInfo: item},
+              });
             }}
             style={styles.iconBg}>
             <Ionicons name="pencil" size={15} color="#301CAC" />
@@ -54,7 +67,7 @@ export default function Message({navigation, template, keyWord}) {
         {/* lsit all template */}
 
         {template.map(item => {
-          if (keyWord.trim().length > 0 && item.name.includes(keyWord)) {
+          if (keyWord.trim().length > 0 && item.title.includes(keyWord)) {
             return templateListitem(item);
           }
         })}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export function MySongsHeader() {
+export function MySongsHeader({songInfo}) {
   return (
     <View
       style={{
@@ -15,13 +15,13 @@ export function MySongsHeader() {
         {/* row one */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Song Title: </Text>
-          <Text style={styles.text}>The Song</Text>
+          <Text style={styles.text}>{songInfo.title}</Text>
         </View>
 
         {/* rew twwo */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Main Writter:</Text>
-          <Text style={styles.text}>TekChef</Text>
+          <Text style={styles.text}>{songInfo.author}</Text>
         </View>
       </View>
 
@@ -31,13 +31,13 @@ export function MySongsHeader() {
         {/* row one */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Genre: </Text>
-          <Text style={styles.text}>Gospel</Text>
+          <Text style={styles.text}>{songInfo.genre}</Text>
         </View>
 
         {/* rew twwo */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Co Writer(s):</Text>
-          <Text style={styles.text}>TekChef</Text>
+          <Text style={styles.text}>{songInfo.contributor}</Text>
         </View>
       </View>
       {/* third row */}
@@ -45,7 +45,7 @@ export function MySongsHeader() {
         {/* row one */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Date: </Text>
-          <Text style={styles.text}>01/04/2021</Text>
+          <Text style={styles.text}>{songInfo.createdAt}</Text>
         </View>
 
         {/* rew twwo */}

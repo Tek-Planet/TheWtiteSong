@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -15,27 +15,17 @@ import SideMenu from '../../components/SideMenu';
 import MusicPlayer from '../../components/MusicPlayer';
 import TemplateList from '../../components/lyrics/TemplateList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../../context/AuthProvider';
 
 export default function LyricsScreen({navigation}) {
+  const {fetchSongs, mySongs} = useContext(AuthContext);
   const [keyWord, setKeyWord] = useState('');
   const [side, setSide] = useState(false);
   // sample test data
-  const [template, setTemplate] = useState([
-    {
-      key: '001',
-      template: 'beat',
-      name: 'Jazz',
-      update: '03/02/2020',
-      author: 'James Mary',
-    },
-    {
-      key: '002',
-      template: 'beat',
-      name: 'pop',
-      update: '03/02/2021',
-      author: 'Shaffi Deen',
-    },
-  ]);
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
 
   // methid to update the search keywor
   const textInputChange = val => {
@@ -64,6 +54,7 @@ export default function LyricsScreen({navigation}) {
           navigation={navigation}
           showBackBtn={true}
         />
+
         {/* freestyle and template row */}
         <View style={styles.menuRow}>
           <TouchableOpacity
@@ -124,13 +115,13 @@ export default function LyricsScreen({navigation}) {
           </TouchableOpacity>
         </View>
         {/* template list */}
-        {
+        {mySongs && (
           <TemplateList
             navigation={navigation}
-            template={template}
+            template={mySongs}
             keyWord={keyWord}
           />
-        }
+        )}
 
         {/* media player section */}
         <View style={{flexDirection: 'row', flex: 1}}>

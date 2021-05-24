@@ -5,7 +5,8 @@ import SongVersesPosition from '../../components/lyrics/SongVersesPosition';
 import SongTemplateHeader from '../../components/SongTemplateHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export function MySongsEditor({navigation}) {
+export function MySongsEditor({navigation, route}) {
+  const {songInfo} = route.params;
   return (
     <SafeAreaView>
       <ScrollView>
@@ -14,7 +15,7 @@ export function MySongsEditor({navigation}) {
           showBackBtn={true}
           header={'Lyrics Manager > Song Template Editor'}
         />
-        <SongTemplateHeader />
+        <SongTemplateHeader songInfo={songInfo} />
         <View
           style={{marginTop: 10, borderBottomWidth: 3, borderColor: '#AC1C1C'}}
         />
