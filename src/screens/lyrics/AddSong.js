@@ -48,13 +48,13 @@ function AddSong({navigation, route}) {
 
           console.log('song list updated', songs);
         } else {
-          const songs = [];
+          const songs = []; 
           songs.push(newSong);
           AsyncStorage.setItem('songs', JSON.stringify(songs));
-
+            alert('song added')
           console.log('new song added', songs);
         }
-      } catch (e) {
+      } catch (e) {    
         // error reading value
       }
     }
