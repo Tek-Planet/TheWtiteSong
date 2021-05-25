@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export function SongTemplateHeader({navigation}) {
+export function SongTemplateHeader({navigation, songInfo}) {
   return (
     <View
       style={{
@@ -14,7 +14,7 @@ export function SongTemplateHeader({navigation}) {
         {/* row one */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Title: </Text>
-          <Text style={styles.text}>Template 1</Text>
+          <Text style={styles.text}>{songInfo.title}</Text>
         </View>
 
         {/* rew twwo */}

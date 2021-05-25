@@ -5,7 +5,8 @@ import SongVerses from '../../components/lyrics/SongVerses';
 import MySongsHeader from '../../components/MySongsHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export function MySongsEditor({navigation}) {
+export function MySongsEditor({navigation, route}) {
+  const {songInfo} = route.params;
   return (
     <SafeAreaView>
       <ScrollView>
@@ -14,7 +15,7 @@ export function MySongsEditor({navigation}) {
           showBackBtn={true}
           header={'Lyrics Manager > My Songs Editor'}
         />
-        <MySongsHeader />
+        <MySongsHeader songInfo={songInfo} />
         <View style={{flexDirection: 'row'}}>
           <Ionicons
             name="lock-open"

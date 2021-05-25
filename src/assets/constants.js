@@ -14,4 +14,11 @@ export const versions = [
     name: 'King James Version',
     abbreviation: 'NIV',
   },
+  {
+    author: 'Me',
+    contributor: 'BigBee',
+    createdAt: '2021-05-24T12:52:44.870Z',
+    genre: 'gospel',
+    title: 'Brown Skin',
+  },
 ];
