@@ -23,12 +23,13 @@ export function MySongsEditor({navigation, route}) {
           header={'Lyrics Manager > Song Template Editor'}
         />
         <SongTemplateHeader songInfo={songInfo} />
-        <TouchableOpacity
+
+        <Button
           onPress={() => {
-            navigation.navigate('LyricsNav', {screen: 'Lyrics'});
-          }}>
-          <Text>Add song element</Text>
-        </TouchableOpacity>
+            navigation.navigate('LyricsNav', {screen: 'FreeStyleLyrics'});
+          }}
+         buttonTitle={'Add Song Element'} />
+       
 
         <View
           style={{marginTop: 10, borderBottomWidth: 3, borderColor: '#AC1C1C'}}
