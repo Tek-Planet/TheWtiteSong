@@ -1,116 +1,92 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Button from '../../components/SaveButton';
 
-export default function Message({navigation}) {
-  const [change, setChange] = useState(null)
-  var [lyrics, setLyrics] = useState([
-    {
-      key: '001',
-      title: 'Bridge',
-    
-    },
-     {
-      key: '002',
-      title: 'Chorus',
-    
-    },
-    {
-      key: '003',
-      title: 'Ending',
-         },
-         {
-          key: '004',
-          title: 'Repeate',
-             },
-     {
-      key: '005',
-      title: 'Reprise',
-         },
-         {
-          key: '006',
-          title: 'Special',
-             },
-             {
-              key: '007',
-              title: 'Verse',
-                 },
-    
-  ]);
+export default function Message({songInfo, navigation}) {
+  const [change, setChange] = useState(null);
+  var [lyrics, setLyrics] = useState(songInfo.element);
 
-  
-  const swapUp = (pos) => {
-  if (pos > 0){ 
-   let abovePosition = pos - 1
-   var currentItem = lyrics[pos]
-   var aboveItem = lyrics[abovePosition]
-     setChange(currentItem.title)
-    lyrics[abovePosition] = (currentItem)
-    lyrics[pos] = (aboveItem)
-   
-    console.log(lyrics)}
-  }
+  const saveSongElement = async () => {
+    const newSong = {
+      title: songInfo.title,
+      genre: songInfo.genre,
+      author: songInfo.author,
+      contributor: songInfo.contributor,
+      createdAt: songInfo.createdAt,
+      element: lyrics,
+    };
 
-  const swapDown = (pos) => {
-   if (pos < lyrics.length-1){
-   
-      let belowPosition = pos + 1
-      var currentItem = lyrics[pos]
-      var belowItem = lyrics[belowPosition]
-      setChange(currentItem.title)
-       lyrics[belowPosition] = (currentItem)
-       lyrics[pos] = (belowItem)
-      
-       console.log(lyrics)
-   }
+    const jsonValue = await AsyncStorage.getItem('songs');
+    if (jsonValue !== null) {
+      // parse to json if its exist
+      const songs = JSON.parse(jsonValue);
+      // add new song
+      songs[0] = newSong;
+      //  store on async stora
+      AsyncStorage.setItem('songs', JSON.stringify(songs));
+
+      console.log('song element updated', songs);
     }
+  };
 
+  const swapUp = pos => {
+    if (pos > 0) {
+      let abovePosition = pos - 1;
+      var currentItem = lyrics[pos];
+      var aboveItem = lyrics[abovePosition];
+      setChange(currentItem.title);
+      lyrics[abovePosition] = currentItem;
+      lyrics[pos] = aboveItem;
+      console.log(lyrics);
+    }
+  };
 
-  const templateListitem = item => {
+  const swapDown = pos => {
+    if (pos < lyrics.length - 1) {
+      let belowPosition = pos + 1;
+      var currentItem = lyrics[pos];
+      var belowItem = lyrics[belowPosition];
+      setChange(currentItem.title);
+      lyrics[belowPosition] = currentItem;
+      lyrics[pos] = belowItem;
+
+      console.log(lyrics);
+    }
+  };
+
+  const templateListitem = (item, index) => {
     return (
-      <View style={{flexDirection:'row', justifyContent:'space-evenly'}} key={item.key.toString()}>
-       {/* first colum */}
-        <View style={{flexDirection: 'row', marginTop:10}}>
-          <Ionicons
-            name="lock-open"
-            size={20}
-            color={'#AC1C1C'}
-            
-            
-          />
-          <Text style={{fontWeight: 'bold', margin: 5, width:90}}>{item.title}</Text>
+      <View
+        style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
+        key={item.body}>
+        {/* first colum */}
+        <View style={{flexDirection: 'row', marginTop: 10}}>
+          <Ionicons name="lock-open" size={20} color={'#AC1C1C'} />
+          <Text style={{fontWeight: 'bold', margin: 5, width: 90}}>
+            {item.title}
+          </Text>
         </View>
 
-      {/* second co,um */}
+        {/* second colum */}
         <View style={{flexDirection: 'row'}}>
-          <Ionicons
-            name="add-outline"
-            size={23}
-            color={'#301CAC'}
-            
-           
-          />
-          <Ionicons
-            name="remove-outline"
-            size={23}
-            color={'#F8AE33'}
-         
-          />
+          <Ionicons name="add-outline" size={23} color={'#301CAC'} />
+          <Ionicons name="remove-outline" size={23} color={'#F8AE33'} />
         </View>
-{/* third colum */}
+        {/* third colum */}
         <View style={{flexDirection: 'row'}}>
           <Ionicons
             name="arrow-down-outline"
             size={23}
             color={'#AC1C1C'}
-            onPress={() => swapDown(lyrics.indexOf(item))}
+            onPress={() => swapDown(index)}
           />
           <Ionicons
             name="arrow-up-outline"
             size={23}
             color={'#F8AE33'}
-            onPress={() => swapUp(lyrics.indexOf(item))}
-         
+            onPress={() => swapUp(index)}
           />
         </View>
       </View>
@@ -119,22 +95,23 @@ export default function Message({navigation}) {
 
   return (
     <View>
+      {/* <View style={{flexDirection: 'row', marginTop: 10, marginStart: 40}}>
+        <Ionicons name="lock-open" size={20} color={'#AC1C1C'} />
+        <Text style={{fontWeight: 'bold', margin: 5, width: 90}}>
+          Introduction
+        </Text>
 
-<View style={{flexDirection: 'row',  marginTop:10, marginStart:40, }}>
-      
-         <Ionicons
-            name="lock-open"
-            size={20}
-          
-            color={'#AC1C1C'}
-            
-          />
-          <Text style={{fontWeight: 'bold', margin: 5, width:90}}>Introduction</Text>
-        
-         <Text style={{color:'#AC1C1C', textAlign:'right', margin: 5, width:180, marginTop:-3}}>        
-         Re-Order Position
-</Text>
-        </View>
+        <Text
+          style={{
+            color: '#AC1C1C',
+            textAlign: 'right',
+            margin: 5,
+            width: 180,
+            marginTop: -3,
+          }}>
+          Re-Order Position
+        </Text>
+      </View> */}
       <View
         style={{
           backgroundColor: '#F4F4F4',
@@ -142,18 +119,17 @@ export default function Message({navigation}) {
           borderRadius: 10,
           elevation: 5,
         }}>
-
-
-          
-        {lyrics.map(item => {
-          return templateListitem(item);
+        {lyrics.map((item, index) => {
+          return templateListitem(item, index);
         })}
-
       </View>
 
-      <View style={styles.saveBtnText}>
-      <Text style={styles.saveBtnBg}>Save</Text>
-      </View>
+      <Button
+        onPress={() => {
+          saveSongElement();
+        }}
+        buttonTitle={'Save'}
+      />
     </View>
   );
 }

@@ -8,6 +8,4 @@ const App = () => {
 
 export default App;
 
-
 // /v1/bibles/{bibleId}/search   de4e12af7f28f599-01
-

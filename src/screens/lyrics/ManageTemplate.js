@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {View, Text, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import Message from '../../components/Message';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../../context/AuthProvider';
 
 function ManageTemplate({navigation}) {
+  const {fetchSongs, mySongs} = useContext(AuthContext);
+
   const [country, setCountry] = useState('select');
   const [template, setTemplate] = useState([
     {
@@ -21,10 +24,10 @@ function ManageTemplate({navigation}) {
     },
   ]);
 
-  const listItem = item => {
+  const listItem = (item, index) => {
     return (
       <View
-        key={item.key.toString()}
+        key={index}
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -96,6 +99,11 @@ function ManageTemplate({navigation}) {
       </View>
     );
   };
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -161,7 +169,7 @@ function ManageTemplate({navigation}) {
         </View>
         {/* list item */}
 
-        {template.map(item => {
+        {mySongs.map(item => {
           return listItem(item);
         })}
       </ScrollView>

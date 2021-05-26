@@ -57,13 +57,15 @@ export default function Message({navigation, template, keyWord}) {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View style={styles.row}>
-          <Text style={[styles.headingText]}>Template</Text>
-          <Text style={[styles.headingText]}>Name</Text>
-          <Text style={[styles.headingText]}>Updated</Text>
-          <Text style={[styles.headingText]}>Author</Text>
-          <View style={{flex: 0.5}}></View>
-        </View>
+        {keyWord.trim().length > 0 && (
+          <View style={styles.row}>
+            <Text style={[styles.headingText]}>Template</Text>
+            <Text style={[styles.headingText]}>Name</Text>
+            <Text style={[styles.headingText]}>Updated</Text>
+            <Text style={[styles.headingText]}>Author</Text>
+            <View style={{flex: 0.5}}></View>
+          </View>
+        )}
         {/* lsit all template */}
 
         {template.map(item => {

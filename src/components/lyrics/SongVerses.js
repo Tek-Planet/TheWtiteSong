@@ -2,29 +2,12 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function Message({navigation}) {
-  const [lyrics, setLyrics] = useState([
-    {
-      key: '001',
-      title: 'Verse 1',
-      verses: 'Lorem ipsum dolor sit amet,  ',
-    },
-    {
-      key: '002',
-      title: 'Chorus 1',
-      verses: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    },
-    {
-      key: '003',
-      title: 'Verse 1',
-      verses:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.tor ac, ultrices ac nulla. Duis consectetur',
-    },
-  ]);
+export default function Message({songInfo}) {
+  const [lyrics, setLyrics] = useState(songInfo.element);
 
-  const templateListitem = item => {
+  const templateListitem = (item, index) => {
     return (
-      <View key={item.key.toString()}>
+      <View key={index}>
         <View style={{flexDirection: 'row'}}>
           <Ionicons
             name="lock-open"
@@ -37,7 +20,7 @@ export default function Message({navigation}) {
 
         <View style={[styles.row]}>
           <View style={{flex: 1}}>
-            <Text style={[styles.text]}>{item.verses}</Text>
+            <Text style={[styles.text]}>{item.body}</Text>
           </View>
           <View style={[styles.row]}>
             <TouchableOpacity style={styles.iconBg}>
@@ -73,11 +56,11 @@ export default function Message({navigation}) {
           borderRadius: 10,
           elevation: 5,
         }}>
-        {lyrics.map(item => {
-          return templateListitem(item);
+        {lyrics.map((item, index) => {
+          return templateListitem(item, index);
         })}
 
-        <View style={{flexDirection: 'row'}}>
+        {/* <View style={{flexDirection: 'row'}}>
           <Ionicons
             name="lock-open"
             size={20}
@@ -85,11 +68,7 @@ export default function Message({navigation}) {
             style={{padding: 5}}
           />
           <Text style={{fontWeight: 'bold', margin: 5}}>Bridge</Text>
-        </View>
-      </View>
-
-      <View style={styles.saveBtnBg}>
-        <Text style={styles.saveBtnText}>Save</Text>
+        </View> */}
       </View>
     </View>
   );

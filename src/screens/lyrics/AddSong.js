@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  ScrollView,
 } from 'react-native';
 import Message from '../../components/Message';
 import SaveButton from '../../components/SaveButton';
@@ -31,6 +30,7 @@ function AddSong({navigation, route}) {
         author: 'Me',
         contributor: songContributor,
         createdAt: new Date().toISOString(),
+        element: [],
       };
 
       try {
@@ -46,13 +46,13 @@ function AddSong({navigation, route}) {
 
           console.log('song list updated', songs);
         } else {
-          const songs = []; 
+          const songs = [];
           songs.push(newSong);
           AsyncStorage.setItem('songs', JSON.stringify(songs));
-            alert('song added')
+          alert('song added');
           console.log('new song added', songs);
         }
-      } catch (e) {    
+      } catch (e) {
         // error reading value
       }
     }

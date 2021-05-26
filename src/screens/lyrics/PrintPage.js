@@ -8,8 +8,29 @@ import {
   ScrollView,
 } from 'react-native';
 import Message from '../../components/Message';
+import MySongsHeader from '../../components/MySongsHeader';
+import SaveButton from '../../components/SaveButton';
 
-function PrintPage({navigation}) {
+function PrintPage({navigation, route}) {
+  const {songInfo} = route.params;
+  console.log(songInfo);
+
+  const listItem = (item, index) => {
+    return (
+      <View key={index} style={{marginTop: 10}}>
+        {/* row one */}
+        <View style={{flexDirection: 'row'}}>
+          <Text style={styles.titleText}>Element: </Text>
+          <Text style={styles.text}>{item.title}</Text>
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <Text style={styles.titleText}>Text: </Text>
+          <Text style={[styles.text, {fontWeight: 'normal'}]}>{item.body}</Text>
+        </View>
+      </View>
+    );
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -48,6 +69,9 @@ function PrintPage({navigation}) {
           }}>
           Lyrical Project Sheet
         </Text>
+
+        <MySongsHeader songInfo={songInfo} />
+
         <View
           style={{
             backgroundColor: '#F4F4F4',
@@ -55,33 +79,33 @@ function PrintPage({navigation}) {
             borderRadius: 10,
             elevation: 5,
           }}>
-          <View style={styles.row}>
-            {/* row one */}
+          {/* <View style={styles.row}>
+        
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Song Title: </Text>
               <Text style={styles.text}>The Song</Text>
             </View>
 
-            {/* rew twwo */}
+          
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Writer(s):</Text>
               <Text style={styles.text}>TekChef</Text>
             </View>
-          </View>
-          {/* row two */}
-          <View style={styles.row}>
-            {/* row one */}
+          </View> */}
+
+          {/* <View style={styles.row}>
+         
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Choose Genre: </Text>
               <Text style={styles.text}>Gospel</Text>
             </View>
 
-            {/* rew twwo */}
+           
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Date Updated:</Text>
               <Text style={styles.text}>25/01/2020</Text>
             </View>
-          </View>
+          </View> */}
         </View>
 
         <View
@@ -91,57 +115,14 @@ function PrintPage({navigation}) {
             borderRadius: 10,
             elevation: 5,
           }}>
-          <View style={{marginTop: 10}}>
-            {/* row one */}
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Element: </Text>
-              <Text style={styles.text}>Verse 1</Text>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Text: </Text>
-              <Text style={[styles.text, {fontWeight: 'normal'}]}>
-                Premium designed icons for use in web, iOS, Android, and desktop
-              </Text>
-            </View>
-          </View>
-
-          <View style={{marginTop: 10}}>
-            {/* row one */}
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Element: </Text>
-              <Text style={styles.text}>Verse 1</Text>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Text: </Text>
-              <Text style={[styles.text, {fontWeight: 'normal'}]}>
-                Premium designed icons for use in web, iOS, Android, and desktop
-              </Text>
-            </View>
-          </View>
-
-          <View style={{marginTop: 10}}>
-            {/* row one */}
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Element: </Text>
-              <Text style={styles.text}>Verse 1</Text>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.titleText}>Text: </Text>
-              <Text style={[styles.text, {fontWeight: 'normal'}]}>
-                Premium designed icons for use in web, iOS, Android, and desktop
-              </Text>
-            </View>
-          </View>
+          {songInfo.element.map((item, index) => {
+            return listItem(item, index);
+          })}
         </View>
 
-        <Text style={styles.printText}>Page: 1</Text>
+        {/* <Text style={styles.printText}>Page: 1</Text> */}
 
-        <View style={styles.saveBtnBg}>
-          <Text style={styles.saveBtnText}>Save</Text>
-        </View>
+        <SaveButton buttonTitle={'Print'} />
       </ScrollView>
     </SafeAreaView>
   );

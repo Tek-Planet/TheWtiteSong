@@ -14,10 +14,49 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import TTL from '../../components/TextToSpeech';
 import {AuthContext} from '../../context/AuthProvider';
 import {useState} from 'react';
+import {Picker} from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import SaveButton from '../../components/SaveButton';
 
-function FreeStyleLyrics({navigation}) {
+function FreeStyleLyrics({navigation, route}) {
   const {partialResults, edit, setEdit} = useContext(AuthContext);
   const [content, setContent] = useState(partialResults[0]);
+  const [title, setTitle] = useState('');
+  const {songInfo} = route.params;
+
+  const saveSongElement = async (title, details) => {
+    const songElement = songInfo.element;
+
+    const newElemet = {
+      title: title,
+      body: details,
+    };
+
+    songElement.push(newElemet);
+
+    const newSong = {
+      title: songInfo.title,
+      genre: songInfo.genre,
+      author: songInfo.author,
+      contributor: songInfo.contributor,
+      createdAt: songInfo.createdAt,
+      element: songElement,
+    };
+
+    const jsonValue = await AsyncStorage.getItem('songs');
+    if (jsonValue !== null) {
+      // parse to json if its exist
+      const songs = JSON.parse(jsonValue);
+      // add new song
+      songs[0] = newSong;
+      //  store on async stora
+      AsyncStorage.setItem('songs', JSON.stringify(songs));
+
+      console.log('song element updated', songs);
+
+      navigation.goBack();
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -50,6 +89,67 @@ function FreeStyleLyrics({navigation}) {
             }}>
             Or Just
           </Text>
+        </View>
+        {/* song header */}
+
+        <View style={styles.row}>
+          {/* row one  */}
+          <View style={{marginStart: 20}}>
+            <Text
+              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+              Song Title{' '}
+            </Text>
+
+            <Text style={{fontWeight: 'bold', color: '#000'}}>
+              {songInfo.title}
+            </Text>
+          </View>
+
+          {/* section row  */}
+
+          <View style={{marginStart: 20}}>
+            <Text style={{fontWeight: 'bold', color: '#A30000'}}>
+              Song Element
+            </Text>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Song Element Title"
+                placeholderTextColor="#666666"
+                autoCapitalize="none"
+                onChangeText={val => setTitle(val)}
+                style={styles.inputText}
+              />
+            </View>
+
+            {/* <Picker
+                selectedValue={genre}
+                style={{width: 180, height: 40}}
+                mode="dropdown"
+                dropdownIconColor="#AC1C1C"
+                onValueChange={(itemValue, itemIndex) => setGenre(itemValue)}>
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Chorus"
+                  value="chorus"
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Introduction"
+                  value="introduction"
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Verse"
+                  value="verse"
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Bridge"
+                  value="bridge"
+                />
+              </Picker> */}
+          </View>
         </View>
         {/* mict and type option row */}
         <View style={styles.lyricsOption}>
@@ -161,13 +261,23 @@ function FreeStyleLyrics({navigation}) {
         </View>
         {/* save button sections */}
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-          <View style={styles.saveBtnBg}>
+          <TouchableOpacity
+            style={styles.saveBtnBg}
+            onPress={() => {
+              //  fetchSongs();
+              saveSongElement(title, content);
+            }}>
             <Text style={styles.saveBtnText}>Save</Text>
-          </View>
+          </TouchableOpacity>
 
-          <View style={styles.saveBtnBg}>
-            <Text style={styles.saveBtnText}>Save Template</Text>
-          </View>
+          <TouchableOpacity
+            style={styles.saveBtnBg}
+            onPress={() => {
+              //  fetchSongs();
+              AsyncStorage.removeItem('songs');
+            }}>
+            <Text style={styles.saveBtnText}>Save</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -220,4 +330,13 @@ const styles = StyleSheet.create({
     color: '#000',
     paddingRight: 15,
   },
+
+  inputContainer: {},
+
+  inputText: {
+    width: 150,
+    textAlignVertical: 'top',
+  },
+
+  row: {justifyContent: 'space-evenly', flexDirection: 'row', marginTop: 10},
 });

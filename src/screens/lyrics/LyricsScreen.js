@@ -71,7 +71,7 @@ export default function LyricsScreen({navigation}) {
           <TouchableOpacity
             style={{alignItems: 'center', margin: 5}}
             onPress={() => {
-              navigation.navigate('SongTemplate');
+              navigation.navigate('Manage Template');
             }}>
             <Image
               style={styles.menuImg}
