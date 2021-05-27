@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '../../components/SaveButton';
-
+import {AuthContext} from '../../context/AuthProvider';
 export default function Message({songInfo, navigation}) {
+  const {setMySongs} = useContext(AuthContext);
+
   const [change, setChange] = useState(null);
   var [lyrics, setLyrics] = useState(songInfo.element);
 
@@ -26,7 +28,7 @@ export default function Message({songInfo, navigation}) {
       songs[0] = newSong;
       //  store on async stora
       AsyncStorage.setItem('songs', JSON.stringify(songs));
-
+      setMySongs(songs);
       console.log('song element updated', songs);
     }
   };
@@ -94,7 +96,7 @@ export default function Message({songInfo, navigation}) {
   };
 
   return (
-    <View>
+    <View style={{flex: 1, justifyContent: 'space-between'}}>
       {/* <View style={{flexDirection: 'row', marginTop: 10, marginStart: 40}}>
         <Ionicons name="lock-open" size={20} color={'#AC1C1C'} />
         <Text style={{fontWeight: 'bold', margin: 5, width: 90}}>

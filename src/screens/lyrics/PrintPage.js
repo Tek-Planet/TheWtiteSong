@@ -32,9 +32,10 @@ function PrintPage({navigation, route}) {
     );
   };
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Message
+    <ScrollView>
+    <SafeAreaView style={{flex: 1}}>
+    
+        <Message 
           showBackBtn={true}
           navigation={navigation}
           header={'Print Preview'}
@@ -115,16 +116,24 @@ function PrintPage({navigation, route}) {
             borderRadius: 10,
             elevation: 5,
           }}>
-          {songInfo.element.map((item, index) => {
-            return listItem(item, index);
-          })}
+          {songInfo.element.length > 0 ?
+            songInfo.element.map((item, index) => {
+              return listItem(item, index);
+            }) :
+            <Text style={{ color: '#000',
+            fontSize: 18,
+            margin: 6,
+            textAlign: 'center',
+         }}> No Element found </Text>
+          
+          }
         </View>
 
         {/* <Text style={styles.printText}>Page: 1</Text> */}
-
-        <SaveButton buttonTitle={'Print'} />
-      </ScrollView>
+    
+      <SaveButton buttonTitle={'Print'} />
     </SafeAreaView>
+    </ScrollView>
   );
 }
 

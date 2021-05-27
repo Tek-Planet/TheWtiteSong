@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -14,8 +14,11 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {AuthContext} from '../../context/AuthProvider';
 
 function AddSong({navigation, route}) {
+  const {setMySongs} = useContext(AuthContext);
+
   const [genre, setGenre] = useState('gospel');
   const [name, setName] = useState('shef');
   const [title, setTitle] = useState('');
@@ -45,11 +48,13 @@ function AddSong({navigation, route}) {
           AsyncStorage.setItem('songs', JSON.stringify(songs));
 
           console.log('song list updated', songs);
+          setMySongs(songs);
         } else {
           const songs = [];
           songs.push(newSong);
           AsyncStorage.setItem('songs', JSON.stringify(songs));
           alert('song added');
+          setMySongs(songs);
           console.log('new song added', songs);
         }
       } catch (e) {

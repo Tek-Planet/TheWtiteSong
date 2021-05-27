@@ -35,7 +35,11 @@ export function MySongsEditor({navigation, route}) {
             <SongVersesPosition songInfo={songInfo} />
           ) : (
             // <Text> {element.length}Found element</Text>
-            <Text> No Element found </Text>
+            <Text style={{ color: '#000',
+            fontSize: 18,
+            margin: 6,
+            textAlign: 'center',
+         }}> No Element found </Text>
           )}
         </View>
       </ScrollView>
