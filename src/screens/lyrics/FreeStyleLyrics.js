@@ -19,8 +19,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SaveButton from '../../components/SaveButton';
 
 function FreeStyleLyrics({navigation, route}) {
-  const {partialResults, edit, setEdit} = useContext(AuthContext);
-  const [content, setContent] = useState(partialResults[0]);
+  const {setMySongs} = useContext(AuthContext);
+  const [edit, setEdit] = useState(false);
+  const [content, setContent] = useState([]);
   const [title, setTitle] = useState('');
   const {songInfo} = route.params;
 
@@ -51,11 +52,16 @@ function FreeStyleLyrics({navigation, route}) {
       songs[0] = newSong;
       //  store on async stora
       AsyncStorage.setItem('songs', JSON.stringify(songs));
-
+      setMySongs(songs);
       console.log('song element updated', songs);
 
       navigation.goBack();
     }
+  };
+
+  const setResult = result => {
+    setContent(result[0]);
+    setEdit(edit);
   };
 
   return (
@@ -164,6 +170,7 @@ function FreeStyleLyrics({navigation, route}) {
               onPress={() => {
                 setEdit(false);
               }}
+              setResult={setResult}
             />
             <Text
               style={{
@@ -229,12 +236,13 @@ function FreeStyleLyrics({navigation, route}) {
                     textAlign: 'justify',
                     fontSize: 18,
                     color: '#000',
+                    padding: 5,
                   }}>
-                  {partialResults[0]}
+                  {content}
                 </Text>
                 <Ionicons
                   onPress={() => {
-                    setContent(partialResults[0]);
+                    setContent(content);
                     setEdit(true);
                   }}
                   name="pencil"
@@ -276,7 +284,7 @@ function FreeStyleLyrics({navigation, route}) {
               //  fetchSongs();
               AsyncStorage.removeItem('songs');
             }}>
-            <Text style={styles.saveBtnText}>Save</Text>
+            <Text style={styles.saveBtnText}>Save Template</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -322,20 +330,26 @@ const styles = StyleSheet.create({
   },
 
   input: {
+    padding: 5,
     margin: 5,
     borderRadius: 10,
     textAlignVertical: 'top',
     backgroundColor: '#ccc',
     paddingLeft: 15,
     color: '#000',
+    fontSize: 18,
+    height: 100,
     paddingRight: 15,
   },
 
   inputContainer: {},
 
   inputText: {
+    padding: 5,
     width: 150,
-    textAlignVertical: 'top',
+    color: '#000',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
 
   row: {justifyContent: 'space-evenly', flexDirection: 'row', marginTop: 10},

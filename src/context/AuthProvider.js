@@ -21,10 +21,6 @@ export const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider
       value={{
-        partialResults,
-        setPartialResults,
-        edit,
-        setEdit,
         mySongs,
         setMySongs,
         fetchSongs: () => {

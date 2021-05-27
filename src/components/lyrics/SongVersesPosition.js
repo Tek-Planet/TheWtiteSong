@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '../../components/SaveButton';
 import {AuthContext} from '../../context/AuthProvider';
+
 export default function Message({songInfo, navigation}) {
   const {setMySongs} = useContext(AuthContext);
 
@@ -73,7 +74,17 @@ export default function Message({songInfo, navigation}) {
 
         {/* second colum */}
         <View style={{flexDirection: 'row'}}>
-          <Ionicons name="add-outline" size={23} color={'#301CAC'} />
+          <Ionicons
+            onPress={() => {
+              navigation.navigate('LyricsNav', {
+                screen: 'Record',
+                params: {songInfo: songInfo, element: item},
+              });
+            }}
+            name="add-outline"
+            size={23}
+            color={'#301CAC'}
+          />
           <Ionicons name="remove-outline" size={23} color={'#F8AE33'} />
         </View>
         {/* third colum */}

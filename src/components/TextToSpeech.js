@@ -18,18 +18,14 @@ import {
 import Results from './Results';
 // import Voice
 import Voice from 'react-native-voice';
-import {AuthContext} from '../context/AuthProvider';
 
-const App = () => {
+const App = props => {
   const [pitch, setPitch] = useState('');
   const [error, setError] = useState('');
   const [end, setEnd] = useState('');
   const [started, setStarted] = useState('');
   const [results, setResults] = useState([]);
-  // const [partialResults, setPartialResults] = useState([]);
-
-  const {partialResults, setPartialResults, edit, setEdit} =
-    useContext(AuthContext);
+  const [partialResults, setPartialResults] = useState([]);
 
   useEffect(() => {
     //Setting callbacks for the process status
@@ -74,7 +70,7 @@ const App = () => {
     //Invoked when any results are computed
     console.log('onSpeechPartialResults: ', e);
     setPartialResults(e.value);
-    setEdit(false);
+    props.setResult(e.value, false);
   };
 
   const onSpeechVolumeChanged = e => {

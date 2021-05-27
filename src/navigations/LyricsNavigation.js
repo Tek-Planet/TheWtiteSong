@@ -8,6 +8,7 @@ import AddSong from '../screens/lyrics/AddSong';
 import FreeStyleLyrics from '../screens/lyrics/FreeStyleLyrics';
 import ManageTemplate from '../screens/lyrics/ManageTemplate';
 import PrintPage from '../screens/lyrics/PrintPage';
+import Record from '../components/Record';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -29,6 +30,8 @@ function LyricsNavigation() {
       <RootStack.Screen name="Manage Template" component={ManageTemplate} />
       {/* done */}
       <RootStack.Screen name="Print Preview" component={PrintPage} />
+
+      <RootStack.Screen name="Record" component={Record} />
     </RootStack.Navigator>
   );
 }

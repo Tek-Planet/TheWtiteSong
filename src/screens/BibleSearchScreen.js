@@ -48,7 +48,7 @@ function BibleSearchScreen({navigation}) {
     <SafeAreaView>
       <ScrollView>
         <Message
-          navigation ={navigation}
+          navigation={navigation}
           header={'My songs > Bible Reference Tool'}
           showBackBtn={true}
         />

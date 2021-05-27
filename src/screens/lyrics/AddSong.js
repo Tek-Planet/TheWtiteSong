@@ -229,6 +229,7 @@ const styles = StyleSheet.create({
   input: {
     width: 150,
     textAlignVertical: 'top',
+    color: '#000',
   },
 
   saveBtnBg: {},

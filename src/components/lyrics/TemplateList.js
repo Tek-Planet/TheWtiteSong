@@ -69,7 +69,10 @@ export default function Message({navigation, template, keyWord}) {
         {/* lsit all template */}
 
         {template.map(item => {
-          if (keyWord.trim().length > 0 && item.title.includes(keyWord)) {
+          if (
+            keyWord.trim().length > 0 &&
+            item.title.toLowerCase().includes(keyWord.toLowerCase())
+          ) {
             return templateListitem(item);
           }
         })}
