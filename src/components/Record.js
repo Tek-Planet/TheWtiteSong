@@ -6,6 +6,8 @@ import MyPlayerBar from '../components/MyPlayerBar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 
+const audioRecorderPlayer = new AudioRecorderPlayer();
+
 export default function Record({navigation, route}) {
   const [recordSecs, setRecordSecs] = useState(0);
   const [recordTime, setRecordTime] = useState(0);
@@ -14,13 +16,14 @@ export default function Record({navigation, route}) {
   const [playTime, setPlayTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const audioRecorderPlayer = new AudioRecorderPlayer();
-
   const onStartRecord = async () => {
     const result = await audioRecorderPlayer.startRecorder();
     audioRecorderPlayer.addRecordBackListener(e => {
       setRecordSecs(e.currentPosition);
-      setRecordTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
+      setRecordTime(audioRecorderPlayer.mmssss(
+        Math.floor(e.currentPosition)
+        )
+        );
       return;
     });
     console.log(result);
@@ -30,7 +33,7 @@ export default function Record({navigation, route}) {
     const result = await audioRecorderPlayer.stopRecorder();
     audioRecorderPlayer.removeRecordBackListener();
     setRecordSecs(0);
-    console.log(result);
+    console.log('Stopped');
   };
 
   const onStartPlay = async () => {
@@ -99,12 +102,12 @@ export default function Record({navigation, route}) {
         {/* recording section */}
       </View>
       <View>
-        <Text>Record Seconds {recordSecs}</Text>
+        {/* <Text>Record Seconds {recordSecs}</Text>
         <Text>Record Time {recordTime}</Text>
         <Text>current position seconds {currentPositionSec}</Text>
         <Text>current duration seconds {currentDurationSec}</Text>
         <Text>Play time {playTime}</Text>
-        <Text>duration {duration}</Text>
+        <Text>duration {duration}</Text> */}
         <MyPlayerBar />
         <View
           style={{
