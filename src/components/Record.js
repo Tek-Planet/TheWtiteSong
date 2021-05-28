@@ -21,7 +21,6 @@ export default function Record({navigation, route}) {
     audioRecorderPlayer.addRecordBackListener(e => {
       setRecordSecs(e.currentPosition);
       setRecordTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
-      return;
     });
     console.log(result);
   };
@@ -42,7 +41,7 @@ export default function Record({navigation, route}) {
       setCurrentDurationSec(e.duration);
       setPlayTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
       setDuration(audioRecorderPlayer.mmssss(Math.floor(e.duration)));
-      return;
+     
     });
   };
 
@@ -99,12 +98,12 @@ export default function Record({navigation, route}) {
         {/* recording section */}
       </View>
       <View>
-        <Text>Record Seconds {recordSecs}</Text>
+        {/* <Text>Record Seconds {recordSecs}</Text>
         <Text>Record Time {recordTime}</Text>
         <Text>current position seconds {currentPositionSec}</Text>
         <Text>current duration seconds {currentDurationSec}</Text>
         <Text>Play time {playTime}</Text>
-        <Text>duration {duration}</Text>
+        <Text>duration {duration}</Text> */}
         <MyPlayerBar />
         <View
           style={{

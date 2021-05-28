@@ -47,7 +47,7 @@ function AddSong({navigation, route}) {
           //  store on async stora
           AsyncStorage.setItem('songs', JSON.stringify(songs));
 
-          console.log('song list updated', songs);
+          console.log('resong list updated', songs);
           setMySongs(songs);
         } else {
           const songs = [];
