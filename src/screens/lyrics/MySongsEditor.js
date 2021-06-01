@@ -9,9 +9,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 export function MySongsEditor({navigation, route}) {
   const {songInfo} = route.params;
   return (
-    <ScrollView>
-      <SafeAreaView style={{flex: 1, justifyContent: 'space-between'}}>
-        <View>
+   
+      <View style={{flex: 1, justifyContent: 'space-between'}}>
+        <ScrollView >
           <Message
             navigation={navigation}
             showBackBtn={true}
@@ -19,7 +19,7 @@ export function MySongsEditor({navigation, route}) {
           />
           <MySongsHeader songInfo={songInfo} />
           {/* <View style={{flexDirection: 'row'}}>
-          <Ionicons
+          <Ionicons 
             name="lock-open"
             size={20}
             color={'#AC1C1C'}
@@ -28,7 +28,7 @@ export function MySongsEditor({navigation, route}) {
           <Text style={{fontWeight: 'bold', margin: 5}}>Introduction</Text>
         </View> */}
           <View style={{}}>
-            {songInfo.element.length < 0 ? (
+            {songInfo.element.length > 0 ? (
               <SongVerses songInfo={songInfo} />
             ) : (
               // <Text> {element.length}Found element</Text>
@@ -44,7 +44,7 @@ export function MySongsEditor({navigation, route}) {
               </Text>
             )}
           </View>
-        </View>
+        </ScrollView>
 
         <SaveButton
           onPress={() => {
@@ -55,8 +55,8 @@ export function MySongsEditor({navigation, route}) {
           }}
           buttonTitle={'Print'}
         />
-      </SafeAreaView>
-    </ScrollView>
+      </View>
+    
   );
 }
 

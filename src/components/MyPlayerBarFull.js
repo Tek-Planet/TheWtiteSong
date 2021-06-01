@@ -14,7 +14,7 @@ for (var i = 1; i <= 3; i++) {
     />,
   );
 }
-for (var i = 1; i <= 7; i++) {
+for (var i = 1; i <= 15; i++) {
   redBar.push(
     <View
       style={{height: 30, width: 2, backgroundColor: '#FE0006', marginEnd: 20}}

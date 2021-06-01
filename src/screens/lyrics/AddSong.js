@@ -64,7 +64,7 @@ function AddSong({navigation, route}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'space-between'}}>
+    <View style={{flex: 1, justifyContent: 'space-between'}}>
       <View>
         <Message
           navigation={navigation}
@@ -95,12 +95,16 @@ function AddSong({navigation, route}) {
           {/* section row  */}
 
           <View style={{marginStart: 20}}>
-            <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            <Text style={{fontWeight: 'bold', color: '#A30000'}}>
               Choose Genre
             </Text>
 
-            <View style={styles.inputContainer}>
+            <View
+              style={{
+                borderBottomWidth: 2,
+                borderBottomColor: '#AC1C1C',
+                paddingBottom: 12,
+              }}>
               <Picker
                 selectedValue={genre}
                 style={{width: 150, height: 40}}
@@ -213,26 +217,26 @@ function AddSong({navigation, route}) {
           }}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 export default AddSong;
 const styles = StyleSheet.create({
   inputContainer: {
-    height: 40,
+    height: 45,
     borderRadius: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#A30000',
+    backgroundColor: '#fff',
+    paddingBottom: 5,
   },
 
   input: {
     width: 150,
-    textAlignVertical: 'top',
     color: '#000',
+    backgroundColor: '#fff',
   },
-
-  saveBtnBg: {},
 
   row: {flexDirection: 'row', marginTop: 10},
 
@@ -248,4 +252,5 @@ const styles = StyleSheet.create({
   menuImg: {width: 30, height: 30, margin: 10},
 
   menuText: {color: '#AC1C1C', fontSize: 14},
+  pickerItem: {backgroundColor: '#fff', color: '#000'},
 });

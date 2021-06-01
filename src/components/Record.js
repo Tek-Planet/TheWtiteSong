@@ -1,156 +1,399 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {Component} from 'react';
+import {
+  Button,
+  PermissionsAndroid,
+  TouchableOpacity,
+  Platform,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from 'react-native';
+import Slider from '@react-native-community/slider';
+import {
+  Player,
+  Recorder,
+  MediaStates,
+} from '@react-native-community/audio-toolkit';
 import Message from '../components/Message';
-import Button from '../components/SaveButton';
-import MyPlayerBar from '../components/MyPlayerBar';
+import SaveButton from '../components/SaveButton';
+import MyPlayerBar from '../components/MyPlayerBarFull';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 
-export default function Record({navigation, route}) {
-  const [recordSecs, setRecordSecs] = useState(0);
-  const [recordTime, setRecordTime] = useState(0);
-  const [currentPositionSec, setCurrentPositionSec] = useState(0);
-  const [currentDurationSec, setCurrentDurationSec] = useState(0);
-  const [playTime, setPlayTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+const filename = 'test.mp4';
 
-  const audioRecorderPlayer = new AudioRecorderPlayer();
+export default class App extends Component {
+  player = Player;
+  recorder = Recorder;
+  lastSeek = 0;
+  _progressInterval = 0;
 
-  const onStartRecord = async () => {
-    const result = await audioRecorderPlayer.startRecorder();
-    audioRecorderPlayer.addRecordBackListener(e => {
-      setRecordSecs(e.currentPosition);
-      setRecordTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      playPauseButton: 'play',
+      recordButton: 'mic',
+
+      duration: 0,
+
+      static: false,
+
+      stopButtonDisabled: true,
+      playButtonDisabled: true,
+      recordButtonDisabled: true,
+
+      loopButtonStatus: false,
+      progress: 0,
+
+      error: null,
+    };
+  }
+
+  componentDidMount() {
+    this.player = null;
+    this.recorder = null;
+    this.lastSeek = 0;
+
+    this._reloadPlayer();
+    this._reloadRecorder();
+    clearInterval(
+      setInterval(() => {
+        if (this.player && this._shouldUpdateProgressBar()) {
+          let currentProgress =
+            Math.max(0, this.player.currentTime) / this.player.duration;
+          if (isNaN(currentProgress)) {
+            currentProgress = 0;
+          }
+          this.setState({progress: currentProgress});
+        }
+      }, 100),
+    );
+  }
+
+  _shouldUpdateProgressBar() {
+    // Debounce progress bar update by 200 ms
+    return Date.now() - this.lastSeek > 200;
+  }
+
+  _millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    //ES6 interpolated literals/template literals
+    //If seconds is less than 10 put a zero in front.
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
+  _updateState(err) {
+    this.setState({
+      static:
+        (this.player && this.player.isPlaying) ||
+        (this.recorder && this.recorder.isRecording)
+          ? true
+          : false,
+
+      duration:
+        this.player && this.player.isPlaying
+          ? this._millisToMinutesAndSeconds(this.player.duration)
+          : 0,
+      playPauseButton: this.player && this.player.isPlaying ? 'pause' : 'play',
+      recordButton: this.recorder && this.recorder.isRecording ? 'stop' : 'mic',
+
+      stopButtonDisabled: !this.player || !this.player.canStop,
+      playButtonDisabled:
+        !this.player || !this.player.canPlay || this.recorder.isRecording,
+      recordButtonDisabled:
+        !this.recorder || (this.player && !this.player.isStopped),
     });
-    console.log(result);
-  };
+  }
 
-  const onStopRecord = async () => {
-    const result = await audioRecorderPlayer.stopRecorder();
-    audioRecorderPlayer.removeRecordBackListener();
-    setRecordSecs(0);
-    console.log(result);
-  };
-
-  const onStartPlay = async () => {
-    console.log('onStartPlay');
-    const msg = await audioRecorderPlayer.startPlayer();
-    console.log(msg);
-    audioRecorderPlayer.addPlayBackListener(e => {
-      setCurrentPositionSec(e.currentPosition);
-      setCurrentDurationSec(e.duration);
-      setPlayTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
-      setDuration(audioRecorderPlayer.mmssss(Math.floor(e.duration)));
-     
+  _playPause() {
+    this.player.playPause((err, paused) => {
+      if (err) {
+        this.setState({
+          error: err.message,
+        });
+      }
+      this._updateState();
     });
-  };
+  }
 
-  const onPausePlay = async () => {
-    await audioRecorderPlayer.pausePlayer();
-  };
+  _stop() {
+    this.player.stop(() => {
+      this._updateState();
+    });
+  }
 
-  const onStopPlay = async () => {
-    console.log('onStopPlay');
-    audioRecorderPlayer.stopPlayer();
-    audioRecorderPlayer.removePlayBackListener();
-  };
+  _seek(percentage) {
+    if (!this.player) {
+      return;
+    }
 
-  const {songInfo, element} = route.params;
-  return (
-    <View style={{justifyContent: 'space-between', flex: 1}}>
-      <View>
-        <Message
-          navigation={navigation}
-          showBackBtn={true}
-          header={'Lyrics Manager > Record'}
-        />
+    this.lastSeek = Date.now();
+
+    let position = percentage * this.player.duration;
+
+    this.player.seek(position, () => {
+      this._updateState();
+    });
+  }
+
+  _reloadPlayer() {
+    if (this.player) {
+      this.player.destroy();
+    }
+
+    this.player = new Player(filename, {
+      autoDestroy: false,
+    }).prepare(err => {
+      if (err) {
+        console.log('error at _reloadPlayer():');
+        console.log(err);
+      } else {
+        this.player.looping = this.state.loopButtonStatus;
+      }
+
+      this._updateState();
+    });
+
+    this._updateState();
+
+    this.player.on('ended', () => {
+      this._updateState();
+      console.log('ended');
+      console.log(this.player.duration);
+    });
+    this.player.on('pause', () => {
+      this._updateState();
+      console.log('Paused');
+      // console.log( this.player.duration)
+    });
+  }
+
+  _reloadRecorder() {
+    if (this.recorder) {
+      this.recorder.destroy();
+    }
+
+    this.recorder = new Recorder(filename, {
+      bitrate: 256000,
+      channels: 2,
+      sampleRate: 44100,
+      quality: 'max',
+    });
+
+    this._updateState();
+  }
+
+  _toggleRecord() {
+    if (this.player) {
+      this.player.destroy();
+    }
+
+    let recordAudioRequest;
+    if (Platform.OS == 'android') {
+      recordAudioRequest = this._requestRecordAudioPermission();
+    } else {
+      recordAudioRequest = new Promise(function (resolve, reject) {
+        resolve(true);
+      });
+    }
+
+    recordAudioRequest.then(hasPermission => {
+      if (!hasPermission) {
+        this.setState({
+          error: 'Record Audio Permission was denied',
+        });
+        return;
+      }
+
+      this.recorder.toggleRecord((err, stopped) => {
+        if (err) {
+          this.setState({
+            error: err.message,
+          });
+        }
+        if (stopped) {
+          this._reloadPlayer();
+          this._reloadRecorder();
+        }
+
+        this._updateState();
+      });
+    });
+  }
+
+  async _requestRecordAudioPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+        {
+          title: 'Microphone Permission',
+          message:
+            'ExampleApp needs access to your microphone to test react-native-audio-toolkit.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  }
+
+  _toggleLooping(value) {
+    this.setState({
+      loopButtonStatus: value,
+    });
+    if (this.player) {
+      this.player.looping = value;
+    }
+  }
+
+  render() {
+    const {navigation, route} = this.props;
+    const {songInfo, element} = route.params;
+
+    return (
+      <View style={{justifyContent: 'space-between', flex: 1}}>
         <View>
-          <View style={styles.userInfoSection}>
-            <View
-              style={{
-                flexDirection: 'row',
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
-                  Song Title:
-                </Text>
-                <Text style={styles.headerText}>{songInfo.title}</Text>
+          <Message
+            navigation={navigation}
+            showBackBtn={true}
+            header={'Lyrics Manager > Record'}
+          />
+          <View>
+            <View style={styles.userInfoSection}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                }}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                    Song Title:
+                  </Text>
+                  <Text style={styles.headerText}>{songInfo.title}</Text>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                    Genre:
+                  </Text>
+                  <Text style={styles.headerText}>{songInfo.genre}</Text>
+                </View>
               </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
-                  Genre:
-                </Text>
-                <Text style={styles.headerText}>{songInfo.genre}</Text>
-              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                }}></View>
+              <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                {element.title}
+              </Text>
+              <Text style={[styles.headerText, {textAlign: 'justify'}]}>
+                {element.body}
+              </Text>
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-              }}></View>
-            <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
-              {element.title}
-            </Text>
-            <Text style={[styles.headerText, {textAlign: 'justify'}]}>
-              {element.body}
-            </Text>
           </View>
         </View>
-        {/* recording section */}
-      </View>
-      <View>
-        {/* <Text>Record Seconds {recordSecs}</Text>
-        <Text>Record Time {recordTime}</Text>
-        <Text>current position seconds {currentPositionSec}</Text>
-        <Text>current duration seconds {currentDurationSec}</Text>
-        <Text>Play time {playTime}</Text>
-        <Text>duration {duration}</Text> */}
-        <MyPlayerBar />
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginTop: 10,
-          }}>
-          <TouchableOpacity
-            onPress={() => onStartRecord()}
-            style={styles.iconBg}>
-            <Ionicons name="mic" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => onStopRecord()}
-            style={styles.iconBg}>
-            <Ionicons name="stop" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-        </View>
-        {/* playback */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginTop: 10,
-          }}>
-          <TouchableOpacity onPress={() => onStartPlay()} style={styles.iconBg}>
-            <Ionicons name="play" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onPausePlay()} style={styles.iconBg}>
-            <Ionicons name="pause" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onStopPlay()} style={styles.iconBg}>
-            <Ionicons name="stop" size={25} color="#AC1C1C" />
-          </TouchableOpacity>
-        </View>
+        <View>
+          <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+            Play Time: {this.state.duration}
+          </Text>
+          <MyPlayerBar static={this.state.static} />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginTop: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this._toggleRecord()}
+              style={styles.iconBg}>
+              <Ionicons
+                name={this.state.recordButton}
+                size={25}
+                color="#AC1C1C"
+              />
+            </TouchableOpacity>
+          </View>
 
-        <Button buttonTitle={'Save'} />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginTop: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this._playPause()}
+              style={styles.iconBg}>
+              <Ionicons
+                name={this.state.playPauseButton}
+                size={25}
+                color="#AC1C1C"
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              disabled={this.state.stopButtonDisabled}
+              onPress={() => this._stop()}
+              style={styles.iconBg}>
+              <Ionicons name="stop" size={25} color="#AC1C1C" />
+            </TouchableOpacity>
+          </View>
+
+          {/* <View style={styles.slider}>
+            <Slider
+              step={0.0001}
+              disabled={this.state.playButtonDisabled}
+              onValueChange={percentage => this._seek(percentage)}
+              value={this.state.progress}
+            />
+          </View> */}
+
+          {this.state.error && (
+            <View>
+              <Text style={styles.errorMessage}>{this.state.error}</Text>
+            </View>
+          )}
+          <SaveButton buttonTitle={'Save'} />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#fff',
+  slider: {
+    height: 10,
+    margin: 10,
+    marginBottom: 50,
   },
+  settingsContainer: {
+    alignItems: 'center',
+  },
+  container: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+  },
+  title: {
+    fontSize: 19,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 20,
+  },
+  errorMessage: {
+    fontSize: 15,
+    textAlign: 'center',
+    padding: 10,
+    color: 'red',
+  },
+
   headerText: {
     color: '#000',
     margin: 5,

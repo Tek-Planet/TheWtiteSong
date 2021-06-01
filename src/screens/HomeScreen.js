@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   menuImg: {width: 70, height: 70, margin: 10},
-  menuText: {color: '#000', fontWeight: 'bold', fontSize: 18, marginTop: 10},
+  menuText: {color: '#000',  fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 10},
   menuRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',

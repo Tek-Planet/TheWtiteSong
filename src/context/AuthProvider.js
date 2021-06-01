@@ -6,16 +6,24 @@ export const AuthContext = createContext();
 
 // Wrap our app and provide the Data layer
 export const AuthProvider = ({children}) => {
-  const [partialResults, setPartialResults] = useState([]);
-  const [edit, setEdit] = useState(false);
-  const [mySongs, setMySongs] = useState([]);
+  const [mySongs, setMySongs] = useState(null);
+  const newSong = {
+    title: 'Select',
+    genre: '',
+    author: '',
+    contributor: '',
+    createdAt: 'null',
+    element: [],
+  };
 
   const fetchSongs = async () => {
     const value = await AsyncStorage.getItem('songs');
     if (value !== null) {
       const songs = JSON.parse(value);
+       songs.unshift(newSong);
       setMySongs(songs);
-    } else console.log('no songs');
+      console.log(songs);
+    } else setMySongs([]);
   };
 
   return (
