@@ -29,31 +29,31 @@ const Feed = () => {
                 marginBottom: 10,
               }}>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold', color: '#8a2be2'}}>
+                <Text style={[styles.textBold, {color: '#8a2be2'}]}>
                   Topic TItle:{' '}
                 </Text>
-                <Text>Title</Text>
+                <Text style={styles.textLight}>Title</Text>
               </View>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold', color: '#AC1C1C'}}>
+                <Text style={[styles.textBold, {color: '#AC1C1C'}]}>
                   Date:{' '}
                 </Text>
-                <Text>02/01/2020</Text>
+                <Text style={styles.textLight}>02/01/2020</Text>
               </View>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold', color: '#0ca678'}}>
+                <Text style={[styles.textBold, {color: '#0ca678'}]}>
                   Replies:{' '}
                 </Text>
-                <Text>385</Text>
+                <Text style={styles.textLight}>385</Text>
               </View>
             </View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold', marginRight: 10}}>
+                <Text style={[styles.textBold, {marginRight: 10}]}>
                   Message:
                 </Text>
-                <Text>Dummy text dummy text</Text>
+                <Text style={styles.textLight}>Dummy text dummy text</Text>
               </View>
               {showDesc ? (
                 <Ionicons name="chevron-down" size={30} color={'#AC1C1C'} />
@@ -72,7 +72,7 @@ const Feed = () => {
                   style={{width: 18, height: 18, marginRight: 10}}
                   source={require('../assets/imgs/icons/love-icon.png')}
                 />
-                <Text>25</Text>
+                <Text style={styles.textLight}>25</Text>
               </View>
               <View
                 style={{
@@ -84,7 +84,7 @@ const Feed = () => {
                   style={{width: 18, height: 18, marginRight: 10}}
                   source={require('../assets/imgs/icons/blue-like-icon.png')}
                 />
-                <Text>10</Text>
+                <Text style={styles.textLight}>10</Text>
               </View>
             </View>
           </View>
@@ -111,3 +111,14 @@ const Feed = () => {
 };
 
 export default Feed;
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
+    fontSize: 13,
+  },
+});

@@ -36,7 +36,7 @@ const SetttingsScreen = () => {
       <View style={styles.container}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={styles.heading}>Subscriber ID:</Text>
-          <Text style={{marginLeft: 30}}>US2394-212</Text>
+          <Text style={[styles.textLight, {marginLeft: 30}]}>US2394-212</Text>
         </View>
         <View
           style={{
@@ -45,9 +45,9 @@ const SetttingsScreen = () => {
             justifyContent: 'space-between',
           }}>
           <Text style={styles.heading}>Music Genre:</Text>
-          <Text>Gospel</Text>
+          <Text style={styles.textLight}>Gospel</Text>
           <Text style={styles.heading}>Genre Mode:</Text>
-          <Text>Single</Text>
+          <Text style={styles.textLight}>Single</Text>
         </View>
       </View>
 
@@ -60,7 +60,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Pin Code Login</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Pin Code Login
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -84,7 +86,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>2-Factor Authentication</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            2-Factor Authentication
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -110,7 +114,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Allow Exploit Language</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Allow Exploit Language
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -136,7 +142,9 @@ const SetttingsScreen = () => {
             style={{marginRight: 5, width: 20, height: 20}}
             source={require('../assets/imgs/icons/red-pen-icon.png')}
           />
-          <Text style={{color: 'black'}}>Edit Word List</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Edit Word List
+          </Text>
         </View>
 
         <View
@@ -145,7 +153,7 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Song Sharing</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>Song Sharing</Text>
           <View
             style={{
               flexDirection: 'row',
@@ -172,7 +180,9 @@ const SetttingsScreen = () => {
                 style={{marginRight: 5, width: 20, height: 20}}
                 source={require('../assets/imgs/icons/local-contact-icon.png')}
               />
-              <Text style={{color: 'black'}}>Local contact</Text>
+              <Text style={[styles.textLight, {color: 'black'}]}>
+                Local contact
+              </Text>
             </View>
             <View
               style={{
@@ -183,7 +193,9 @@ const SetttingsScreen = () => {
                 style={{marginRight: 5, width: 20, height: 20}}
                 source={require('../assets/imgs/icons/fb-icon.png')}
               />
-              <Text style={{color: 'black'}}>Facebook Friends</Text>
+              <Text style={[styles.textLight, {color: 'black'}]}>
+                Facebook Friends
+              </Text>
             </View>
           </View>
           <View style={{marginTop: 10}}>
@@ -196,7 +208,7 @@ const SetttingsScreen = () => {
                 style={{marginRight: 5, width: 20, height: 20}}
                 source={require('../assets/imgs/icons/youtube-icon.png')}
               />
-              <Text style={{color: 'black'}}>Youtube</Text>
+              <Text style={[styles.textLight, {color: 'black'}]}>Youtube</Text>
             </View>
           </View>
         </View>
@@ -206,7 +218,7 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Bible Helper</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>Bible Helper</Text>
           <View
             style={{
               flexDirection: 'row',
@@ -234,7 +246,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Save Songs to Device</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Save Songs to Device
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -254,7 +268,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Save Songs to Web Portal</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Save Songs to Web Portal
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -281,7 +297,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Storage Space Low</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Storage Space Low
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -301,7 +319,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Suspicious Song Sharing</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Suspicious Song Sharing
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -328,7 +348,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Storage Limit</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Storage Limit
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -348,7 +370,9 @@ const SetttingsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Text style={{color: 'black'}}>Subscription Billing</Text>
+          <Text style={[styles.textLight, {color: 'black'}]}>
+            Subscription Billing
+          </Text>
           <View
             style={{
               flexDirection: 'row',
@@ -382,7 +406,7 @@ const SetttingsScreen = () => {
               status={notify === 'text' ? 'checked' : 'unchecked'}
               onPress={() => setNotify('text')}
             />
-            <Text style={{fontSize: 16}}>By Text</Text>
+            <Text style={[styles.textLight, {fontSize: 16}]}>By Text</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -396,7 +420,7 @@ const SetttingsScreen = () => {
               status={notify === 'email' ? 'checked' : 'unchecked'}
               onPress={() => setNotify('email')}
             />
-            <Text style={{fontSize: 16}}>By Email</Text>
+            <Text style={[styles.textLight, {fontSize: 16}]}>By Email</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -423,13 +447,17 @@ const SetttingsScreen = () => {
           <View
             style={{
               flexDirection: 'row',
-              alignItems: 'center',
+              alignItems: 'flex-start',
             }}>
-            <Text style={{color: 'black'}}>Enable Music Sharing</Text>
+            <Text style={[styles.textLight, {color: 'black', fontSize: 13}]}>
+              Enable Music Sharing
+            </Text>
             <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
           </View>
           <View>
-            <Text>Restrict these Platforms</Text>
+            <Text style={[styles.textLight, {fontSize: 13}]}>
+              Restrict these Platforms
+            </Text>
             <View
               style={{
                 borderBottomWidth: 3,
@@ -489,7 +517,8 @@ const SetttingsScreen = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <Text style={{color: 'black', flexBasis: 100}}>
+              <Text
+                style={[styles.textLight, {color: 'black', flexBasis: 100}]}>
                 Sync Music Files to Cloud Accounts
               </Text>
               <Switch
@@ -498,7 +527,7 @@ const SetttingsScreen = () => {
               />
             </View>
             <View>
-              <Text style={{marginTop: 20}}>Frequency</Text>
+              <Text style={[styles.textLight, {marginTop: 20}]}>Frequency</Text>
               <View
                 style={{
                   borderBottomWidth: 3,
@@ -532,7 +561,7 @@ const SetttingsScreen = () => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Text style={{color: 'black', flexBasis: 100}}>
+            <Text style={[styles.textLight, {color: 'black', flexBasis: 100}]}>
               Sync Music Files to Cloud Accounts
             </Text>
             <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
@@ -553,8 +582,8 @@ const SetttingsScreen = () => {
             textAlign: 'center',
             color: '#fff',
             padding: 10,
-            fontSize: 20,
-            fontWeight: 'bold',
+            fontSize: 16,
+            fontFamily: 'Montserrat-Bold',
           }}>
           Save
         </Text>
@@ -576,8 +605,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     color: '#AE1F1F',
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     fontSize: 16,
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
   },
   dropdown: {
     backgroundColor: '#fff',

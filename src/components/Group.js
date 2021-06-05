@@ -21,34 +21,36 @@ const Group = () => {
             }}>
             <View style={{flex: 1}}>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold', color: '#8a2be2'}}>
+                <Text style={[styles.textBold, {color: '#8a2be2'}]}>
                   Prestige Song Writers Group
                 </Text>
               </View>
               <View style={{flexDirection: 'row', marginTop: 10}}>
-                <Text style={{fontWeight: 'bold', color: '#000'}}>Title: </Text>
-                <Text>Admin</Text>
+                <Text style={[styles.textBold, {color: '#000'}]}>Title: </Text>
+                <Text style={styles.textMedium}>Admin</Text>
               </View>
             </View>
 
             <View style={{flex: 1}}>
               <View style={{flexDirection: 'row'}}>
                 <Text
-                  style={{
-                    fontWeight: 'bold',
-                    color: '#AC1C1C',
-                    marginRight: 5,
-                  }}>
+                  style={[
+                    styles.textBold,
+                    {
+                      color: '#AC1C1C',
+                      marginRight: 5,
+                    },
+                  ]}>
                   Created:
                 </Text>
-                <Text>02/01/2020</Text>
+                <Text style={styles.textMedium}>02/01/2020</Text>
               </View>
               <View style={{flexDirection: 'row'}}>
                 <Text
-                  style={{fontWeight: 'bold', color: '#000', marginRight: 5}}>
+                  style={[styles.textBold, {color: '#000', marginRight: 5}]}>
                   Members:
                 </Text>
-                <Text>125</Text>
+                <Text style={styles.textMedium}>125</Text>
               </View>
             </View>
           </View>
@@ -67,3 +69,14 @@ const Group = () => {
 };
 
 export default Group;
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
+  },
+  textMedium: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+  },
+});
