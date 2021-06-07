@@ -65,26 +65,26 @@ export function MusicPlayer({navigation}) {
             style={{
               color: '#AC1C1C',
               margin: 5,
-              fontWeight: 'bold',
-              fontSize: 18,
+              fontFamily: 'Montserrat-Bold',
+              fontSize: 16,
             }}>
             Run Time :
           </Text>
           <View
             style={{
               backgroundColor: '#F8AE33',
-
               margin: 5,
               borderRadius: 10,
               width: 80,
+              paddingTop: 5,
+              paddingBottom: 5,
             }}>
             <Text
               style={{
                 textAlign: 'center',
                 color: '#000',
-
-                fontSize: 15,
-                fontWeight: 'bold',
+                fontSize: 14,
+                fontFamily: 'Montserrat-Medium',
               }}>
               05:00{'\n'}MM | SS
             </Text>

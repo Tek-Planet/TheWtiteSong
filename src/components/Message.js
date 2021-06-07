@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Montserrat-Bold',
     textAlign: 'center',
   },

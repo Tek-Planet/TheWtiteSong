@@ -37,9 +37,9 @@ export default function LoopLibraryScreen({navigation}) {
               placeholderTextColor="#000"
               color="#000"
               autoCapitalize="none"
-              fontSize={15}
+              fontSize={14}
               fontWeight="normal"
-              style={{flex: 1, padding: 1}}
+              style={{flex: 1, padding: 1, fontFamily: 'Montserrat-Light'}}
             />
           </View>
           <TouchableOpacity
@@ -117,7 +117,7 @@ export default function LoopLibraryScreen({navigation}) {
             }}>
             <Text
               style={{
-                fontWeight: 'bold',
+                fontFamily: 'Montserrat-Bold',
                 color: '#A30000',
               }}>
               {' '}
@@ -149,7 +149,7 @@ export default function LoopLibraryScreen({navigation}) {
             }}>
             <Text
               style={{
-                fontWeight: 'bold',
+                fontFamily: 'Montserrat-Bold',
                 color: '#A30000',
               }}>
               {' '}
@@ -212,14 +212,26 @@ export default function LoopLibraryScreen({navigation}) {
         <View style={{flexDirection: 'row'}}>
           {/*  the red and button  */}
           <View style={{alignItems: 'center', margin: 10}}>
-            <Text style={{fontWeight: 'bold', color: '#000'}}>Mone Record</Text>
+            <Text
+              style={{
+                fontFamily: 'Montserrat-Bold',
+                fontSize: 13,
+                color: '#000',
+              }}>
+              Mone Record
+            </Text>
             <Ionicons
               name="ellipse"
               size={35}
               color={'#00A651'}
               style={{padding: 5}}
             />
-            <Text style={{fontWeight: 'bold', color: '#000'}}>
+            <Text
+              style={{
+                fontFamily: 'Montserrat-Bold',
+                fontSize: 13,
+                color: '#000',
+              }}>
               Stereo Record
             </Text>
             <Ionicons
@@ -286,8 +298,8 @@ export default function LoopLibraryScreen({navigation}) {
           <Text style={styles.editMenuText}>Metromone Tool</Text>
         </View>
 
-        <View style={styles.saveBtnText}>
-          <Text style={styles.saveBtnBg}>Save</Text>
+        <View style={styles.saveBtnBg}>
+          <Text style={styles.saveBtnText}>Save</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -317,7 +329,8 @@ const styles = StyleSheet.create({
     width: 100,
     color: '#000',
     margin: 4,
-    fontSize: 15,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
   },
   joyButtonBg: {
     backgroundColor: '#F8AE33',
@@ -326,16 +339,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 1,
+    paddingLeft: 5,
     borderRadius: 10,
     marginEnd: 10,
   },
-  joyButtonText: {color: '#fff', fontSize: 18},
+  joyButtonText: {color: '#fff', fontSize: 14, fontFamily: 'Montserrat-Medium'},
   swichItem: {flexDirection: 'row', justifyContent: 'space-evenly', width: 105},
   swichItemText: {
     color: '#000000',
     fontSize: 18,
   },
-  playerText: {textAlign: 'center', color: '#000', fontWeight: 'bold'},
+  playerText: {
+    textAlign: 'center',
+    color: '#000',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
+  },
 
   iconBg: {
     margin: 5,
@@ -349,21 +368,22 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignContent: 'center',
   },
-  saveBtnText: {
+  saveBtnBg: {
     backgroundColor: '#AC1C1C',
     margin: 10,
     borderRadius: 50,
   },
 
-  saveBtnBg: {
+  saveBtnText: {
     textAlign: 'center',
     color: '#fff',
     margin: 5,
     padding: 5,
-    fontSize: 20,
+    fontSize: 16,
+    fontFamily: 'Montserrat-Bold',
   },
 
-  listItem: {margin: 5},
+  listItem: {margin: 5, fontFamily: 'Montserrat-Medium', fontSize: 13},
   listItemPlayBtn: {
     width: 20,
     height: 20,

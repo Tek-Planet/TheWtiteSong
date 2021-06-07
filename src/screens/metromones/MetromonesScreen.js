@@ -21,18 +21,23 @@ function MetromonesScreen({navigation}) {
           header={'Program Metronome'}
         />
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{fontWeight: 'bold', marginTop: 10}}>
+          <Text
+            style={{
+              fontFamily: 'Montserrat-Bold',
+              fontSize: 13,
+              marginTop: 10,
+            }}>
             Existing Metronome Programes:
           </Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Ionicons name="chevron-back" size={25} color={'#F8AE33'} />
-            <Text style={{}}>Sample 1</Text>
+            <Text style={styles.textLight}>Sample 1</Text>
             <View style={styles.verticalSeperator} />
-            <Text style={{}}>Sample 2</Text>
+            <Text style={styles.textLight}>Sample 2</Text>
             <View style={styles.verticalSeperator} />
-            <Text style={{}}>Sample 3</Text>
+            <Text style={styles.textLight}>Sample 3</Text>
             <View style={styles.verticalSeperator} />
-            <Text style={{}}>Sample 4</Text>
+            <Text style={styles.textLight}>Sample 4</Text>
             <Ionicons name="chevron-forward" size={25} color={'#F8AE33'} />
           </View>
         </View>
@@ -89,14 +94,16 @@ function MetromonesScreen({navigation}) {
               <Text style={styles.playerText}>1/4</Text>
             </View>
             <View style={{alignItems: 'center'}}>
-              <Text style={{fontSize: 50, fontWeight: 'bold'}}>100</Text>
+              <Text style={{fontSize: 50, fontFamily: 'Montserrat-Bold'}}>
+                100
+              </Text>
               <Text
                 style={{
                   position: 'absolute',
                   right: 40,
                   bottom: 12,
                   fontSize: 10,
-                  fontWeight: 'bold',
+                  fontFamily: 'Montserrat-Bold',
                 }}>
                 bpm
               </Text>
@@ -138,7 +145,9 @@ function MetromonesScreen({navigation}) {
           }}>
           <View style={{alignItems: 'center'}}>
             <TouchableOpacity style={styles.tapBtn}>
-              <Text style={{color: '#fff'}}>Tap</Text>
+              <Text style={{color: '#fff', fontFamily: 'Montserrat-Medium'}}>
+                Tap
+              </Text>
             </TouchableOpacity>
             <View
               style={{
@@ -155,7 +164,14 @@ function MetromonesScreen({navigation}) {
             </View>
           </View>
           <View>
-            <Text style={{fontWeight: 'bold', marginTop: -5}}>Speed</Text>
+            <Text
+              style={{
+                fontFamily: 'Montserrat-Bold',
+                fontSize: 13,
+                marginTop: -5,
+              }}>
+              Speed
+            </Text>
             <View
               style={{
                 borderRadius: 100,
@@ -191,7 +207,14 @@ function MetromonesScreen({navigation}) {
             justifyContent: 'center',
           }}>
           <View style={styles.horizontalSeperator} />
-          <Text style={{margin: 5, color: '#AC1C1C'}}>Change Tempo</Text>
+          <Text
+            style={{
+              margin: 5,
+              color: '#AC1C1C',
+              fontFamily: 'Montserrat-Medium',
+            }}>
+            Change Tempo
+          </Text>
           <View style={styles.horizontalSeperator} />
         </View>
         <View>
@@ -206,14 +229,42 @@ function MetromonesScreen({navigation}) {
               />
               <Text style={styles.textTitle}>Meter</Text>
               <View style={[styles.middleColumn, {width: 95}]}>
-                <Text style={{color: '#000', marginTop: 20}}>
+                <Text
+                  style={{
+                    color: '#000',
+                    marginTop: 20,
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
                   Time Signature
                 </Text>
-                <Text style={{color: '#000'}}>3/4</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  3/4
+                </Text>
               </View>
               <View style={[styles.middleColumn, {width: 80}]}>
-                <Text style={{color: '#000', marginTop: 20}}>Adago</Text>
-                <Text style={{color: '#000'}}>Andante</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    marginTop: 20,
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Adago
+                </Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Andante
+                </Text>
               </View>
               <View style={[styles.middleColumn, {paddingTop: 20}]}>
                 <Text style={styles.textRangeNum}>66-76</Text>
@@ -231,11 +282,33 @@ function MetromonesScreen({navigation}) {
               />
               <Text style={styles.textTitle}>Tuplet</Text>
               <View style={[styles.middleColumn, {width: 95}]}>
-                <Text style={{color: '#000'}}>6/8</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  6/8
+                </Text>
               </View>
               <View style={[styles.middleColumn, {width: 80}]}>
-                <Text style={{color: '#000', marginTop: 20}}>Largo</Text>
-                <Text style={{color: '#000'}}>Largetto</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    marginTop: 20,
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Largo
+                </Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Largetto
+                </Text>
               </View>
               <View style={[styles.middleColumn, {paddingTop: 20}]}>
                 <Text style={[styles.textRangeNum]}>40-60</Text>
@@ -253,8 +326,23 @@ function MetromonesScreen({navigation}) {
               <Text style={styles.textTitle}>Click</Text>
               <View style={[styles.middleColumn, {width: 95}]}></View>
               <View style={[styles.middleColumn, {width: 80}]}>
-                <Text style={{color: '#000', marginTop: 20}}>Moderator</Text>
-                <Text style={{color: '#000'}}>Allergo</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    marginTop: 20,
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Moderator
+                </Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Allergo
+                </Text>
               </View>
               <View style={[styles.middleColumn, {paddingTop: 20}]}>
                 <Text style={[styles.textRangeNum]}>108-120</Text>
@@ -272,8 +360,23 @@ function MetromonesScreen({navigation}) {
               <Text style={styles.textTitle}>Tambourine</Text>
               <View style={[styles.middleColumn, {width: 95}]}></View>
               <View style={[styles.middleColumn, {width: 80}]}>
-                <Text style={{color: '#000', marginTop: 20}}>Presto</Text>
-                <Text style={{color: '#000'}}>Allergo</Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    marginTop: 20,
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Presto
+                </Text>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 13,
+                  }}>
+                  Allergo
+                </Text>
               </View>
               <View style={[styles.middleColumn, {paddingTop: 20}]}>
                 <Text style={[styles.textRangeNum]}>168-200</Text>
@@ -303,9 +406,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   volumeText: {
-    fontSize: 12,
+    fontSize: 10,
+    fontFamily: 'Montserrat-Medium',
   },
-  playerText: {color: '#000', fontWeight: 'bold'},
+  playerText: {color: '#000', fontFamily: 'Montserrat-Bold'},
   editMenuItem: {
     flexDirection: 'row',
     backgroundColor: '#F8AE33',
@@ -316,8 +420,8 @@ const styles = StyleSheet.create({
   },
   editMenuText: {
     color: '#000',
-    fontWeight: 'bold',
-    fontSize: 12,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
     margin: 5,
   },
   tapBtn: {
@@ -352,10 +456,13 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     color: '#000',
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
     marginStart: 5,
     width: 50,
   },
-  textRangeNum: {color: '#000', fontWeight: 'bold'},
+  textRangeNum: {color: '#000', fontFamily: 'Montserrat-Bold', fontSize: 13},
   middleColumn: {margin: 5, alignItems: 'center'},
+  // textMedium: {fontFamily: 'Montserrat-Medium'},
+  textMedium: {fontFamily: 'Montserrat-Light', fontSize: 13},
 });

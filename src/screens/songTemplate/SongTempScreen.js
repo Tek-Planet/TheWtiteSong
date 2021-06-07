@@ -42,10 +42,12 @@ const SongTempScreen = ({navigation}) => {
         </View>
         {/* The Run Time Display */}
         <View style={styles.runTime}>
-          <Text style={{color: '#AE1F1F', fontWeight: 'bold'}}>Run Time:</Text>
+          <Text style={{color: '#AE1F1F', fontFamily: 'Montserrat-Bold'}}>
+            Run Time:
+          </Text>
           <View style={styles.runTimeMeter}>
-            <Text>03:00</Text>
-            <Text>MM|SS</Text>
+            <Text style={{fontFamily: 'Montserrat-Medium'}}>03:00</Text>
+            <Text style={{fontFamily: 'Montserrat-Medium'}}>MM|SS</Text>
           </View>
         </View>
         {/* The player Control Buttons */}
@@ -76,12 +78,26 @@ const SongTempScreen = ({navigation}) => {
                 style={{width: 30, height: 30}}
                 source={require('../../assets/imgs/song_template/upload.png')}
               />
-              <Text style={{marginRight: 10, marginLeft: 5}}>
+              <Text
+                style={{
+                  marginRight: 10,
+                  marginLeft: 5,
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: 13,
+                }}>
                 Upload More Beats
               </Text>
             </View>
             <View style={styles.importContainer}>
-              <Text style={{marginRight: 10, marginLeft: 10}}>Import:</Text>
+              <Text
+                style={{
+                  marginRight: 10,
+                  marginLeft: 10,
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: 13,
+                }}>
+                Import:
+              </Text>
               <Image
                 style={{width: 30, height: 30, marginLeft: 5}}
                 source={require('../../assets/imgs/song_template/itune.png')}
@@ -117,7 +133,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#000',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
   },
   player: {
     flexDirection: 'row',

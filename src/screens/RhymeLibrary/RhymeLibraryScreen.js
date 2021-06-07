@@ -60,13 +60,24 @@ const RhymeLibraryScreen = ({navigation}) => {
                     alignItems: 'flex-start',
                     flex: 1,
                   }}>
-                  <Text style={[styles.addMarginBottom, {color: '#000'}]}>
+                  <Text
+                    style={[
+                      styles.addMarginBottom,
+                      {color: '#000', fontFamily: 'Montserrat-Medium'},
+                    ]}>
                     Loren ipsum
                   </Text>
-                  <Text style={[styles.addMarginBottom, {color: '#000'}]}>
+                  <Text
+                    style={[
+                      styles.addMarginBottom,
+                      {color: '#000', fontFamily: 'Montserrat-Medium'},
+                    ]}>
                     03/15/2020
                   </Text>
-                  <Text style={{color: '#000'}}>03</Text>
+                  <Text
+                    style={{color: '#000', fontFamily: 'Montserrat-Medium'}}>
+                    03
+                  </Text>
                 </View>
               </View>
 
@@ -78,7 +89,7 @@ const RhymeLibraryScreen = ({navigation}) => {
                 <Text style={[styles.textStyle, {textAlign: 'left'}]}>
                   Details:
                 </Text>
-                <Text>
+                <Text style={{fontFamily: 'Montserrat-Medium'}}>
                   Lorem ipsum dolor sit amet, amet congue forensibus at cum,
                   ipsum maiestatis necessitatibus ei vel, suas
                 </Text>
@@ -110,6 +121,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             height: 40,
             textAlign: 'center',
             color: '#AC1C1C',
+            fontFamily: 'Montserrat-Light',
           }}
         />
         <TouchableOpacity>
@@ -172,7 +184,9 @@ const RhymeLibraryScreen = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{fontSize: 16}}>Next</Text>
+          <Text style={{fontSize: 16, fontFamily: 'Montserrat-Bold'}}>
+            Next
+          </Text>
           <Ionicons name="chevron-forward" size={30} color={'#000'} />
         </TouchableOpacity>
 
@@ -183,7 +197,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             padding: 5,
             borderRightWidth: 1,
             borderRightColor: '#AC1C1C',
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat-Bold',
           }}>
           1
         </Text>
@@ -194,7 +208,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             padding: 5,
             borderRightWidth: 1,
             borderRightColor: '#AC1C1C',
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat-Bold',
           }}>
           2
         </Text>
@@ -205,7 +219,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             padding: 5,
             borderRightWidth: 1,
             borderRightColor: '#AC1C1C',
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat-Bold',
           }}>
           3
         </Text>
@@ -216,7 +230,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             padding: 5,
             borderRightWidth: 1,
             borderRightColor: '#AC1C1C',
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat-Bold',
           }}>
           4
         </Text>
@@ -225,7 +239,7 @@ const RhymeLibraryScreen = ({navigation}) => {
             color: '#AC1C1C',
             fontSize: 16,
             padding: 5,
-            fontWeight: 'bold',
+            fontFamily: 'Montserrat-Bold',
           }}>
           5
         </Text>
@@ -271,7 +285,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: '#000',
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     textAlign: 'center',
   },
   modalText: {

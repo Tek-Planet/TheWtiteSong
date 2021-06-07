@@ -116,7 +116,12 @@ function ManageTemplate({navigation}) {
 
         <View style={{margin: 20, marginStart: 10, marginTop: 5}}>
           <Text
-            style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+            style={{
+              fontFamily: 'Montserrat-Bold',
+              fontSize: 13,
+              color: '#A30000',
+              marginBottom: 10,
+            }}>
             {' '}
             Select{' '}
           </Text>
@@ -153,7 +158,8 @@ function ManageTemplate({navigation}) {
               color={'#AC1C1C'}
               style={{padding: 5}}
             />
-            <Text style={{fontWeight: 'bold', margin: 5}}>
+            <Text
+              style={{fontFamily: 'Montserrat-Bold', fontSize: 13, margin: 5}}>
               Select / Select All |{' '}
             </Text>
 
@@ -164,7 +170,10 @@ function ManageTemplate({navigation}) {
               style={{padding: 5}}
             />
 
-            <Text style={{fontWeight: 'bold', margin: 5}}>Delete</Text>
+            <Text
+              style={{fontFamily: 'Montserrat-Bold', fontSize: 13, margin: 5}}>
+              Delete
+            </Text>
           </View>
         </View>
         {/* list item */}

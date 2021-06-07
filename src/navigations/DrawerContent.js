@@ -75,7 +75,8 @@ export function DrawerContent({props, navigation}) {
                     color: '#fff',
                     marginTop: -10,
                     marginStart: -10,
-                    fontSize: 18,
+                    fontSize: 14,
+                    fontFamily: 'Montserrat-Medium',
                   }}>
                   Song Writtng Pallete
                 </Text>
@@ -204,7 +205,7 @@ export function DrawerContent({props, navigation}) {
                     <Icon name="more" color={color} size={size} />
                   )}
                   label={() => (
-                    <Text style={styles.menuTitle}>Phyming Tool</Text>
+                    <Text style={styles.menuTitle}>Rhyming Tool</Text>
                   )}
                   onPres
                   onPress={() => {
@@ -281,9 +282,9 @@ const styles = StyleSheet.create({
     borderColor: '#AC1C1C',
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     marginTop: 3,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     color: '#000',
   },
   caption: {
@@ -318,7 +319,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   menuTitle: {
-    fontSize: 18,
+    fontSize: 13,
+    fontFamily: 'Montserrat-Medium',
     color: '#000',
     marginTop: -10,
     marginStart: -10,
@@ -329,5 +331,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     width: 2,
     margin: 10,
+  },
+  baseMenuText: {
+    fontFamily: 'Montserrat-Light',
+    fontSize: 12,
   },
 });
