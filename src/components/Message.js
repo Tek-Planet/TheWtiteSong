@@ -28,6 +28,7 @@ export default function Message({navigation, header, showMsg, showBackBtn}) {
               fontSize: 14,
               textAlign: 'center',
               paddingTop: 10,
+              fontFamily: 'Montserrat-Light',
               paddingBottom: 10,
             }}>
             {showMsg}
@@ -46,8 +47,8 @@ const styles = StyleSheet.create({
   },
   headingText: {
     color: '#000',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily: 'Montserrat-Bold',
     textAlign: 'center',
   },
   subhHeadingBg: {

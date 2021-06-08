@@ -33,7 +33,7 @@ const MyTopicScreen = ({navigation}) => {
               paddingTop: 5,
               paddingBottom: 5,
             }}>
-            <Text style={{color: '#AC1C1C', fontWeight: 'bold'}}>
+            <Text style={[styles.textBold, {color: '#AC1C1C'}]}>
               Most Recent
             </Text>
           </TouchableOpacity>
@@ -47,7 +47,7 @@ const MyTopicScreen = ({navigation}) => {
               paddingTop: 5,
               paddingBottom: 5,
             }}>
-            <Text>Last Week</Text>
+            <Text style={styles.textMedium}>Last Week</Text>
           </TouchableOpacity>
           <View
             style={{
@@ -59,7 +59,7 @@ const MyTopicScreen = ({navigation}) => {
               paddingTop: 5,
               paddingBottom: 5,
             }}>
-            <Text>Last Month</Text>
+            <Text style={styles.textMedium}>Last Month</Text>
           </TouchableOpacity>
           <View
             style={{
@@ -71,7 +71,7 @@ const MyTopicScreen = ({navigation}) => {
               paddingTop: 5,
               paddingBottom: 5,
             }}>
-            <Text>Last Year</Text>
+            <Text style={styles.textMedium}>Last Year</Text>
           </TouchableOpacity>
         </View>
         <View
@@ -91,3 +91,14 @@ const MyTopicScreen = ({navigation}) => {
 };
 
 export default MyTopicScreen;
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
+  },
+  textMedium: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+  },
+});

@@ -51,7 +51,12 @@ const ProfileScreen = () => {
               />
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 10}}>
+          <Text
+            style={{
+              fontSize: 16,
+              marginTop: 10,
+              fontFamily: 'Montserrat-Bold',
+            }}>
             Add Profile Picture
           </Text>
         </View>
@@ -79,7 +84,7 @@ const ProfileScreen = () => {
                 status={gender === 'male' ? 'checked' : 'unchecked'}
                 onPress={() => setGender('male')}
               />
-              <Text style={{fontSize: 16}}>Male</Text>
+              <Text style={[styles.textLight, {fontSize: 16}]}>Male</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -94,7 +99,7 @@ const ProfileScreen = () => {
                 status={gender === 'female' ? 'checked' : 'unchecked'}
                 onPress={() => setGender('female')}
               />
-              <Text style={{fontSize: 16}}>Female</Text>
+              <Text style={[styles.textLight, {fontSize: 16}]}>Female</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -308,8 +313,8 @@ const ProfileScreen = () => {
               textAlign: 'center',
               color: '#fff',
               padding: 10,
-              fontSize: 20,
-              fontWeight: 'bold',
+              fontSize: 16,
+              fontFamily: 'Montserrat-Bold',
             }}>
             Save
           </Text>
@@ -337,7 +342,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#AC1C1C',
     marginTop: 10,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
   },
   profilePicContainer: {
     justifyContent: 'center',
@@ -350,10 +358,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderLeftWidth: 0,
     borderRightWidth: 0,
+    fontFamily: 'Montserrat-Medium',
     borderBottomColor: '#AC1C1C',
     color: '#000',
   },
-  pickerItem: {backgroundColor: '#fff', color: '#000'},
+  pickerItem: {
+    backgroundColor: '#fff',
+    color: '#000',
+  },
 });
 
 export default ProfileScreen;

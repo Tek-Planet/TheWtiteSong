@@ -77,7 +77,7 @@ function AddSong({navigation, route}) {
           {/* row one  */}
           <View style={{marginStart: 20}}>
             <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+              style={[styles.textBold, {color: '#A30000', marginBottom: 10}]}>
               {' '}
               Song Title{' '}
             </Text>
@@ -95,7 +95,7 @@ function AddSong({navigation, route}) {
           {/* section row  */}
 
           <View style={{marginStart: 20}}>
-            <Text style={{fontWeight: 'bold', color: '#A30000'}}>
+            <Text style={[styles.textBold, {color: '#A30000'}]}>
               Choose Genre
             </Text>
 
@@ -135,7 +135,7 @@ function AddSong({navigation, route}) {
           {/* row one  */}
           <View style={{marginStart: 20}}>
             <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+              style={[styles.textBold, {color: '#A30000', marginBottom: 10}]}>
               Add Contributor(s)
             </Text>
             <View></View>
@@ -163,7 +163,7 @@ function AddSong({navigation, route}) {
 
           <View style={{marginStart: 20}}>
             <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+              style={[styles.textBold, {color: '#A30000', marginBottom: 10}]}>
               {' '}
               Invite{' '}
             </Text>
@@ -251,6 +251,7 @@ const styles = StyleSheet.create({
 
   menuImg: {width: 30, height: 30, margin: 10},
 
-  menuText: {color: '#AC1C1C', fontSize: 14},
+  menuText: {color: '#AC1C1C', fontSize: 14, fontFamily: 'Montserrat-Medium'},
   pickerItem: {backgroundColor: '#fff', color: '#000'},
+  textBold: {fontFamily: 'Montserrat-Bold', fontSize: 13},
 });

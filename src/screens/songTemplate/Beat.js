@@ -10,7 +10,14 @@ const Beat = ({title, info}) => {
           <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.infoContainer}>
-          <Text>{info}</Text>
+          <Text
+            style={{
+              fontFamily: 'Montserrat-Medium',
+              fontSize: 13,
+              textAlign: 'center',
+            }}>
+            {info}
+          </Text>
         </View>
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.iconBg}>
@@ -56,8 +63,9 @@ const styles = StyleSheet.create({
     height: 40,
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     color: '#AE1F1F',
+    fontSize: 13,
   },
   iconBg: {
     elevation: 5,

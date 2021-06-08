@@ -186,15 +186,14 @@ const CreateGroupScreen = ({navigation}) => {
             backgroundColor: '#AC1C1C',
             marginTop: 40,
             borderRadius: 50,
-            padding: 10,
           }}>
           <Text
             style={{
               textAlign: 'center',
               color: '#fff',
               padding: 10,
-              fontSize: 20,
-              fontWeight: 'bold',
+              fontSize: 16,
+              fontFamily: 'Montserrat-Bold',
             }}>
             Save
           </Text>
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#AC1C1C',
     marginTop: 10,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
   },
   inputBox: {
     borderTopWidth: 0,
@@ -223,6 +222,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderBottomColor: '#AC1C1C',
     color: '#000',
+    fontFamily: 'Montserrat-Medium',
   },
   pickerItem: {backgroundColor: '#fff', color: '#000'},
   sharingContainer: {

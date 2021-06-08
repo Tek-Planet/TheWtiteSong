@@ -9,14 +9,15 @@ const Ticket = ({navigation, isOpen}) => {
         onPress={() => navigation.navigate('AddTroubleTicket')}
         style={isOpen === 'Open' ? styles.open : styles.closed}>
         <Text
-          style={{
-            textAlign: 'center',
-            marginTop: 10,
-            marginBottom: 10,
-            fontWeight: 'bold',
-            fontSize: 16,
-            color: '#fff',
-          }}>
+          style={[
+            styles.textBold,
+            {
+              textAlign: 'center',
+              marginTop: 10,
+              marginBottom: 10,
+              color: '#fff',
+            },
+          ]}>
           {isOpen}
         </Text>
       </TouchableOpacity>
@@ -30,43 +31,51 @@ const Ticket = ({navigation, isOpen}) => {
           paddingBottom: 10,
         }}>
         <Text
-          style={{
-            fontSize: 16,
-            color: '#000',
-          }}>
+          style={[
+            styles.textMedium,
+            {
+              color: '#000',
+            },
+          ]}>
           Can't Load My songs
         </Text>
         <View style={{alignItems: 'flex-end'}}>
           <Text
-            style={{
-              fontSize: 16,
-              color: '#AC1C1C',
-              fontWeight: 'bold',
-            }}>
+            style={[
+              styles.textBold,
+              {
+                color: '#AC1C1C',
+              },
+            ]}>
             Date:
           </Text>
           <Text
-            style={{
-              fontSize: 16,
-              color: '#AC1C1C',
-              fontWeight: 'bold',
-            }}>
+            style={[
+              styles.textBold,
+              {
+                color: '#AC1C1C',
+              },
+            ]}>
             Assigned To:
           </Text>
         </View>
         <View>
           <Text
-            style={{
-              fontSize: 16,
-              color: '#000',
-            }}>
+            style={[
+              styles.textMedium,
+              {
+                color: '#000',
+              },
+            ]}>
             02/02/2020
           </Text>
           <Text
-            style={{
-              fontSize: 16,
-              color: '#000',
-            }}>
+            style={[
+              styles.textMedium,
+              {
+                color: '#000',
+              },
+            ]}>
             Admin
           </Text>
         </View>
@@ -82,14 +91,25 @@ const styles = StyleSheet.create({
   open: {
     backgroundColor: 'green',
     width: 90,
-    height: 50,
+    padding: 5,
     borderRadius: 10,
   },
   closed: {
     backgroundColor: '#f00',
     width: 90,
-    height: 50,
+    padding: 5,
     borderRadius: 10,
+  },
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
+  },
+  textMedium: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
   },
 });
 

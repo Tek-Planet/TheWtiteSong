@@ -15,12 +15,14 @@ const SupportScreen = ({navigation}) => {
       <Message header="Home > Support > Trouble Ticket View" />
       <View>
         <Text
-          style={{
-            textAlign: 'center',
-            marginTop: 10,
-            fontWeight: 'bold',
-            fontSize: 18,
-          }}>
+          style={[
+            styles.textBold,
+            {
+              textAlign: 'center',
+              marginTop: 10,
+              fontSize: 16,
+            },
+          ]}>
           All Tickets
         </Text>
         <Ticket navigation={navigation} isOpen="Open" />
@@ -37,80 +39,94 @@ const SupportScreen = ({navigation}) => {
           }}>
           <View>
             <Text
-              style={{
-                fontSize: 16,
-                color: '#fff',
-                fontWeight: 'bold',
-                marginBottom: 20,
-              }}>
+              style={[
+                styles.textBold,
+                {
+                  color: '#fff',
+                  marginBottom: 20,
+                },
+              ]}>
               Subject:
             </Text>
             <Text
-              style={{
-                fontSize: 16,
-                color: '#fff',
-                fontWeight: 'bold',
-              }}>
+              style={[
+                styles.textBold,
+                {
+                  color: '#fff',
+                },
+              ]}>
               From:
             </Text>
           </View>
           <View>
             <Text
-              style={{
-                fontSize: 16,
-                color: 'yellow',
-                marginBottom: 20,
-              }}>
+              style={[
+                styles.textMedium,
+                {
+                  color: 'yellow',
+                  marginBottom: 20,
+                },
+              ]}>
               Storage Space Low
             </Text>
             <Text
-              style={{
-                fontSize: 16,
-                color: 'yellow',
-              }}>
+              style={[
+                styles.textMedium,
+                {
+                  color: 'yellow',
+                },
+              ]}>
               System Administrator
             </Text>
           </View>
           <View>
             <Text
-              style={{
-                fontSize: 16,
-                color: '#fff',
-                fontWeight: 'bold',
-                marginBottom: 20,
-              }}>
+              style={[
+                styles.textBold,
+                {
+                  color: '#fff',
+                  marginBottom: 20,
+                },
+              ]}>
               Date:
             </Text>
             <Text
-              style={{
-                fontSize: 16,
-                color: '#fff',
-                fontWeight: 'bold',
-              }}>
+              style={[
+                styles.textBold,
+                {
+                  color: '#fff',
+                },
+              ]}>
               Time:
             </Text>
           </View>
           <View>
             <Text
-              style={{
-                fontSize: 16,
-                color: 'yellow',
-                marginBottom: 20,
-              }}>
+              style={[
+                styles.textMedium,
+                {
+                  color: 'yellow',
+                  marginBottom: 20,
+                },
+              ]}>
               15/01/2020
             </Text>
             <Text
-              style={{
-                fontSize: 16,
-                color: 'yellow',
-              }}>
+              style={[
+                styles.textMedium,
+                {
+                  color: 'yellow',
+                },
+              ]}>
               11:59 PM, EST
             </Text>
           </View>
         </View>
         <View style={{padding: 15}}>
-          <Text style={{marginBottom: 10, fontSize: 16}}>Message:</Text>
-          <Text style={{fontSize: 16}}>
+          <Text style={[styles.textMedium, {marginBottom: 10, fontSize: 16}]}>
+            Message:
+          </Text>
+          <Text style={[styles.textLight, {fontSize: 13}]}>
             Dear Subscriber, Your online storage limit has only 32MB Free.
             Kindly remove some songs repository or purchase additional storage
             space
@@ -122,3 +138,17 @@ const SupportScreen = ({navigation}) => {
 };
 
 export default SupportScreen;
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
+  },
+  textMedium: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
+  },
+});
