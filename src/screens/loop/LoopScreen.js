@@ -38,9 +38,9 @@ function LoopScreen({navigation}) {
                 placeholderTextColor="#000"
                 color="#000"
                 autoCapitalize="none"
-                fontSize={15}
+                fontSize={14}
                 fontWeight="normal"
-                style={{flex: 1, padding: 1}}
+                style={{flex: 1, padding: 1, fontFamily: 'Montserrat-Light'}}
               />
             </View>
             <TouchableOpacity
@@ -80,7 +80,14 @@ function LoopScreen({navigation}) {
                 color={'#F8AE33'}
                 style={{padding: 5}}
               />
-              <Text style={{margin: 5, fontSize: 16}}>Favourites Loops</Text>
+              <Text
+                style={{
+                  margin: 5,
+                  fontSize: 14,
+                  fontFamily: 'Montserrat-Medium',
+                }}>
+                Favourites Loops
+              </Text>
             </View>
 
             <TouchableOpacity
@@ -134,7 +141,13 @@ function LoopScreen({navigation}) {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={{textAlign: 'center', color: '#F8AE33', fontSize: 18}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#F8AE33',
+                fontSize: 16,
+                fontFamily: 'Montserrat-Medium',
+              }}>
               Insert Loop into insert song
             </Text>
           </View>
@@ -148,7 +161,8 @@ function LoopScreen({navigation}) {
               borderRadius: 5,
             }}>
             {/* top row */}
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Guitar</Text>
                 <Switch
@@ -172,7 +186,8 @@ function LoopScreen({navigation}) {
               </View>
             </View>
             {/* bottom row */}
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Bass</Text>
                 <Switch
@@ -205,7 +220,14 @@ function LoopScreen({navigation}) {
                 marginTop: 10,
                 alignItems: 'center',
               }}>
-              <Text style={{fontSize: 12, color: '#000'}}>Mono Record</Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: '#000',
+                  fontFamily: 'Montserrat-Light',
+                }}>
+                Mono Record
+              </Text>
               <TouchableOpacity
                 style={{
                   backgroundColor: '#00A651',
@@ -224,7 +246,7 @@ function LoopScreen({navigation}) {
                 borderRadius: 10,
                 marginStart: 10,
                 marginEnd: 10,
-
+                padding: 5,
                 width: 80,
                 paddingStart: 15,
                 paddingEnd: 15,
@@ -234,9 +256,8 @@ function LoopScreen({navigation}) {
                 style={{
                   textAlign: 'center',
                   color: '#000',
-
-                  fontSize: 13,
-                  fontWeight: 'bold',
+                  fontSize: 12,
+                  fontFamily: 'Montserrat-Medium',
                 }}>
                 05:00 MM | SS
               </Text>
@@ -250,7 +271,14 @@ function LoopScreen({navigation}) {
                 marginTop: 10,
                 alignItems: 'center',
               }}>
-              <Text style={{fontSize: 12, color: '#000'}}>Stereo Record</Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: 'Montserrat-Light',
+                  color: '#000',
+                }}>
+                Stereo Record
+              </Text>
               <TouchableOpacity
                 style={{
                   backgroundColor: '#FF0024',
@@ -375,8 +403,8 @@ function LoopScreen({navigation}) {
               </View>
             </View>
           </View>
-          <View style={styles.saveBtnText}>
-            <Text style={styles.saveBtnBg}>Save</Text>
+          <View style={styles.saveBtnBg}>
+            <Text style={styles.saveBtnText}>Save</Text>
           </View>
         </View>
       </ScrollView>
@@ -409,7 +437,8 @@ const styles = StyleSheet.create({
     width: 100,
     color: '#000',
     margin: 4,
-    fontSize: 15,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
   },
   joyButtonBg: {
     backgroundColor: '#F8AE33',
@@ -418,16 +447,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 1,
+    paddingLeft: 5,
     borderRadius: 10,
     marginEnd: 10,
   },
-  joyButtonText: {color: '#fff', fontSize: 18},
-  swichItem: {flexDirection: 'row', justifyContent: 'space-evenly', width: 105},
+  joyButtonText: {color: '#fff', fontSize: 14, fontFamily: 'Montserrat-Medium'},
+  swichItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 110,
+  },
   swichItemText: {
     color: '#000000',
-    fontSize: 18,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
   },
-  playerText: {textAlign: 'center', color: '#000', fontWeight: 'bold'},
+  playerText: {
+    textAlign: 'center',
+    color: '#000',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
+  },
 
   iconBg: {
     margin: 5,
@@ -441,17 +481,18 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignContent: 'center',
   },
-  saveBtnText: {
+  saveBtnBg: {
     backgroundColor: '#AC1C1C',
     margin: 10,
     borderRadius: 50,
   },
 
-  saveBtnBg: {
+  saveBtnText: {
     textAlign: 'center',
     color: '#fff',
     margin: 5,
     padding: 5,
-    fontSize: 20,
+    fontSize: 16,
+    fontFamily: 'Montserrat-Bold',
   },
 });

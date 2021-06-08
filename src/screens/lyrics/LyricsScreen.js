@@ -93,9 +93,9 @@ export default function LyricsScreen({navigation}) {
               placeholderTextColor="#000"
               color="#000"
               autoCapitalize="none"
-              fontSize={15}
+              fontSize={14}
               fontWeight="normal"
-              style={{flex: 1, padding: 1}}
+              style={{flex: 1, padding: 5, fontFamily: 'Montserrat-Light'}}
             />
           </View>
           <TouchableOpacity
@@ -161,8 +161,9 @@ export default function LyricsScreen({navigation}) {
             style={{
               textAlign: 'center',
               color: '#fff',
-              padding: 5,
-              fontSize: 20,
+              padding: 10,
+              fontSize: 16,
+              fontFamily: 'Montserrat-Bold',
             }}>
             Save
           </Text>

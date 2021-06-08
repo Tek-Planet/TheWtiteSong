@@ -26,16 +26,14 @@ const CommunityScreen = ({navigation}) => {
           alignItems: 'center',
         }}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={{fontWeight: 'bold', fontSize: 16}}>User Online</Text>
+          <Text style={styles.textBold}>User Online</Text>
           <Image
             style={{width: 30, height: 30, marginLeft: 10}}
             source={require('../../assets/imgs/icons/online-icon.png')}
           />
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={{fontWeight: 'bold', fontSize: 16, marginRight: 5}}>
-            My Status:
-          </Text>
+          <Text style={[styles.textBold, {marginRight: 5}]}>My Status:</Text>
           <DropDownPicker
             items={[
               {label: 'Away', value: 'away'},
@@ -63,15 +61,18 @@ const CommunityScreen = ({navigation}) => {
         <TextInput
           placeholder="Search Topics"
           placeholderTextColor="#AC1C1C"
-          style={{
-            borderWidth: 1,
-            flex: 0.9,
-            borderColor: '#AC1C1C',
-            borderRadius: 30,
-            height: 40,
-            textAlign: 'center',
-            color: '#AC1C1C',
-          }}
+          style={[
+            styles.textMedium,
+            {
+              borderWidth: 1,
+              flex: 0.9,
+              borderColor: '#AC1C1C',
+              borderRadius: 30,
+              height: 40,
+              textAlign: 'center',
+              color: '#AC1C1C',
+            },
+          ]}
         />
         <TouchableOpacity>
           <Ionicons name="search-circle-outline" size={40} color="#AC1C1C" />
@@ -79,17 +80,20 @@ const CommunityScreen = ({navigation}) => {
       </View>
       <View style={styles.container}>
         <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-          <Text style={{fontSize: 16}}>Select Date</Text>
+          <Text style={styles.textMedium}>Select Date</Text>
           <View style={{marginLeft: 10, flexDirection: 'row'}}>
             <TextInput
-              style={{
-                borderWidth: 1,
-                width: 150,
-                borderColor: '#000',
-                padding: 0,
-                paddingLeft: 5,
-                color: '#000',
-              }}
+              style={[
+                styles.textMedium,
+                {
+                  borderWidth: 1,
+                  width: 150,
+                  borderColor: '#000',
+                  padding: 0,
+                  paddingLeft: 5,
+                  color: '#000',
+                },
+              ]}
             />
             <TouchableOpacity style={{backgroundColor: '#eceff4'}}>
               <Ionicons name="calendar-outline" size={30} />
@@ -117,7 +121,7 @@ const CommunityScreen = ({navigation}) => {
                 source={require('../../assets/imgs/icons/new-topic-icon.png')}
               />
             </View>
-            <Text>New Topic</Text>
+            <Text style={styles.textMedium}>New Topic</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{alignItems: 'center', flex: 0.25}}
@@ -134,7 +138,7 @@ const CommunityScreen = ({navigation}) => {
                 source={require('../../assets/imgs/icons/my-topic-icon.png')}
               />
             </View>
-            <Text>My Topic</Text>
+            <Text style={styles.textMedium}>My Topic</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('MyGroups')}
@@ -151,7 +155,7 @@ const CommunityScreen = ({navigation}) => {
                 source={require('../../assets/imgs/icons/my-groups-icon.png')}
               />
             </View>
-            <Text>My Groups</Text>
+            <Text style={styles.textMedium}>My Groups</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{alignItems: 'center', flex: 0.25}}>
             <View
@@ -166,18 +170,20 @@ const CommunityScreen = ({navigation}) => {
                 source={require('../../assets/imgs/icons/popular-topic-icon.png')}
               />
             </View>
-            <Text>Popular Topic(s)</Text>
+            <Text style={styles.textMedium}>Popular Topic(s)</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.container}>
         <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 16,
-            color: '#AC1C1C',
-            marginBottom: 20,
-          }}>
+          style={[
+            styles.textBold,
+            {
+              fontSize: 16,
+              color: '#AC1C1C',
+              marginBottom: 20,
+            },
+          ]}>
           Latest Feeds
         </Text>
         <Feed />
@@ -195,6 +201,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 5,
     padding: 10,
+  },
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 14,
+  },
+  textLight: {
+    fontFamily: 'Montserrat-Light',
+    fontSize: 14,
+  },
+  textMedium: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
   },
 });
 

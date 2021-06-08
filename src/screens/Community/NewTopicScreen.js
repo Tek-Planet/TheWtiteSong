@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import {TextInput as PInput} from 'react-native-paper';
 import Message from '../../components/Message';
 import {Picker} from '@react-native-picker/picker';
 
@@ -34,7 +41,7 @@ const NewTopicScreen = ({navigation}) => {
         </View>
 
         <View>
-          <TextInput
+          <PInput
             placeholder="Enter Description"
             multiline
             label="Description"
@@ -71,7 +78,7 @@ const NewTopicScreen = ({navigation}) => {
           </View>
         </View>
         {/* save button */}
-        <View
+        <TouchableOpacity
           style={{
             backgroundColor: '#AC1C1C',
             marginTop: 40,
@@ -82,12 +89,12 @@ const NewTopicScreen = ({navigation}) => {
               textAlign: 'center',
               color: '#fff',
               padding: 10,
-              fontSize: 20,
-              fontWeight: 'bold',
+              fontSize: 16,
+              fontFamily: 'Montserrat-Bold',
             }}>
             Save
           </Text>
-        </View>
+        </TouchableOpacity>
         {/* End of save botton */}
       </View>
     </ScrollView>
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     color: '#AC1C1C',
     marginTop: 10,
     marginBottom: 10,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
   },
   input: {
     borderWidth: 0,
@@ -108,6 +115,7 @@ const styles = StyleSheet.create({
     borderColor: '#AC1C1C',
     color: '#AC1C1C',
     marginBottom: 10,
+    fontFamily: 'Montserrat-Medium',
   },
   pickerItem: {backgroundColor: '#fff', color: '#000'},
 });

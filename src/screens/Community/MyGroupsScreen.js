@@ -39,12 +39,14 @@ const MyGroupsScreen = ({navigation}) => {
             onPress={() => navigation.navigate('CreateGroup')}>
             <Ionicons name="add-circle-outline" size={30} color={'#000'} />
             <Text
-              style={{
-                marginLeft: 10,
-                color: '#AC1C1C',
-                fontSize: 16,
-                fontWeight: 'bold',
-              }}>
+              style={[
+                styles.textBold,
+                {
+                  marginLeft: 10,
+                  color: '#AC1C1C',
+                  fontSize: 16,
+                },
+              ]}>
               Add New
             </Text>
           </TouchableOpacity>
@@ -67,3 +69,10 @@ const MyGroupsScreen = ({navigation}) => {
 };
 
 export default MyGroupsScreen;
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
+  },
+});

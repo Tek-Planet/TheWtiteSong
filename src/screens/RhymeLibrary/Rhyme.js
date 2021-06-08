@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#000',
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
   },
   iconBg: {
     elevation: 5,

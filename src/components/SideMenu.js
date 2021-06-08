@@ -27,7 +27,7 @@ const SideMenu = ({navigation}) => {
         <View style={{backgroundColor: '#301CAC', margin: 5}}>
           <Ionicons name="musical-notes-outline" size={18} color={'#fff'} />
         </View>
-        <Text style={styles.editMenuText}>Harmonizwe Tools</Text>
+        <Text style={styles.editMenuText}>Harmonize Tools</Text>
       </View>
       <View style={styles.editMenuItem}>
         <View style={{backgroundColor: '#301CAC', margin: 5}}>
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 5,
     height: 30,
-    width: 130,
+    width: 140,
   },
   editMenuText: {
     width: 100,
     color: '#000',
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     margin: 4,
-    fontSize: 15,
+    fontSize: 9,
   },
 });

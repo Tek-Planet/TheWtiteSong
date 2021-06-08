@@ -95,17 +95,20 @@ const SongRhymingToolScreen = ({navigation}) => {
       {/* End of SongLibrary and Verse Chorus Select Container */}
 
       <View style={{flexDirection: 'row', alignItems: 'center', padding: 10}}>
-        <Text>Enable Bible Tools for Christian / Gospel Music Genre:</Text>
+        <Text style={{fontFamily: 'Montserrat-Light', fontSize: 13}}>
+          Enable Bible Tools for Christian / Gospel Music Genre:
+        </Text>
         <Switch value={true} trackColor={{false: 'grey', true: 'green'}} />
       </View>
 
       <View style={{padding: 10, alignItems: 'center'}}>
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 13,
             textAlign: 'center',
             color: '#AC1C1C',
             marginBottom: 15,
+            fontFamily: 'Montserrat-Medium',
           }}>
           Enter <Text style={{fontWeight: 'bold'}}>Word or Phrases</Text> to
           include in a Song Verse or Chorus to Start Generating Content
@@ -122,6 +125,7 @@ const SongRhymingToolScreen = ({navigation}) => {
             textAlign: 'center',
             color: '#AC1C1C',
             marginBottom: 15,
+            fontFamily: 'Montserrat-Light',
           }}
         />
         <TouchableOpacity
@@ -133,8 +137,8 @@ const SongRhymingToolScreen = ({navigation}) => {
           }}>
           <Text
             style={{
-              fontSize: 16,
-              fontWeight: 'bold',
+              fontSize: 14,
+              fontFamily: 'Montserrat-Bold',
               color: '#AC1C1C',
               textAlign: 'center',
             }}>
@@ -166,7 +170,9 @@ const SongRhymingToolScreen = ({navigation}) => {
             source={require('../../assets/imgs/icons/view.png')}
             style={{width: 20, height: 20, marginRight: 15}}
           />
-          <Text style={{fontSize: 16}}>View / Edit Rhyme Dictionary</Text>
+          <Text style={{fontSize: 13, fontFamily: 'Montserrat-Medium'}}>
+            View / Edit Rhyme Dictionary
+          </Text>
         </TouchableOpacity>
       </View>
       {/* save botton */}
@@ -181,8 +187,8 @@ const SongRhymingToolScreen = ({navigation}) => {
             textAlign: 'center',
             color: '#fff',
             padding: 10,
-            fontSize: 20,
-            fontWeight: 'bold',
+            fontSize: 16,
+            fontFamily: 'Montserrat-Bold',
           }}>
           Save
         </Text>
@@ -195,7 +201,8 @@ const SongRhymingToolScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   textHeading: {
     color: '#AC1C1C',
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 13,
     marginBottom: 20,
   },
   dropdown: {
