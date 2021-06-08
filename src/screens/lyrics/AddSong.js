@@ -6,26 +6,31 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  SafeAreaView,
 } from 'react-native';
 import Message from '../../components/Message';
 import SaveButton from '../../components/SaveButton';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../../context/AuthProvider';
 
+import CustomAlert from '../../components/ErrorAlert';
 function AddSong({navigation, route}) {
   const {setMySongs} = useContext(AuthContext);
-
+  const [status, setStatus] = useState(false);
   const [genre, setGenre] = useState('gospel');
-  const [name, setName] = useState('shef');
+  const [name, setName] = useState('select');
   const [title, setTitle] = useState('');
+
+  const showAlert = value => {
+    setStatus(value);
+  };
 
   const addSong = async (songName, songGenre, songContributor) => {
     if (songName.trim().length < 1) {
-      alert('song name cannot be empty');
+      showAlert(true);
+      console.log('errrrror');
     } else {
       const newSong = {
         title: songName,
@@ -49,13 +54,15 @@ function AddSong({navigation, route}) {
 
           console.log('resong list updated', songs);
           setMySongs(songs);
+          alertSuccess();
         } else {
           const songs = [];
           songs.push(newSong);
           AsyncStorage.setItem('songs', JSON.stringify(songs));
-          alert('song added');
+
           setMySongs(songs);
           console.log('new song added', songs);
+          alertSuccess();
         }
       } catch (e) {
         // error reading value
@@ -106,6 +113,7 @@ function AddSong({navigation, route}) {
                 paddingBottom: 12,
               }}>
               <Picker
+                itemStyle={styles.pickerLable}
                 selectedValue={genre}
                 style={{width: 150, height: 40}}
                 mode="dropdown"
@@ -138,27 +146,43 @@ function AddSong({navigation, route}) {
               style={[styles.textBold, {color: '#A30000', marginBottom: 10}]}>
               Add Contributor(s)
             </Text>
-            <View></View>
-            <DropDownPicker
-              items={[
-                {label: 'Shaffi', value: 'Shaffi', hidden: true},
-                {label: 'Biola', value: 'BigBee'},
-                {label: 'Abby', value: 'Abby'},
-              ]}
-              defaultValue={name}
-              containerStyle={{height: 40, width: 150}}
+            <View
               style={{
-                borderWidth: 0,
-                borderBottomWidth: 1,
-                borderBottomColor: '#A30000',
-              }}
-              itemStyle={{
-                justifyContent: 'flex-start',
-              }}
-              onChangeItem={item => setName(item.value)}
-            />
-          </View>
+                borderBottomWidth: 2,
+                borderBottomColor: '#AC1C1C',
+                paddingBottom: 12,
+              }}>
+              <Picker
+                selectedValue={name}
+                style={{width: 150, height: 40}}
+                mode="dropdown"
+                dropdownIconColor="#AC1C1C"
+                onValueChange={(itemValue, itemIndex) => setName(itemValue)}>
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="select"
+                  value="select"
+                />
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Shaffi"
+                  value="Shaffi"
+                />
 
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Biola"
+                  value="Biola"
+                />
+
+                <Picker.Item
+                  style={styles.pickerItem}
+                  label="Mark"
+                  value="Mark"
+                />
+              </Picker>
+            </View>
+          </View>
           {/* section row  */}
 
           <View style={{marginStart: 20}}>
@@ -208,14 +232,17 @@ function AddSong({navigation, route}) {
         </View>
       </View>
 
-      <View style={styles.saveBtnBg}>
-        <SaveButton
-          buttonTitle={'Save'}
-          onPress={() => {
-            //  fetchSongs();
-            addSong(title, genre, name);
-          }}
-        />
+      <View>
+        <CustomAlert status={status} showAlert={showAlert} />
+        <View style={styles.saveBtnBg}>
+          <SaveButton
+            buttonTitle={'Save'}
+            onPress={() => {
+              //  fetchSongs();
+              addSong(title, genre, name);
+            }}
+          />
+        </View>
       </View>
     </View>
   );
@@ -233,6 +260,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
+    fontFamily: 'Montserrat-Medium',
     width: 150,
     color: '#000',
     backgroundColor: '#fff',
@@ -252,6 +280,14 @@ const styles = StyleSheet.create({
   menuImg: {width: 30, height: 30, margin: 10},
 
   menuText: {color: '#AC1C1C', fontSize: 14, fontFamily: 'Montserrat-Medium'},
-  pickerItem: {backgroundColor: '#fff', color: '#000'},
+  pickerItem: {
+    backgroundColor: '#fff',
+    color: '#000',
+  },
+
+  pickerLable: {
+    fontFamily: 'Montserrat-Medium',
+  },
+
   textBold: {fontFamily: 'Montserrat-Bold', fontSize: 13},
 });

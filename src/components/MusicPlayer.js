@@ -30,7 +30,7 @@ export function MusicPlayer({navigation}) {
   };
 
   return (
-    <View style={{marginTop: 10, margin: 5, flex: 0.7}}>
+    <View style={{marginTop: 20, marginStart: 5, flex: 0.7}}>
       <MyPlayerBar />
       <View
         style={{

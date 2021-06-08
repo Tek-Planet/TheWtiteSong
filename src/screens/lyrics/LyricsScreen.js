@@ -129,7 +129,7 @@ export default function LyricsScreen({navigation}) {
 
           {/* editing menu */}
 
-          <View style={{margin: 10, marginEnd: 20, flex: 0.4}}>
+          <View style={{margin: 10, marginEnd: 30, flex: 0.4}}>
             {side && <SideMenu navigation={navigation} />}
           </View>
 

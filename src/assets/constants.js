@@ -1,3 +1,4 @@
+import {showAlert} from 'react-native-customisable-alert';
 export const versions = [
   {
     id: '0c2ff0a5c8b9069c',
@@ -22,3 +23,11 @@ export const versions = [
     title: 'Brown Skin',
   },
 ];
+
+export const showError = () => {
+  showAlert = {
+    title: 'Are you sure?',
+    message: 'This action will be irreversible!',
+    alertType: 'warning',
+  };
+};

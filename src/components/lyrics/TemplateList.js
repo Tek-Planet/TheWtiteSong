@@ -9,6 +9,8 @@ import {
   FlatList,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import dayjs from 'dayjs';
+import {Item} from 'react-native-paper/lib/typescript/components/List/List';
 
 export default function Message({navigation, template, keyWord}) {
   // to upate keyword for search
@@ -18,8 +20,10 @@ export default function Message({navigation, template, keyWord}) {
       <View
         style={[styles.row, {marginTop: 10}]}
         key={item.createdAt.toString()}>
-        <View style={styles.row}>
-          <Text style={[styles.text]}>{item.genre}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={[styles.text, {width: 60, marginEnd: 3}]}>
+            {item.genre}
+          </Text>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('LyricsNav', {
@@ -27,12 +31,31 @@ export default function Message({navigation, template, keyWord}) {
                 params: {songInfo: item},
               });
             }}>
-            <Text style={[styles.text]}>{item.title}</Text>
+            <Text
+              style={[
+                styles.text,
+                {width: 70, textAlign: 'center', marginEnd: 3},
+              ]}>
+              {item.title}
+            </Text>
           </TouchableOpacity>
-          <Text style={[styles.text]}>{item.createdAt}</Text>
-          <Text style={[styles.text]}>{item.author}</Text>
+          <Text
+            style={[
+              styles.text,
+              {width: 60, textAlign: 'center', marginEnd: 5},
+            ]}>
+            {dayjs(item.createdAt).format('DD:MM:YYYY')}
+          </Text>
+          <Text style={[styles.text, {width: 60, textAlign: 'center'}]}>
+            {item.author} oluwabi
+          </Text>
         </View>
-        <View style={[styles.row, {flex: 0.5}]}>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: -5,
+            marginStart: -2,
+          }}>
           <TouchableOpacity style={styles.iconBg}>
             <Ionicons name="play" size={15} color="#AC1C1C" />
           </TouchableOpacity>
@@ -59,11 +82,22 @@ export default function Message({navigation, template, keyWord}) {
       <ScrollView>
         {keyWord.trim().length > 0 && (
           <View style={styles.row}>
-            <Text style={[styles.headingText]}>Template</Text>
-            <Text style={[styles.headingText]}>Name</Text>
-            <Text style={[styles.headingText]}>Updated</Text>
-            <Text style={[styles.headingText]}>Author</Text>
-            <View style={{flex: 0.5}}></View>
+            <Text style={[styles.headingText, {width: 60}]}>Genre</Text>
+            <Text
+              style={[styles.headingText, {width: 70, textAlign: 'center'}]}>
+              Name
+            </Text>
+            <Text
+              style={[
+                styles.headingText,
+                {width: 60, textAlign: 'center', marginEnd: 5},
+              ]}>
+              Updated
+            </Text>
+            <Text
+              style={[styles.headingText, {width: 60, textAlign: 'center'}]}>
+              Author
+            </Text>
           </View>
         )}
         {/* lsit all template */}
@@ -94,27 +128,24 @@ export default function Message({navigation, template, keyWord}) {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    marginStart: 10,
   },
   headingText: {
     color: '#3725AE',
-    fontSize: 17,
-    fontWeight: 'bold',
+    fontSize: 12,
+    fontFamily: 'Montserrat-Medium',
   },
   text: {
     color: '#000',
-    fontSize: 15,
-    marginStart: 6,
-    textAlign: 'center',
-    width: 60,
+    fontSize: 12,
+    fontFamily: 'Montserrat-Medium',
   },
   iconBg: {
     margin: 5,
-    marginEnd: 20,
     borderRadius: 100,
     width: 20,
     height: 20,
-    padding: 1,
+
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
