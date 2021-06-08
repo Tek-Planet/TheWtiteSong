@@ -133,7 +133,7 @@ const ProfileScreen = () => {
               }}>
               <Picker
                 selectedValue={selectedAge}
-                style={{width: '100%'}} 
+                style={{width: '100%'}}
                 mode="dropdown"
                 dropdownIconColor="#AC1C1C"
                 onValueChange={(itemValue, itemIndex) =>
@@ -324,7 +324,6 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    
   },
   avatarContainer: {
     backgroundColor: '#AC1C1C',

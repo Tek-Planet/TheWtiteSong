@@ -12,9 +12,9 @@ import Message from '../components/Message';
 
 function HomeScreen({navigation}) {
   return (
-    <SafeAreaView style={{backgroundColor: '#FFFFFF', flex:1}}>
+    <SafeAreaView style={{backgroundColor: '#FFFFFF', flex: 1}}>
       <ScrollView>
-        {/* header */}   
+        {/* header */}
         {/* <Message
           navigation={navigation}
           header={'Home > Menu'}
@@ -234,7 +234,12 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   menuImg: {width: 70, height: 70, margin: 10},
-  menuText: {color: '#000',  fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 10},
+  menuText: {
+    color: '#000',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 16,
+    marginTop: 10,
+  },
   menuRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
