@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-
+import dayjs from 'dayjs';
 export function MySongsHeader({songInfo}) {
   return (
     <View
@@ -20,7 +20,7 @@ export function MySongsHeader({songInfo}) {
 
         {/* rew twwo */}
         <View style={styles.subRow}>
-          <Text style={styles.titleText}>Main Writter:</Text>
+          <Text style={styles.titleText}>Author:</Text>
           <Text style={styles.text}>{songInfo.author}</Text>
         </View>
       </View>
@@ -36,7 +36,7 @@ export function MySongsHeader({songInfo}) {
 
         {/* rew twwo */}
         <View style={styles.subRow}>
-          <Text style={styles.titleText}>Co Writer(s):</Text>
+          <Text style={styles.titleText}>Contributor(s):</Text>
           <Text style={styles.text}>{songInfo.contributor}</Text>
         </View>
       </View>
@@ -45,7 +45,10 @@ export function MySongsHeader({songInfo}) {
         {/* row one */}
         <View style={styles.subRow}>
           <Text style={styles.titleText}>Date: </Text>
-          <Text style={styles.text}>{songInfo.createdAt}</Text>
+
+          <Text style={styles.text}>
+            {dayjs(songInfo.createdAt).format('DD:MM:YYYY')}
+          </Text>
         </View>
 
         {/* rew twwo */}
@@ -73,14 +76,14 @@ const styles = StyleSheet.create({
   },
   titleText: {
     textAlign: 'right',
-    width: 90,
-    fontWeight: 'bold',
-    fontSize: 15,
+    width: 95,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
     color: '#AE1F1F',
   },
   text: {
     flex: 0.8,
-    fontWeight: 'bold',
-    fontSize: 15,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 12,
   },
 });

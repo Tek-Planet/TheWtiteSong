@@ -79,7 +79,7 @@ function HarmonizeTools({navigation}) {
             </View>
           </View>
         </View>
-        <MySongsHeader />
+        {/* <MySongsHeader /> */}
         <SingButton
           testColor="#A30000"
           bGcolor="#F8AE33"

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '../../components/SaveButton';
@@ -65,9 +65,15 @@ export default function Message({songInfo, navigation}) {
         style={{flexDirection: 'row', justifyContent: 'space-evenly'}}
         key={item.body}>
         {/* first colum */}
-        <View style={{flexDirection: 'row', marginTop: 10}}>
+        <View style={{flexDirection: 'row', marginBottom: 10}}>
           <Ionicons name="lock-open" size={20} color={'#AC1C1C'} />
-          <Text style={{fontWeight: 'bold', margin: 5, width: 90}}>
+          <Text
+            style={{
+              fontFamily: 'Montserrat-Medium',
+              fontSize: 12,
+              margin: 5,
+              width: 90,
+            }}>
             {item.title}
           </Text>
         </View>
@@ -125,17 +131,20 @@ export default function Message({songInfo, navigation}) {
           Re-Order Position
         </Text>
       </View> */}
-      <View
+
+      <ScrollView
         style={{
           backgroundColor: '#F4F4F4',
           margin: 5,
           borderRadius: 10,
           elevation: 5,
+          flex: 1,
+          minHeight: 310,
         }}>
         {lyrics.map((item, index) => {
           return templateListitem(item, index);
         })}
-      </View>
+      </ScrollView>
 
       <Button
         onPress={() => {

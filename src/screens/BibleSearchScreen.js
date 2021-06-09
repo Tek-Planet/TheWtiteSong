@@ -13,10 +13,11 @@ import Message from '../components/Message';
 import SaveButton from '../components/SaveButton';
 import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {versions} from '../assets/constants';
+import {versions, fonts} from '../assets/constants';
 import axios from 'axios';
 import {AuthContext} from '../context/AuthProvider';
 import dayjs from 'dayjs';
+import {useTheme} from '@react-navigation/native';
 
 function BibleSearchScreen({navigation}) {
   const {fetchSongs, mySongs} = useContext(AuthContext);
@@ -32,6 +33,7 @@ function BibleSearchScreen({navigation}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState();
+  const {colors} = useTheme();
 
   useEffect(() => {
     fetchSongs();
@@ -85,11 +87,11 @@ function BibleSearchScreen({navigation}) {
                 justifyContent: 'space-evenly',
               }}>
               <View style={{width: '50%'}}>
-                <Text style={styles.heading}>Select Song Title</Text>
+                <Text style={[styles.heading]}>Select Song Title:</Text>
                 <View
                   style={{
                     borderBottomWidth: 1,
-                    borderBottomColor: '#AC1C1C',
+                    borderBottomColor: colors.primary,
                   }}>
                   <Picker
                     selectedValue={mySongs[0].title}
@@ -122,7 +124,7 @@ function BibleSearchScreen({navigation}) {
                 <View
                   style={{
                     borderBottomWidth: 1,
-                    borderBottomColor: '#AC1C1C',
+                    borderBottomColor: colors.primary,
                   }}>
                   <Picker
                     selectedValue={'select'}
@@ -161,13 +163,13 @@ function BibleSearchScreen({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                    <Text style={[styles.headerText, {fontFamily: fonts.bold}]}>
                       Song Title:
                     </Text>
                     <Text style={styles.headerText}>{songTitle}</Text>
                   </View>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                    <Text style={[styles.headerText, {fontFamily: fonts.bold}]}>
                       Genre:
                     </Text>
                     <Text style={styles.headerText}>{songGenre} </Text>
@@ -178,7 +180,7 @@ function BibleSearchScreen({navigation}) {
                     flexDirection: 'row',
                   }}>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                    <Text style={[styles.headerText, {fontFamily: fonts.bold}]}>
                       Date:
                     </Text>
                     <Text style={styles.headerText}>
@@ -186,7 +188,7 @@ function BibleSearchScreen({navigation}) {
                     </Text>
                   </View>
                 </View>
-                <Text style={[styles.headerText, {fontWeight: 'bold'}]}>
+                <Text style={[styles.headerText, {fontFamily: fonts.bold}]}>
                   {selectedElementTitle}{' '}
                 </Text>
                 <Text style={[styles.headerText, {textAlign: 'justify'}]}>
@@ -243,6 +245,7 @@ function BibleSearchScreen({navigation}) {
                       borderColor: '#AC1C1C',
                     }}>
                     <TextInput
+                      multiline={true}
                       onChangeText={val => setSearch(val)}
                       placeholder="Enter World Reference for bible search"
                       placeholderTextColor="#000"
@@ -250,7 +253,11 @@ function BibleSearchScreen({navigation}) {
                       autoCapitalize="none"
                       fontSize={15}
                       fontWeight="normal"
-                      style={{width: '90%', padding: 1}}
+                      style={{
+                        width: '90%',
+                        padding: 1,
+                        fontFamily: fonts.light,
+                      }}
                     />
                     <TouchableOpacity onPress={() => searchBibleVerse(search)}>
                       <Ionicons
@@ -283,10 +290,10 @@ function BibleSearchScreen({navigation}) {
                       style={[
                         styles.headerText,
                         {
-                          fontWeight: 'bold',
+                          fontFamily: fonts.medium,
                           marginBottom: 0,
                           borderBottomWidth: 2,
-                          width: 105,
+                          width: 130,
                           textAlign: 'center',
                           borderBottomColor: '#000',
                         },
@@ -298,7 +305,7 @@ function BibleSearchScreen({navigation}) {
                       style={[
                         styles.headerText,
                         {
-                          fontWeight: 'bold',
+                          fontFamily: fonts.medium,
                           marginTop: 15,
                           color: '#000',
                         },
@@ -374,13 +381,14 @@ const styles = StyleSheet.create({
     color: '#000',
     margin: 5,
     fontSize: 14,
+    fontFamily: fonts.medium,
   },
 
   heading: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#AC1C1C',
     marginTop: 10,
-    fontWeight: 'bold',
+    fontFamily: fonts.bold,
   },
 
   userInfoSection: {
@@ -399,6 +407,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderBottomColor: '#AC1C1C',
     color: '#000',
+    fontFamily: fonts.medium,
   },
   pickerItem: {backgroundColor: '#fff', color: '#000'},
 });

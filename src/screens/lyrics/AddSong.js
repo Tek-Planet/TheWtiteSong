@@ -19,6 +19,8 @@ import CustomAlert from '../../components/ErrorAlert';
 function AddSong({navigation, route}) {
   const {setMySongs} = useContext(AuthContext);
   const [status, setStatus] = useState(false);
+  const [alertTitle, setAlertTitle] = useState('Error');
+  const [alertMsg, setAlertMsg] = useState('qwert');
   const [genre, setGenre] = useState('gospel');
   const [name, setName] = useState('select');
   const [title, setTitle] = useState('');
@@ -29,13 +31,15 @@ function AddSong({navigation, route}) {
 
   const addSong = async (songName, songGenre, songContributor) => {
     if (songName.trim().length < 1) {
+      setAlertTitle('Error');
+      setAlertMsg('Kindly fill aff fields to proceed');
       showAlert(true);
       console.log('errrrror');
     } else {
       const newSong = {
         title: songName,
         genre: songGenre,
-        author: 'Me',
+        author: 'Tek Singer',
         contributor: songContributor,
         createdAt: new Date().toISOString(),
         element: [],
@@ -54,7 +58,9 @@ function AddSong({navigation, route}) {
 
           console.log('resong list updated', songs);
           setMySongs(songs);
-          alertSuccess();
+          setAlertTitle('Success');
+          setAlertMsg('Song Added.');
+          showAlert(true);
         } else {
           const songs = [];
           songs.push(newSong);
@@ -62,7 +68,9 @@ function AddSong({navigation, route}) {
 
           setMySongs(songs);
           console.log('new song added', songs);
-          alertSuccess();
+          setAlertTitle('Success');
+          setAlertMsg('Song Added.');
+          showAlert(true);
         }
       } catch (e) {
         // error reading value
@@ -233,7 +241,13 @@ function AddSong({navigation, route}) {
       </View>
 
       <View>
-        <CustomAlert status={status} showAlert={showAlert} />
+        <CustomAlert
+          alertMsg={alertMsg}
+          alertTitle={alertTitle}
+          navigation={navigation}
+          status={status}
+          showAlert={showAlert}
+        />
         <View style={styles.saveBtnBg}>
           <SaveButton
             buttonTitle={'Save'}

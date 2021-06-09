@@ -9,18 +9,19 @@ const CustomAlert = props => {
   return (
     <AwesomeAlert
       show={props.status}
-      title="AwesomeAlert"
-      message="I have a message for you!"
+      title={props.alertTitle}
+      message={props.alertMsg}
       closeOnTouchOutside={false}
       closeOnHardwareBackPress={false}
       showCancelButton={true}
       showConfirmButton={false}
-      cancelText="cancel"
+      cancelText={'Ok'}
       confirmText="Yes, delete it"
       confirmButtonColor="#DD6B55"
-      cancelButtonColor="red"
+      cancelButtonColor={props.alertTitle === 'Error' ? 'red' : 'green'}
       onCancelPressed={() => {
         props.showAlert(false);
+        props.alertTitle !== 'Error' && props.navigation.goBack();
       }}
       onConfirmPressed={() => {
         props.showAlert(false);

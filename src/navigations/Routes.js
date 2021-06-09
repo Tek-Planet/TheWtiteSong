@@ -15,6 +15,14 @@ function App() {
     colors: {
       ...NavigationDefaultTheme.colors,
       background: '#ffffff',
+      card: 'rgb(255, 255, 255)',
+      primary: '#AC1C1C',
+    },
+
+    fonts: {
+      bold: 'Montserrat-Bold',
+      medium: 'Montserrat-Medium',
+      light: 'Montserrat-Light',
     },
   };
   const theme = CustomDefaultTheme;

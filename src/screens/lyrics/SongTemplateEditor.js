@@ -11,7 +11,7 @@ export function MySongsEditor({navigation, route}) {
   const {songInfo} = route.params;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <ScrollView>
         <Message
           navigation={navigation}
@@ -30,7 +30,7 @@ export function MySongsEditor({navigation, route}) {
         <View
           style={{marginTop: 10, borderBottomWidth: 3, borderColor: '#AC1C1C'}}
         />
-        <View style={{}}>
+        <View style={{flex: 1}}>
           {songInfo.element.length > 0 ? (
             <SongVersesPosition songInfo={songInfo} navigation={navigation} />
           ) : (
@@ -38,8 +38,8 @@ export function MySongsEditor({navigation, route}) {
             <Text
               style={{
                 color: '#000',
-                fontSize: 18,
-                margin: 6,
+                marginTop: 25,
+                fontFamily: 'Montserrat-Bold',
                 textAlign: 'center',
               }}>
               {' '}

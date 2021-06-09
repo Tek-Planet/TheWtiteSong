@@ -46,24 +46,28 @@ const App = props => {
     //Invoked when .start() is called without error
     console.log('onSpeechStart: ', e);
     setStarted('√');
+    props.setPlaceHolder('Listening');
   };
 
   const onSpeechEnd = e => {
     //Invoked when SpeechRecognizer stops recognition
     console.log('onSpeechEnd: ', e);
     setEnd('√');
+    props.setPlaceHolder('Live');
   };
 
   const onSpeechError = e => {
     //Invoked when an error occurs.
     console.log('onSpeechError: ', e);
     setError(JSON.stringify(e.error));
+    props.setPlaceHolder('Live');
   };
 
   const onSpeechResults = e => {
     //Invoked when SpeechRecognizer is finished recognizing
     console.log('onSpeechResults: ', e);
     setResults(e.value);
+    props.setPlaceHolder('Live');
   };
 
   const onSpeechPartialResults = e => {

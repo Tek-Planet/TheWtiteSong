@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -11,10 +11,19 @@ import {
   Image,
 } from 'react-native';
 import Message from '../../components/Message';
+import Button from '../../components/SaveButton';
 import RecordButton from '../../components/RecordButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function LoopScreen({navigation}) {
+  const [guitar, setGuitar] = useState(false);
+  const [loops, setLoops] = useState(false);
+  const [keys, setKeys] = useState(false);
+  const [bass, setBass] = useState(false);
+  const [customs, setCustoms] = useState(false);
+  const [vox, setVox] = useState(false);
+  const [bars, setBars] = useState(false);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -166,21 +175,24 @@ function LoopScreen({navigation}) {
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Guitar</Text>
                 <Switch
-                  value={true}
+                  value={guitar}
+                  onValueChange={val => [setGuitar(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Loops</Text>
                 <Switch
-                  value={true}
+                  value={loops}
+                  onValueChange={val => [setLoops(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Keys</Text>
                 <Switch
-                  value={true}
+                  value={keys}
+                  onValueChange={val => [setKeys(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
@@ -191,21 +203,24 @@ function LoopScreen({navigation}) {
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Bass</Text>
                 <Switch
-                  value={true}
+                  value={bass}
+                  onValueChange={val => [setBass(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Custom</Text>
                 <Switch
-                  value={true}
+                  value={customs}
+                  onValueChange={val => [setCustoms(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
               <View style={styles.swichItem}>
                 <Text style={styles.swichItemText}>Vox</Text>
                 <Switch
-                  value={true}
+                  value={vox}
+                  onValueChange={val => [setVox(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
@@ -315,13 +330,14 @@ function LoopScreen({navigation}) {
                   {'&'} Beat
                 </Text>
                 <Switch
-                  value={true}
+                  value={bars}
+                  onValueChange={val => [setBars(val)]}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
 
                 <Text style={[styles.playerText, {marginStart: 5}]}>Loops</Text>
                 <Switch
-                  value={true}
+                  value={loops}
                   trackColor={{false: 'grey', true: 'green'}}
                 />
               </View>
@@ -403,9 +419,7 @@ function LoopScreen({navigation}) {
               </View>
             </View>
           </View>
-          <View style={styles.saveBtnBg}>
-            <Text style={styles.saveBtnText}>Save</Text>
-          </View>
+          <Button buttonTitle={'Save'} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -480,19 +494,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 5,
     alignContent: 'center',
-  },
-  saveBtnBg: {
-    backgroundColor: '#AC1C1C',
-    margin: 10,
-    borderRadius: 50,
-  },
-
-  saveBtnText: {
-    textAlign: 'center',
-    color: '#fff',
-    margin: 5,
-    padding: 5,
-    fontSize: 16,
-    fontFamily: 'Montserrat-Bold',
   },
 });

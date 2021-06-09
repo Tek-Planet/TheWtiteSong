@@ -13,9 +13,12 @@ export default function Message({songInfo}) {
             name="lock-open"
             size={20}
             color={'#AC1C1C'}
-            style={{padding: 5}}
+            style={{padding: 3}}
           />
-          <Text style={{fontWeight: 'bold', margin: 5}}>{item.title}</Text>
+          <Text
+            style={{fontFamily: 'Montserrat-Bold', fontSize: 12, margin: 5}}>
+            {item.title}
+          </Text>
         </View>
 
         <View style={[styles.row]}>
@@ -79,16 +82,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
-  headingText: {
-    color: '#3725AE',
-    fontSize: 17,
-    fontWeight: 'bold',
-  },
+
   text: {
     marginStart: 20,
+    marginEnd: 10,
     color: '#000',
-    fontSize: 15,
+    fontSize: 12,
     textAlign: 'justify',
+    fontFamily: 'Montserrat-Medium',
   },
   iconBg: {
     margin: 3,

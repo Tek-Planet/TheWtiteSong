@@ -42,12 +42,12 @@ export default function Message({navigation, template, keyWord}) {
           <Text
             style={[
               styles.text,
-              {width: 60, textAlign: 'center', marginEnd: 5},
+              {width: 65, textAlign: 'center', marginEnd: 5},
             ]}>
             {dayjs(item.createdAt).format('DD:MM:YYYY')}
           </Text>
           <Text style={[styles.text, {width: 60, textAlign: 'center'}]}>
-            {item.author} oluwabi
+            {item.author}
           </Text>
         </View>
         <View
@@ -90,7 +90,7 @@ export default function Message({navigation, template, keyWord}) {
             <Text
               style={[
                 styles.headingText,
-                {width: 60, textAlign: 'center', marginEnd: 5},
+                {width: 65, textAlign: 'center', marginEnd: 5},
               ]}>
               Updated
             </Text>

@@ -14,48 +14,65 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import TTL from '../../components/TextToSpeech';
 import {AuthContext} from '../../context/AuthProvider';
 import {useState} from 'react';
-import {Picker} from '@react-native-picker/picker';
+import CustomAlert from '../../components/ErrorAlert';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SaveButton from '../../components/SaveButton';
 
 function FreeStyleLyrics({navigation, route}) {
   const {setMySongs} = useContext(AuthContext);
+  const [placeholder, setPlaceHolder] = useState('Live');
+  const [status, setStatus] = useState(false);
+  const [alertTitle, setAlertTitle] = useState('Error');
+  const [alertMsg, setAlertMsg] = useState('qwert');
   const [edit, setEdit] = useState(false);
-  const [content, setContent] = useState([]);
+  const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const {songInfo} = route.params;
+
+  // mddal to show error or success
+  const showAlert = value => {
+    setStatus(value);
+  };
 
   const saveSongElement = async (title, details) => {
     const songElement = songInfo.element;
 
-    const newElemet = {
-      title: title,
-      body: details,
-    };
+    if (title.trim().length === 0 || details.trim().length === 0) {
+      setAlertTitle('Error');
+      setAlertMsg('Kindly fill aff fields to proceed');
+      showAlert(true);
+    } else {
+      console.log('details');
+      const newElemet = {
+        title: title,
+        body: details,
+      };
 
-    songElement.push(newElemet);
+      songElement.push(newElemet);
 
-    const newSong = {
-      title: songInfo.title,
-      genre: songInfo.genre,
-      author: songInfo.author,
-      contributor: songInfo.contributor,
-      createdAt: songInfo.createdAt,
-      element: songElement,
-    };
+      const newSong = {
+        title: songInfo.title,
+        genre: songInfo.genre,
+        author: songInfo.author,
+        contributor: songInfo.contributor,
+        createdAt: songInfo.createdAt,
+        element: songElement,
+      };
 
-    const jsonValue = await AsyncStorage.getItem('songs');
-    if (jsonValue !== null) {
-      // parse to json if its exist
-      const songs = JSON.parse(jsonValue);
-      // add new song
-      songs[0] = newSong;
-      //  store on async stora
-      AsyncStorage.setItem('songs', JSON.stringify(songs));
-      setMySongs(songs);
-      console.log('song element updated', songs);
-
-      navigation.goBack();
+      const jsonValue = await AsyncStorage.getItem('songs');
+      if (jsonValue !== null) {
+        // parse to json if its exist
+        const songs = JSON.parse(jsonValue);
+        // add new song
+        songs[0] = newSong;
+        //  store on async stora
+        AsyncStorage.setItem('songs', JSON.stringify(songs));
+        setMySongs(songs);
+        setMySongs(songs);
+        setAlertTitle('Success');
+        setAlertMsg('Element Added.');
+        showAlert(true);
+      }
     }
   };
 
@@ -87,11 +104,11 @@ function FreeStyleLyrics({navigation, route}) {
         <View style={{backgroundColor: '#A30000'}}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               padding: 10,
               textAlign: 'center',
               color: '#fff',
-              fontWeight: 'bold',
+              fontFamily: 'Montserrat-Bold',
             }}>
             Or Just
           </Text>
@@ -102,11 +119,15 @@ function FreeStyleLyrics({navigation, route}) {
           {/* row one  */}
           <View style={{marginStart: 20}}>
             <Text
-              style={{fontWeight: 'bold', color: '#A30000', marginBottom: 10}}>
+              style={{
+                fontFamily: 'Montserrat-Medium',
+                color: '#A30000',
+                marginBottom: 10,
+              }}>
               Song Title{' '}
             </Text>
 
-            <Text style={{fontWeight: 'bold', color: '#000'}}>
+            <Text style={{fontFamily: 'Montserrat-Medium', color: '#000'}}>
               {songInfo.title}
             </Text>
           </View>
@@ -114,7 +135,7 @@ function FreeStyleLyrics({navigation, route}) {
           {/* section row  */}
 
           <View style={{marginStart: 20}}>
-            <Text style={{fontWeight: 'bold', color: '#A30000'}}>
+            <Text style={{fontFamily: 'Montserrat-Medium', color: '#A30000'}}>
               Song Element
             </Text>
 
@@ -171,11 +192,13 @@ function FreeStyleLyrics({navigation, route}) {
                 setEdit(false);
               }}
               setResult={setResult}
+              setPlaceHolder={setPlaceHolder}
             />
             <Text
               style={{
+                fontFamily: 'Montserrat-Medium',
                 color: '#000',
-                fontSize: 18,
+                fontSize: 14,
                 textAlign: 'center',
               }}>
               Speak Your Lyrics
@@ -196,7 +219,8 @@ function FreeStyleLyrics({navigation, route}) {
             <Text
               style={{
                 color: '#000',
-                fontSize: 18,
+                fontSize: 14,
+                fontFamily: 'Montserrat-Medium',
                 textAlign: 'center',
               }}>
               Type Your Lyrics
@@ -208,20 +232,21 @@ function FreeStyleLyrics({navigation, route}) {
           <View
             style={{
               backgroundColor: '#FE0000',
-              width: 50,
+              minWidth: 50,
               height: 50,
               justifyContent: 'center',
               borderRadius: 10,
               marginTop: 5,
+              padding: 4,
             }}>
             <Text
               style={{
                 textAlign: 'center',
-                fontSize: 20,
+                fontSize: 12,
                 color: '#fff',
-                fontWeight: 'bold',
+                fontFamily: 'Montserrat-Medium',
               }}>
-              Live
+              {placeholder}
             </Text>
           </View>
           <View style={{flex: 1}}>
@@ -234,7 +259,8 @@ function FreeStyleLyrics({navigation, route}) {
                     backgroundColor: '#ccc',
                     marginStart: 10,
                     textAlign: 'justify',
-                    fontSize: 18,
+                    fontSize: 16,
+                    fontFamily: 'Montserrat-Medium',
                     color: '#000',
                     padding: 5,
                   }}>
@@ -268,7 +294,21 @@ function FreeStyleLyrics({navigation, route}) {
           </View>
         </View>
         {/* save button sections */}
-        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+        <SaveButton
+          onPress={() => {
+            //  fetchSongs();
+            saveSongElement(title, content);
+          }}
+          buttonTitle={'Save'}
+        />
+        <CustomAlert
+          alertMsg={alertMsg}
+          alertTitle={alertTitle}
+          navigation={navigation}
+          status={status}
+          showAlert={showAlert}
+        />
+        {/* <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <TouchableOpacity
             style={styles.saveBtnBg}
             onPress={() => {
@@ -286,7 +326,7 @@ function FreeStyleLyrics({navigation, route}) {
             }}>
             <Text style={styles.saveBtnText}>Save Template</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -337,15 +377,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     paddingLeft: 15,
     color: '#000',
-    fontSize: 18,
+    fontSize: 16,
     height: 100,
     paddingRight: 15,
+    fontFamily: 'Montserrat-Medium',
   },
 
   inputContainer: {},
 
   inputText: {
     padding: 5,
+    fontFamily: 'Montserrat-Medium',
     width: 150,
     color: '#000',
     borderBottomColor: 'grey',

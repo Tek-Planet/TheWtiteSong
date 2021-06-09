@@ -20,9 +20,8 @@ export const AuthProvider = ({children}) => {
     const value = await AsyncStorage.getItem('songs');
     if (value !== null) {
       const songs = JSON.parse(value);
-       songs.unshift(newSong);
+      songs.unshift(newSong);
       setMySongs(songs);
-      console.log(songs);
     } else setMySongs([]);
   };
 

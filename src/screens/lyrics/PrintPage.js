@@ -21,7 +21,9 @@ function PrintPage({navigation, route}) {
         {/* row one */}
         <View style={{flexDirection: 'row'}}>
           <Text style={styles.titleText}>Element: </Text>
-          <Text style={styles.text}>{item.title}</Text>
+          <Text style={[styles.text, {fontFamily: 'Montserrat-Bold'}]}>
+            {item.title}
+          </Text>
         </View>
 
         <View style={{flexDirection: 'row'}}>
@@ -32,55 +34,53 @@ function PrintPage({navigation, route}) {
     );
   };
   return (
-    <ScrollView>
     <SafeAreaView style={{flex: 1}}>
-    
-        <Message 
-          showBackBtn={true}
-          navigation={navigation}
-          header={'Print Preview'}
-          showMsg={false}
-        />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <View
-            style={{
-              height: 30,
-              margin: 10,
-              marginTop: 15,
-              backgroundColor: '#F8AE33',
-              width: 150,
-              borderRadius: 10,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text style={{fontWeight: 'bold'}}>Show / Hide Element</Text>
-          </View>
-          <Image
-            style={{width: 100, height: 60}}
-            source={require('../../assets/imgs/logo.png')}
-          />
-        </View>
-
-        <Text
-          style={{
-            fontSize: 15,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            color: '#3D2BB0',
-          }}>
-          Lyrical Project Sheet
-        </Text>
-
-        <MySongsHeader songInfo={songInfo} />
-
+      <Message
+        showBackBtn={true}
+        navigation={navigation}
+        header={'Print Preview'}
+        showMsg={false}
+      />
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <View
           style={{
-            backgroundColor: '#F4F4F4',
-            margin: 5,
+            height: 30,
+            margin: 10,
+            marginTop: 15,
+            backgroundColor: '#F8AE33',
+            width: 150,
             borderRadius: 10,
-            elevation: 5,
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
-          {/* <View style={styles.row}>
+          <Text style={{fontWeight: 'bold'}}>Show / Hide Element</Text>
+        </View>
+        <Image
+          style={{width: 100, height: 60}}
+          source={require('../../assets/imgs/logo.png')}
+        />
+      </View>
+
+      <Text
+        style={{
+          fontSize: 15,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: '#3D2BB0',
+        }}>
+        Lyrical Project Sheet
+      </Text>
+
+      <MySongsHeader songInfo={songInfo} />
+
+      <View
+        style={{
+          backgroundColor: '#F4F4F4',
+          margin: 5,
+          borderRadius: 10,
+          elevation: 5,
+        }}>
+        {/* <View style={styles.row}>
         
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Song Title: </Text>
@@ -94,7 +94,7 @@ function PrintPage({navigation, route}) {
             </View>
           </View> */}
 
-          {/* <View style={styles.row}>
+        {/* <View style={styles.row}>
          
             <View style={styles.subRow}>
               <Text style={styles.titleText}>Choose Genre: </Text>
@@ -107,33 +107,38 @@ function PrintPage({navigation, route}) {
               <Text style={styles.text}>25/01/2020</Text>
             </View>
           </View> */}
-        </View>
+      </View>
 
-        <View
-          style={{
-            backgroundColor: '#F4F4F4',
-            margin: 5,
-            borderRadius: 10,
-            elevation: 5,
-          }}>
-          {songInfo.element.length > 0 ?
-            songInfo.element.map((item, index) => {
-              return listItem(item, index);
-            }) :
-            <Text style={{ color: '#000',
-            fontSize: 18,
-            margin: 6,
-            textAlign: 'center',
-         }}> No Element found </Text>
-          
-          }
-        </View>
+      <ScrollView
+        style={{
+          backgroundColor: '#F4F4F4',
+          margin: 5,
+          borderRadius: 10,
+          elevation: 5,
+        }}>
+        {songInfo.element.length > 0 ? (
+          songInfo.element.map((item, index) => {
+            return listItem(item, index);
+          })
+        ) : (
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 16,
+              fontFamily: 'Montserrat-Bold',
+              margin: 10,
+              textAlign: 'center',
+            }}>
+            {' '}
+            No Element found{' '}
+          </Text>
+        )}
+      </ScrollView>
 
-        {/* <Text style={styles.printText}>Page: 1</Text> */}
-    
+      {/* <Text style={styles.printText}>Page: 1</Text> */}
+
       <SaveButton buttonTitle={'Print'} />
     </SafeAreaView>
-    </ScrollView>
   );
 }
 
@@ -153,32 +158,13 @@ const styles = StyleSheet.create({
   titleText: {
     textAlign: 'right',
     width: 100,
-    fontWeight: 'bold',
-    fontSize: 14,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 12,
     color: '#AE1F1F',
   },
   text: {
     flex: 1,
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  printText: {
-    marginTop: 10,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: '#AE1F1F',
-  },
-  saveBtnBg: {
-    backgroundColor: '#AC1C1C',
-    margin: 10,
-    borderRadius: 50,
-  },
-
-  saveBtnText: {
-    textAlign: 'center',
-    color: '#fff',
-    padding: 5,
-    fontSize: 20,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 12,
   },
 });

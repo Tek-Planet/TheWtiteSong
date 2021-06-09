@@ -24,10 +24,8 @@ export const versions = [
   },
 ];
 
-export const showError = () => {
-  showAlert = {
-    title: 'Are you sure?',
-    message: 'This action will be irreversible!',
-    alertType: 'warning',
-  };
+export const fonts = {
+  bold: 'Montserrat-Bold',
+  medium: 'Montserrat-Medium',
+  light: 'Montserrat-Light',
 };
